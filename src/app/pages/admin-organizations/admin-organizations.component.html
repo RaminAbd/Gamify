@@ -1,1 +1,9 @@
-<p>admin-organizations works!</p>
+<div class="admins-wrapper">
+  <app-table
+    [Array]="organizations"
+    [cols]="cols"
+    [TableName]="'Organizations'"
+    [showCreate]="false"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>
