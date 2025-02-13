@@ -77,3 +77,11 @@ h3{
 ::ng-deep .p-inputtext:enabled:hover {
   height: 36px !important;
 }
+
+.image{
+  img{
+    width: 80px;
+    height:80px;
+    border-radius: 100%;
+  }
+}

@@ -3,6 +3,7 @@ import { AdminProjectsComponent } from '../../../../pages/admin-projects/admin-p
 import { AdminProjectDetailsComponent } from '../../../../pages/admin-projects/shared/pages/admin-project-details/admin-project-details.component';
 import { AdminOrganizationsComponent } from '../../../../pages/admin-organizations/admin-organizations.component';
 import { AdminOrganizationDetailsComponent } from '../../../../pages/admin-organizations/shared/pages/admin-organization-details/admin-organization-details.component';
+import {AdminParticipantsComponent} from '../../../../pages/admin-participants/admin-participants.component';
 
 export class AdminChildrenRoutes {
   static children: Route[] = [
@@ -26,6 +27,12 @@ export class AdminChildrenRoutes {
       path: 'organizations/:id',
       component: AdminOrganizationDetailsComponent,
       data: { title: 'Organizations' },
+    },
+
+    {
+      path: 'participants',
+      component: AdminParticipantsComponent,
+      data: { title: 'Participants' },
     },
     { path: '', redirectTo: 'projects', pathMatch: 'full' },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' },
