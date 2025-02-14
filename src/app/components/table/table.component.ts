@@ -5,13 +5,23 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { SkeletonModule } from 'primeng/skeleton';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { Confirmation } from '../../core/extensions/confirmation';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [TableModule, SharedModule, NgIf, InputTextModule, NgFor, NgStyle, SkeletonModule, ConfirmPopupModule],
+  imports: [
+    TableModule,
+    SharedModule,
+    NgIf,
+    InputTextModule,
+    NgFor,
+    NgStyle,
+    SkeletonModule,
+    ConfirmPopupModule,
+  ],
 })
 export class TableComponent {
   @Input() showCreate: boolean = true;
@@ -46,17 +56,13 @@ export class TableComponent {
     this.Action.emit(obj);
   }
   confirm(data: any, type: number, event?: any) {
-    this.confirmationService.confirm({
-      target: event.target as any,
-      message: 'Are you sure?',
-      acceptLabel: 'Yes',
-      rejectLabel: 'No',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
+    Confirmation.confirm(
+      this.confirmationService,
+      'Are you sure you want to delete?',
+      () => {
         this.tableAction(data, type, event);
       },
-      reject: () => {},
-    });
+    );
   }
   goBack() {
     this.location.back();

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { NgForOf } from '@angular/common';
-import { AuthService } from '../../auth/auth.service';
+import {SignInService} from '../../auth/sign-in/sign-in.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -14,7 +14,7 @@ export class NavigationBarComponent {
   @Input() sections: any[] = [];
   constructor(
     private sanitizer: DomSanitizer,
-    private signInService: AuthService,
+    private signInService: SignInService,
     private router: Router,
   ) {}
 

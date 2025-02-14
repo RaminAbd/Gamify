@@ -1,0 +1,38 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 30px;
+  .input-block{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    input{
+      width: 100%;
+    }
+  }
+}
+.btns{
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  button{
+    width: 147px;
+    height: 41px;
+    border-radius: 12px;
+    background: #F6F6F6;
+    color: #656668;
+    font-size: 14px;
+    font-weight: 600;
+    @media (max-width: 400px) {
+      width: auto;
+      flex: 1;
+    }
+    &.save{
+      background: var(--primary-color);
+      color: #FFF;
+    }
+  }
+}
+

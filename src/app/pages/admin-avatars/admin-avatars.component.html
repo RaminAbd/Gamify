@@ -1,0 +1,9 @@
+<div class="admins-wrapper">
+  <app-table
+    [Array]="avatars"
+    [cols]="cols"
+    [TableName]="'Avatars'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>

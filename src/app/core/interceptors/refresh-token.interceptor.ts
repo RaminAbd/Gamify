@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 import {StorageService} from '../services/storage.service';
 import {AuthApiService} from '../../auth/shared/services/auth.api.service';
 import {AuthRequestModel} from '../../auth/shared/models/auth-request.model';
-import {AuthService} from '../../auth/auth.service';
+import {SignInService} from '../../auth/sign-in/sign-in.service';
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {
@@ -23,7 +23,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
     private storage: StorageService,
     private router: Router,
     private apiService: AuthApiService,
-    private signInService: AuthService,
+    private signInService: SignInService,
   ) {
   }
 

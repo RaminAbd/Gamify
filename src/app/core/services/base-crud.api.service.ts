@@ -24,11 +24,11 @@ export class BaseCrudApiService extends BaseApiService {
   }
 
   Create(serviceUrl: string, form: any) {
-    return this.post(serviceUrl + 'Create', form);
+    return this.post(serviceUrl + 'create', form);
   }
 
   Update(serviceUrl: string, form: any) {
-    return this.post(serviceUrl + 'Edit', form);
+    return this.post(serviceUrl + 'update', form);
   }
 
   GetById(serviceUrl: string, id: string) {
@@ -36,7 +36,7 @@ export class BaseCrudApiService extends BaseApiService {
   }
 
   Delete(serviceUrl: string, id: string) {
-    return this.delete(serviceUrl + 'Delete/', id);
+    return this.delete(serviceUrl + 'delete/', id);
   }
 
   GetByIdByLang(serviceUrl: string, req: any) {

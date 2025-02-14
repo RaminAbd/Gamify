@@ -8,13 +8,13 @@ import { FileModel } from '../models/File.model';
   providedIn: 'root',
 })
 export class BlobService extends BaseCrudApiService {
-  ServiceUrl: string = 'v1/Files/';
+  ServiceUrl: string = 'files/';
   constructor(http: HttpClient, handler: ApplicationMessageCenterService) {
     super(http, handler);
   }
 
   UploadFile(file: any) {
-    return this.post(this.ServiceUrl + 'Upload', file);
+    return this.post(this.ServiceUrl + 'upload', file);
   }
   Download(file: FileModel) {
     let headers = new HttpHeaders();

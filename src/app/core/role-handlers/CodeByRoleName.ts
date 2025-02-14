@@ -1,5 +1,5 @@
 export const CodeByRoleName = {
   admin: 'ROLE_ADMIN',
-  educator: 'Educator',
+  organization: 'ROLE_ORGANIZATION',
   student: 'Student',
 };

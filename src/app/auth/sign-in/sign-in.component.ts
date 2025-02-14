@@ -1,27 +1,27 @@
 import {Component, inject} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {AuthService} from './auth.service';
-import {AuthRequestModel} from './shared/models/auth-request.model';
+import {AuthRequestModel} from '../shared/models/auth-request.model';
+import {SignInService} from './sign-in.service';
 import {NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'app-sign-in',
   imports: [
-    ReactiveFormsModule,
     NgIf,
+    ReactiveFormsModule,
     RouterLink
   ],
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+  templateUrl: './sign-in.component.html',
+  styleUrl: './sign-in.component.scss'
 })
-export class AuthComponent {
+export class SignInComponent {
   isSubmitted: boolean = false;
   passVisible: boolean = false;
   requestSent: boolean = false;
   signinLoading: boolean = false;
   private fb: FormBuilder = inject(FormBuilder)
-  private service: AuthService = inject(AuthService);
+  private service: SignInService = inject(SignInService);
 
   constructor() {
     this.service.component = this;

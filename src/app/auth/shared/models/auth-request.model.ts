@@ -1,5 +1,5 @@
 export class AuthRequestModel {
-  userName: string;
+  username: string;
   remember:boolean;
   password: string;
 }

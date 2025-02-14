@@ -1,6 +1,5 @@
-
 export const RoleNameByCode = {
-  'ROLE_ADMIN':"admin",
-  "Educator":"educator",
-  "Student":"student",
-}
+  ROLE_ADMIN: 'admin',
+  ROLE_ORGANIZATION: 'organization',
+  Student: 'student',
+};

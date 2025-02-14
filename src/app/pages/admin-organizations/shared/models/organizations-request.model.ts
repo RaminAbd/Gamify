@@ -11,5 +11,6 @@ export class OrganizationsRequestModel {
   socialMediaLink: string;
   logo: FileModel = new FileModel();
   password: string;
+  repeatPassword: string;
   otpCode: number;
 }

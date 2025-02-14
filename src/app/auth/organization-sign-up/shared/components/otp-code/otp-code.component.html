@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="input-block">
+    <label for="username">{{ "Code" }}</label>
+    <input
+      type="number"
+      [(ngModel)]="code"
+      id="username"
+      [class.invalid]="!code && isSubmitted"
+    />
+  </div>
+
+  <div class="btns">
+    <button (click)="ref.close()">{{ "Cancel" }}</button>
+    <button class="save" (click)="save()">{{ "Save" }}</button>
+  </div>
+</div>

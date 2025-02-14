@@ -1,0 +1,36 @@
+::ng-deep {
+  .p-dialog .p-dialog-header,
+  .p-dialog .p-dialog-content {
+    background: transparent !important;
+  }
+  .confirm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    i {
+      font-size: 60px;
+      color: orange;
+    }
+    p {
+      width: 70%;
+      text-align: center;
+      color: orange;
+      margin-bottom: 21px !important;
+    }
+  }
+  .p-dialog-footer {
+    .p-button {
+      padding: 0px 20px !important;
+      height: 40px;
+      background: #f6f6f6 !important;
+      border: none !important;
+      color: #656668 !important;
+      &.p-confirmdialog-accept-button {
+        background: var(--primary-color) !important;
+        border: none !important;
+        color: #fff !important;
+      }
+    }
+  }
+}

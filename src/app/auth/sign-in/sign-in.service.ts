@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
-import {AuthComponent} from './auth.component';
-import {AuthApiService} from './shared/services/auth.api.service';
-import {ApplicationMessageCenterService} from '../core/services/ApplicationMessageCenter.service';
-import {StorageService} from '../core/services/storage.service';
-import {Router} from '@angular/router';
-import {CryptoService} from './shared/services/crypto.service';
-import {AuthRequestModel} from './shared/models/auth-request.model';
-import {AuthResponseModel} from './shared/models/auth-response.model';
+import { AuthApiService } from '../shared/services/auth.api.service';
+import { ApplicationMessageCenterService } from '../../core/services/ApplicationMessageCenter.service';
+import { StorageService } from '../../core/services/storage.service';
+import { Router } from '@angular/router';
+import { CryptoService } from '../shared/services/crypto.service';
+import { AuthRequestModel } from '../shared/models/auth-request.model';
+import { AuthResponseModel } from '../shared/models/auth-response.model';
+import { SignInComponent } from './sign-in.component';
+import { RoleNameByCode } from '../../core/role-handlers/RoleNameByCode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService {
-  component: AuthComponent;
+export class SignInService {
+  component: SignInComponent;
   constructor(
     private apiService: AuthApiService,
     private appMessageService: ApplicationMessageCenterService,
     private storage: StorageService,
     private router: Router,
-    private cryptoService: CryptoService
+    private cryptoService: CryptoService,
   ) {}
 
   checkRememberMe() {
@@ -45,7 +46,7 @@ export class AuthService {
       this.component.requestSent = false;
       if (!resp.succeeded) {
         this.appMessageService.showErrorMessage(
-          'The username or password is incorrect!'
+          'The username or password is incorrect!',
         );
       } else {
         this.setToStorage(resp.data, req);
@@ -63,12 +64,12 @@ export class AuthService {
   async navigateByRole(resp: AuthResponseModel) {
     await this.router
       .navigateByUrl(
-        'main/'
+        'main/' + RoleNameByCode[resp.role as keyof typeof RoleNameByCode],
       )
       .then(() => {});
   }
 
-  logout(){
+  logout() {
     this.storage.removeObject('AuthRequest');
     this.storage.removeObject('AuthResult');
     this.storage.removeObject('authRequest');
