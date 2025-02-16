@@ -59,6 +59,7 @@ export class SignInService {
     this.storage.saveObject('authResponse', resp);
     this.storage.saveObject('authRequest', req);
     this.storage.saveObject('role', this.cryptoService.encrypt(resp.role, 3));
+    localStorage.setItem('id', resp.id);
   }
 
   async navigateByRole(resp: AuthResponseModel) {

@@ -5,6 +5,7 @@ import { AdminOrganizationsComponent } from '../../../../pages/admin-organizatio
 import { AdminOrganizationDetailsComponent } from '../../../../pages/admin-organizations/shared/pages/admin-organization-details/admin-organization-details.component';
 import { AdminParticipantsComponent } from '../../../../pages/admin-participants/admin-participants.component';
 import { AdminAvatarsComponent } from '../../../../pages/admin-avatars/admin-avatars.component';
+import {AdminWorkersComponent} from '../../../../pages/admin-workers/admin-workers.component';
 
 export class AdminChildrenRoutes {
   static children: Route[] = [
@@ -31,6 +32,12 @@ export class AdminChildrenRoutes {
     },
 
     {
+      path: 'workers',
+      component: AdminWorkersComponent,
+      data: { title: 'Workers' },
+    },
+
+    {
       path: 'participants',
       component: AdminParticipantsComponent,
       data: { title: 'Participants' },
@@ -41,6 +48,8 @@ export class AdminChildrenRoutes {
       component: AdminAvatarsComponent,
       data: { title: 'Avatars' },
     },
+
+
     { path: '', redirectTo: 'projects', pathMatch: 'full' },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' },
   ];

@@ -6,8 +6,8 @@ export class ProjectsRequestModel {
   name: string;
   description: string;
   rewardRules: string;
-  startDate: string;
-  endDate: string;
+  startDate: any;
+  endDate: any;
   image: FileModel = new FileModel();
   organization: string;
 }

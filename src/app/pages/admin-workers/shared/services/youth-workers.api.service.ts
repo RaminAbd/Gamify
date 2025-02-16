@@ -6,13 +6,9 @@ import {ApplicationMessageCenterService} from '../../../../core/services/Applica
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectsApiService extends BaseCrudApiService {
-  serviceUrl = 'Projects/';
+export class YouthWorkersApiService extends BaseCrudApiService {
+  serviceUrl = 'YouthWorkers/';
   constructor(http: HttpClient, handler: ApplicationMessageCenterService) {
     super(http, handler);
-  }
-
-  GetAllByOrganization(id:string){
-    return this.get(this.serviceUrl + 'get-all-by-organization/', id);
   }
 }

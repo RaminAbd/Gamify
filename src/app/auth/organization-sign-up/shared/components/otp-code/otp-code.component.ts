@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ApplicationMessageCenterService } from '../../../../../core/services/ApplicationMessageCenter.service';
 
 @Component({
   selector: 'app-otp-code',
-  imports: [NgIf, ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './otp-code.component.html',
   styleUrl: './otp-code.component.scss',
 })

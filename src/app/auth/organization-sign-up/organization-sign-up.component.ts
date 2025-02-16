@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import {
   FormBuilder,
   FormsModule,
@@ -7,13 +7,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { AuthRequestModel } from '../shared/models/auth-request.model';
 import { OrganizationsRequestModel } from '../../pages/admin-organizations/shared/models/organizations-request.model';
 import { OrganizationSignUpService } from './organization-sign-up.service';
 
 @Component({
   selector: 'app-organization-sign-up',
-  imports: [NgIf, ReactiveFormsModule, RouterLink, NgClass, FormsModule],
+  imports: [NgIf, ReactiveFormsModule, RouterLink, FormsModule],
   templateUrl: './organization-sign-up.component.html',
   styleUrl: './organization-sign-up.component.scss',
 })
