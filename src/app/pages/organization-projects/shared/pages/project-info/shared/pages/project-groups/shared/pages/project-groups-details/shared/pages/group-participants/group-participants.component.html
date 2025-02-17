@@ -1,0 +1,40 @@
+<div class="course-info">
+  <div class="content">
+    <div class="heading">
+      <div class="search">
+        <p>{{ groupParticipants.length + " " + "Participants" }}</p>
+        <div class="search-block">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            placeholder="{{ 'Search' }}..."
+            (input)="searchByName()"
+          />
+        </div>
+      </div>
+      <div class="btn">
+        <button class="allowed" (click)="openInvitation()">
+          {{ "Add new" }}
+        </button>
+      </div>
+    </div>
+    <div class="list">
+      <div class="item" *ngFor="let item of filteredList">
+        <div class="col">
+          <label>{{ "Email" }}</label>
+          <p>{{ item.email }}</p>
+        </div>
+        <div class="col">
+          <label>{{ "Status" }}</label>
+          <p [ngStyle]="{ color: item.accepted ? '#19C51F' : '#DB3AA9' }">
+            {{ item.accepted ? "Active" : "Pending" }}
+          </p>
+        </div>
+        <button (click)="remove(item.id)">
+          <img src="delete.svg" alt="" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

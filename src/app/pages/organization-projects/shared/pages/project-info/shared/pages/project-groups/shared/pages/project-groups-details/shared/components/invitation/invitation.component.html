@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <form class="inputs" [formGroup]="form">
+    <div class="input-item">
+      <label for="email">{{ "Email" }}</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        [(ngModel)]="email"
+        [class.invalid]="
+          form.get('email')?.hasError('pattern') ||
+          (!form.get('email')?.value && isSubmitted) ||
+          form.get('email')?.hasError('incorrect')
+        "
+      />
+    </div>
+    <button (click)="add()">Add</button>
+  </form>
+  <div class="items">
+    <div class="item" *ngFor="let item of selectedEmails; let i = index">
+      <div class="col">
+        <label>{{ "Email" }}</label>
+        <p class="value">{{ item }}</p>
+      </div>
+      <div class="delete" style="cursor: pointer" (click)="delete(i)">
+        <div class="icon"><img src="delete.svg" alt="" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="ref.close()">{{ "Cancel" }}</button>
+    <button class="save" (click)="save()">{{ "Save" }}</button>
+  </div>
+</div>

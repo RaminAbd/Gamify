@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="back" (click)="back()">
+    <i class="pi pi-chevron-left"></i>
+    <p>{{ project.name }} - {{ group.name }}</p>
+  </div>
+
+  <div class="content">
+    <div class="tabs" style="margin-top: 30px">
+      <a class="item" routerLink="workers" [routerLinkActive]="['selected']">
+        <p>{{ "Workers" }}</p>
+      </a>
+      <a
+        class="item"
+        routerLink="participants"
+        [routerLinkActive]="['selected']"
+      >
+        <p>{{ "Participants" }}</p>
+      </a>
+    </div>
+    <div class="tabs-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

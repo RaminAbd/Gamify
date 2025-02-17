@@ -1,34 +1,31 @@
 import { inject, Injectable } from '@angular/core';
-import { ProjectsApiService } from '../admin-projects/shared/services/projects.api.service';
 import { Router } from '@angular/router';
-import { OrganizationProjectsComponent } from './organization-projects.component';
-import { Confirmation } from '../../core/extensions/confirmation';
-import { ConfirmationService } from 'primeng/api';
+import { QuizzesApiService } from './shared/services/quizzes.api.service';
+import {OrganizationQuizzesComponent} from './organization-quizzes.component';
+import {Confirmation} from '../../core/extensions/confirmation';
+import {ConfirmationService} from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OrganizationProjectsService {
-  private service: ProjectsApiService = inject(ProjectsApiService);
+export class OrganizationQuizzesService {
+  private service: QuizzesApiService = inject(QuizzesApiService);
   private router: Router = inject(Router);
   private confirmationService: ConfirmationService =
     inject(ConfirmationService);
-  component: OrganizationProjectsComponent;
+  component: OrganizationQuizzesComponent;
 
   getAll() {
     const id = localStorage.getItem('id') as string;
     this.service.GetAllByOrganization(id).subscribe((resp) => {
-      this.component.projects = resp.data;
+      this.component.quizzes = resp.data;
     });
   }
 
   setCols() {
     this.component.cols = [
       { field: 'name', header: 'Name' },
-      { field: 'organization', header: 'Organization' },
-      { field: 'status', header: 'Status' },
-      { field: 'participantAmount', header: 'Participants' },
-      { field: 'workerAmount', header: 'Workers' },
+      { field: 'organizationName', header: 'Organization' },
       { field: 'showDelete', header: 'Actions' },
     ];
   }
@@ -39,7 +36,7 @@ export class OrganizationProjectsService {
         this.confirm(e.data.id);
         break;
       case 4:
-        this.router.navigate(['/main/organization/projects', e.data.id]);
+        this.router.navigate(['/main/organization/quizzes', e.data.id]);
         break;
     }
   }
@@ -47,7 +44,7 @@ export class OrganizationProjectsService {
   confirm(id: string) {
     Confirmation.confirm(
       this.confirmationService,
-      'Are you sure you want to delete this group project?',
+      'Are you sure you want to delete this group quiz?',
       () => {
         this.delete(id);
       },

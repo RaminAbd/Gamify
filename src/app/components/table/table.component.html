@@ -64,7 +64,7 @@
               <img [src]="rowData[col.field]" alt=""/>
           </div>
           <div class="d-flex crud-actions" *ngIf="col.field === 'show'">
-            <button class="edit" (click)="tableAction(rowData, 4, $event)">
+            <button style="background: grey;"  class="edit" (click)="tableAction(rowData, 4, $event)">
               <img src="table/eye.svg" alt=""/>
             </button>
           </div>
@@ -84,6 +84,14 @@
           </div>
 
           <div class="d-flex crud-actions" *ngIf="col.field === 'delActions'">
+            <button class="delete" (click)="confirm(rowData, 3, $event)">
+              <img src="table/delete.svg" alt=""/>
+            </button>
+          </div>
+          <div class="d-flex crud-actions" *ngIf="col.field === 'showDelete'">
+            <button style="background: grey;" class="edit" (click)="tableAction(rowData, 4, $event)">
+              <img src="table/eye.svg" alt=""/>
+            </button>
             <button class="delete" (click)="confirm(rowData, 3, $event)">
               <img src="table/delete.svg" alt=""/>
             </button>

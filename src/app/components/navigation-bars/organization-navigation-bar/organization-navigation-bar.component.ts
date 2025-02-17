@@ -20,6 +20,14 @@ export class OrganizationNavigationBarComponent {
 </svg>
 `,
         },
+        {
+          name: 'Quizzes',
+          url: 'organization/quizzes',
+          icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.25 3.75H5.25V21.75H18.75V3.75H15.75M8.25 12.75L11.25 15.75L16.5 10.5M8.25 2.25H15.75L14.8125 5.25H9.1875L8.25 2.25Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+`,
+        },
       ],
     },
   ];

@@ -71,6 +71,8 @@
       width: 100%;
       padding: 20px;
       border-bottom: 1px solid #e3e3e2;
+      padding-right: 45px;
+      cursor: pointer;
       &:last-child {
         border-bottom: none;
       }
@@ -125,6 +127,85 @@
           width: 30px;
           height: 30px;
         }
+      }
+    }
+  }
+}
+::ng-deep .p-popover-content {
+  padding: 12px 15px;
+}
+
+::ng-deep {
+  .p-panel.p-panel-toggleable .p-panel-header,
+  .p-panel .p-panel-content,
+  .p-dialog .p-dialog-header,
+  .p-dialog .p-dialog-content {
+    background: transparent !important;
+  }
+}
+::ng-deep {
+  .p-dialog .p-dialog-header,
+  .p-dialog .p-dialog-content {
+    background: transparent !important;
+  }
+  .confirm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    i {
+      font-size: 60px;
+      color: orange;
+    }
+    p {
+      width: 70%;
+      text-align: center;
+      color: orange;
+      margin-bottom: 21px !important;
+    }
+  }
+  .p-dialog-footer {
+    .p-button {
+      padding: 0px 20px !important;
+      height: 40px;
+      background: #f6f6f6 !important;
+      border: none !important;
+      color: #656668 !important;
+      &.p-confirmdialog-accept-button {
+        background: var(--primary-color) !important;
+        border: none !important;
+        color: #fff !important;
+      }
+    }
+  }
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .item {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    border-radius: 8px;
+    gap: 15px;
+    cursor: pointer;
+    .icon {
+      width: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    p,
+    i {
+      font-weight: 500;
+      font-size: 14px;
+      color: #90928d;
+    }
+    &.delete {
+      p {
+        color: #ef3838;
       }
     }
   }
