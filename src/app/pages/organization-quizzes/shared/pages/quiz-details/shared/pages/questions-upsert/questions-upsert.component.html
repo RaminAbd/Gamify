@@ -1,0 +1,39 @@
+<app-upsert-heading
+  [name]="request.name"
+  [showSave]="true"
+  [useCustomBack]="true"
+  (back)="back()"
+  (save)="save()"
+></app-upsert-heading>
+<div class="wrapper" style="margin-top: 30px">
+  <div class="heading">
+    <h4>Questions</h4>
+    <button (click)="addQuestion()">Add</button>
+  </div>
+  <div class="items">
+    <div class="item" *ngFor="let question of request.questions; let i = index">
+      <div class="q-name">
+        {{ question.index }}.
+        <input type="text" [(ngModel)]="question.question" />
+        <img src="delete.svg" alt="" (click)="removeQuestion(i)" />
+      </div>
+      <div class="answers">
+        <div class="heading">
+          <h4>Answers</h4>
+          <button (click)="addAnswer(question)">
+            <i class="pi pi-plus"></i>
+          </button>
+        </div>
+        <div class="answer" *ngFor="let ans of question.answers; let j = index">
+          <div class="check" (click)="setCorrect(question, ans)">
+            <div class="checked" *ngIf="ans.correct"></div>
+          </div>
+          <div class="name">
+            <input type="text" [(ngModel)]="ans.answer" />
+            <img src="delete.svg" alt="" (click)="removeAnswer(j, question)" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

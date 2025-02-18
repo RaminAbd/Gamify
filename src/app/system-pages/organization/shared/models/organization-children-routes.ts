@@ -8,6 +8,11 @@ import { ProjectGroupsDetailsComponent } from '../../../../pages/organization-pr
 import { GroupWorkersComponent } from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-groups/shared/pages/project-groups-details/shared/pages/group-workers/group-workers.component';
 import { GroupParticipantsComponent } from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-groups/shared/pages/project-groups-details/shared/pages/group-participants/group-participants.component';
 import { OrganizationQuizzesComponent } from '../../../../pages/organization-quizzes/organization-quizzes.component';
+import { QuizDetailsComponent } from '../../../../pages/organization-quizzes/shared/pages/quiz-details/quiz-details.component';
+import { QuizPreviewComponent } from '../../../../pages/organization-quizzes/shared/pages/quiz-details/shared/pages/quiz-preview/quiz-preview.component';
+import {
+  QuestionsUpsertComponent
+} from '../../../../pages/organization-quizzes/shared/pages/quiz-details/shared/pages/questions-upsert/questions-upsert.component';
 
 export class OrganizationChildrenRoutes {
   static children: Route[] = [
@@ -64,7 +69,24 @@ export class OrganizationChildrenRoutes {
       component: OrganizationQuizzesComponent,
       data: { title: 'Quizzes' },
     },
-
+    {
+      path: 'quizzes/:id',
+      component: QuizDetailsComponent,
+      data: { title: 'Quizzes' },
+      children: [
+        {
+          path: 'about',
+          component: QuizPreviewComponent,
+          data: { title: 'Quizzes' },
+        },
+        {
+          path: 'edit',
+          component: QuestionsUpsertComponent,
+          data: { title: 'Quizzes' },
+        },
+        { path: '', redirectTo: 'about', pathMatch: 'full' },
+      ],
+    },
     { path: '', redirectTo: 'projects', pathMatch: 'full' },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' },
   ];

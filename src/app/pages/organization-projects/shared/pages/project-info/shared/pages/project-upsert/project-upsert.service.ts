@@ -1,30 +1,32 @@
-import {inject, Injectable} from '@angular/core';
-import {ProjectDetailsService} from '../project-details/project-details.service';
-import {BlobService} from '../../../../../../../../core/services/blob.service';
-import {ProjectUpsertComponent} from './project-upsert.component';
-import {ApplicationMessageCenterService} from '../../../../../../../../core/services/ApplicationMessageCenter.service';
-import {ProjectsApiService} from '../../../../../../../admin-projects/shared/services/projects.api.service';
-import {
-  OrganizationsApiService
-} from '../../../../../../../admin-organizations/shared/services/organizations.api.service';
-import {ProjectDetailsComponent} from '../project-details/project-details.component';
-import {FormatDate} from '../../../../../../../../core/extensions/format-date';
+import { inject, Injectable } from '@angular/core';
+import { ProjectDetailsService } from '../project-details/project-details.service';
+import { BlobService } from '../../../../../../../../core/services/blob.service';
+import { ProjectUpsertComponent } from './project-upsert.component';
+import { ApplicationMessageCenterService } from '../../../../../../../../core/services/ApplicationMessageCenter.service';
+import { ProjectsApiService } from '../../../../../../../admin-projects/shared/services/projects.api.service';
+import { OrganizationsApiService } from '../../../../../../../admin-organizations/shared/services/organizations.api.service';
+import { ProjectDetailsComponent } from '../project-details/project-details.component';
+import { FormatDate } from '../../../../../../../../core/extensions/format-date';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ProjectUpsertService{
-  declare component:ProjectUpsertComponent;
+export class ProjectUpsertService {
+  declare component: ProjectUpsertComponent;
   protected service: ProjectsApiService = inject(ProjectsApiService);
   private orgService: OrganizationsApiService = inject(OrganizationsApiService);
-  private message:ApplicationMessageCenterService = inject(ApplicationMessageCenterService);
+  private message: ApplicationMessageCenterService = inject(
+    ApplicationMessageCenterService,
+  );
   private blob = inject(BlobService);
   constructor() {}
 
   GetAllOrganizations() {
     this.orgService.GetAll(this.orgService.serviceUrl).subscribe((resp) => {
       this.component.organizations = resp.data;
-      this.getItem();
+      if (this.component.id !== 'create') {
+        this.getItem();
+      }
     });
   }
 
@@ -61,19 +63,19 @@ export class ProjectUpsertService{
     }
   }
 
-  save(){
+  save() {
     this.component.request.startDate = this.component.startDate.toISOString();
     this.component.request.endDate = this.component.startDate.toISOString();
-    this.component.request.organizationId = localStorage.getItem('id') as string;
-    if(this.isValid()) {
-      if(this.component.id !== 'create'){
-        this.update()
+    this.component.request.organizationId = localStorage.getItem(
+      'id',
+    ) as string;
+    if (this.isValid()) {
+      if (this.component.id !== 'create') {
+        this.update();
+      } else {
+        this.create();
       }
-      else{
-        this.create()
-      }
-    }
-    else{
+    } else {
       this.message.showWarningMessage('Fields are required.');
     }
   }
@@ -93,12 +95,24 @@ export class ProjectUpsertService{
   }
 
   private update() {
-    this.service.Update(this.service.serviceUrl, this.component.request).subscribe(resp=>{
-
-    })
+    this.service
+      .Update(this.service.serviceUrl, this.component.request)
+      .subscribe((resp) => {
+        if (resp.succeeded) {
+          this.message.showSuccessMessage('Successfully updated.');
+          this.getItem()
+        }
+      });
   }
 
   private create() {
-
+    this.service
+      .Create(this.service.serviceUrl, this.component.request)
+      .subscribe((resp) => {
+        if (resp.succeeded) {
+          this.message.showSuccessMessage('Successfully created.');
+          this.component.location.back()
+        }
+      });
   }
 }

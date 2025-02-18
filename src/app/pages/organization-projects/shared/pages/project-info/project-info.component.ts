@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-project-info',
@@ -7,10 +8,12 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
+    NgIf,
   ],
   templateUrl: './project-info.component.html',
   styleUrl: './project-info.component.scss'
 })
 export class ProjectInfoComponent {
-
+  private route: ActivatedRoute = inject(ActivatedRoute);
+  id = this.route.snapshot.paramMap.get('id') as string;
 }

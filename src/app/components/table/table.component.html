@@ -68,6 +68,11 @@
               <img src="table/eye.svg" alt=""/>
             </button>
           </div>
+          <div class="d-flex crud-actions" *ngIf="col.field === 'dots'">
+            <button style="background: grey;"  class="edit" (click)="tableAction(rowData, 5, $event)">
+              <img src="dots.svg" alt=""/>
+            </button>
+          </div>
           <div class="d-flex crud-actions" *ngIf="col.field === 'EditActions'">
             <button class="edit" (click)="tableAction(rowData, 2, $event)">
               <img src="table/edit.svg" alt=""/>

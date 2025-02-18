@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgIf} from '@angular/common';
+import {Location, NgIf} from '@angular/common';
 import {ProjectUpsertService} from './project-upsert.service';
 import { DatePickerModule } from 'primeng/datepicker';
 import {ActivatedRoute} from '@angular/router';
@@ -24,6 +24,7 @@ import {UpsertHeadingComponent} from '../../../../../../../../components/upsert-
 export class ProjectUpsertComponent{
   public service:ProjectUpsertService = inject(ProjectUpsertService);
   private route: ActivatedRoute = inject(ActivatedRoute);
+  public location: Location = inject(Location);
   id = this.route.parent?.snapshot.paramMap.get('id') as string;
   request: ProjectsRequestModel = new ProjectsRequestModel();
   organizations: OrganizationsResponseModel[] = [];

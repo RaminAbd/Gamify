@@ -10,11 +10,10 @@ import {
 } from '@angular/router';
 import { ProjectsRequestModel } from '../../../../../../../../../../admin-projects/shared/models/projects-request.model';
 import { GroupInvitedMenResponseModel } from './shared/models/group-invited-men-response.model';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-project-groups-details',
-  imports: [NgClass, RouterOutlet, RouterLinkActive, RouterLink],
+  imports: [RouterOutlet, RouterLinkActive, RouterLink],
   templateUrl: './project-groups-details.component.html',
   styleUrl: './project-groups-details.component.scss',
 })

@@ -1,0 +1,23 @@
+<app-upsert-heading
+  [name]="request.name"
+  [showSave]="false"
+  [useCustomBack]="true"
+  (back)="back()"
+></app-upsert-heading>
+<div class="wrapper" style="margin-top: 30px">
+  <div class="items">
+    <div class="item" *ngFor="let question of request.questions; let i = index">
+      <p>{{ i + 1 }}. {{ question.question }}</p>
+      <div class="answers">
+        <div class="answer" *ngFor="let ans of question.answers">
+          <div class="check">
+            <div class="checked" *ngIf="ans.correct"></div>
+          </div>
+          <div class="name">
+            <p>{{ ans.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

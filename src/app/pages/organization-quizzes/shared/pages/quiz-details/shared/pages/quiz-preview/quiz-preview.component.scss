@@ -1,0 +1,61 @@
+.wrapper {
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    .item {
+      display: flex;
+      /* width: 327px; */
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      p {
+        color: #131313;
+        /* font-family: Poppins; */
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .answers {
+        display: flex;
+        /* width: 327px; */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        .answer {
+          display: flex;
+          padding: 10px 16px;
+          align-items: center;
+          gap: 11px;
+          align-self: stretch;
+          border-radius: 27px;
+          border: 1px solid rgba(43, 43, 43, 0.34);
+          min-width: 320px;
+          .check {
+            width: 17px;
+            height: 17px;
+            border-radius: 4px;
+            background: #e7e7e7;
+            .checked {
+              width: 17px;
+              height: 17px;
+              border-radius: 4px;
+              background: var(--primary-color);
+            }
+          }
+          .name {
+            p {
+              color: #131313;
+              /* font-family: Poppins; */
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+}

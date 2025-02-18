@@ -34,7 +34,11 @@ export class OrganizationProjectsService {
   }
 
   tableActionHandler(e: any) {
+    // /main/organization/projects/099f46fd-a339-4bfe-a084-14cad9b6b51c/edit
     switch (e.type) {
+      case 1:
+        this.router.navigate(['/main/organization/projects', 'create', 'edit']);
+        break;
       case 3:
         this.confirm(e.data.id);
         break;
