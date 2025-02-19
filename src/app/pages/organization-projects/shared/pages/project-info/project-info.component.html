@@ -1,14 +1,16 @@
 <div class="wrapper">
-
-  <div class="tabs" style="margin-top: 30px;" *ngIf="id !=='create'">
+  <div class="tabs" style="margin-top: 30px" *ngIf="id !== 'create'">
     <a class="item" routerLink="about" [routerLinkActive]="['selected']">
-      <p>{{ "About"  }}</p>
+      <p>{{ "About" }}</p>
     </a>
     <a class="item" routerLink="edit" [routerLinkActive]="['selected']">
-      <p>{{ "Edit"  }}</p>
+      <p>{{ "Edit" }}</p>
     </a>
     <a class="item" routerLink="groups" [routerLinkActive]="['selected']">
-      <p>{{ "Groups"  }}</p>
+      <p>{{ "Groups" }}</p>
+    </a>
+    <a class="item" routerLink="calendar" [routerLinkActive]="['selected']">
+      <p>{{ "Calendar" }}</p>
     </a>
   </div>
   <div class="content">

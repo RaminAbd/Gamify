@@ -13,6 +13,9 @@ import { QuizPreviewComponent } from '../../../../pages/organization-quizzes/sha
 import {
   QuestionsUpsertComponent
 } from '../../../../pages/organization-quizzes/shared/pages/quiz-details/shared/pages/questions-upsert/questions-upsert.component';
+import {
+  ProjectCalendarComponent
+} from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-calendar/project-calendar.component';
 
 export class OrganizationChildrenRoutes {
   static children: Route[] = [
@@ -60,6 +63,12 @@ export class OrganizationChildrenRoutes {
             },
             { path: '', redirectTo: 'workers', pathMatch: 'full' },
           ],
+        },
+
+        {
+          path: 'calendar',
+          component: ProjectCalendarComponent,
+          data: { title: 'Projects' },
         },
         { path: '', redirectTo: 'about', pathMatch: 'full' },
       ],
