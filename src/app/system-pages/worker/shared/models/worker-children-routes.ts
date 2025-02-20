@@ -3,9 +3,15 @@ import { ProjectDetailsComponent } from '../../../../pages/organization-projects
 import { ProjectCalendarComponent } from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-calendar/project-calendar.component';
 import { WorkerProjectsComponent } from '../../../../pages/worker-projects/worker-projects.component';
 import { WorkerProjectInfoComponent } from '../../../../pages/worker-projects/shared/pages/worker-project-info/worker-project-info.component';
+import { InvitationsComponent } from '../../../../pages/invitations/invitations.component';
 
 export class WorkerChildrenRoutes {
   static children: Route[] = [
+    {
+      path: 'invitations',
+      component: InvitationsComponent,
+      data: { title: 'Invitations' },
+    },
     {
       path: 'projects',
       component: WorkerProjectsComponent,
