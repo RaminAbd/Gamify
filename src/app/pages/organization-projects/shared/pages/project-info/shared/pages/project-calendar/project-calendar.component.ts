@@ -104,7 +104,9 @@ export class ProjectCalendarComponent {
       .catch((err) => console.error('Failed to copy: ', err));
   }
 
-  joinToTask(task: ScheduleTaskModel) {}
+  getTasks(task: ScheduleTaskModel) {
+    this.service.getTasks(task)
+  }
 
   createTask() {
     this.service.openCreateDialog();

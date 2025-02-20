@@ -5,7 +5,11 @@ import { InvitationComponent } from '../project-groups/shared/pages/project-grou
 import { DialogService } from 'primeng/dynamicdialog';
 import { GroupsApiService } from '../project-groups/shared/services/groups.api.service';
 import { QuizzesApiService } from '../../../../../../../organization-quizzes/shared/services/quizzes.api.service';
-import {CreateTaskDialogComponent} from './shared/components/create-task-dialog/create-task-dialog.component';
+import { CreateTaskDialogComponent } from './shared/components/create-task-dialog/create-task-dialog.component';
+import { ScheduleTaskModel } from './shared/models/schedule-task.model';
+import { TasksListComponent } from './shared/components/tasks-list/tasks-list.component';
+import { TasksApiService } from './shared/services/tasks.api.service';
+import { FormatDate } from '../../../../../../../../core/extensions/format-date';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +20,7 @@ export class ProjectCalendarService {
   public dialogService: DialogService = inject(DialogService);
   public groupsService: GroupsApiService = inject(GroupsApiService);
   public quizService: QuizzesApiService = inject(QuizzesApiService);
+  public tasksService: TasksApiService = inject(TasksApiService);
   constructor() {}
 
   getGroups() {
@@ -193,8 +198,9 @@ export class ProjectCalendarService {
   openCreateDialog() {
     const ref = this.dialogService.open(CreateTaskDialogComponent, {
       header: 'Add Task',
-      width: '460px',
+      width: '650px',
       data: {
+        projectId: this.component.id,
         quizzes: this.component.quizzes,
         groups: this.component.groups,
       },
@@ -207,5 +213,52 @@ export class ProjectCalendarService {
         this.getMeetings();
       }
     });
+  }
+
+  getTasks(task: ScheduleTaskModel) {
+    this.component.showActivities = false;
+    this.tasksService.getAllByRoot(task.id).subscribe((resp) => {
+      console.log(resp);
+      let tasks = resp.data.map((item: any) => ({
+        ...item,
+        startTime: new FormatDate(new Date(item.startTime), true).formattedDate,
+        deadline: new FormatDate(new Date(item.deadline), true).formattedDate,
+        status: this.getStatus(item.status),
+      }));
+      console.log(tasks);
+      this.openListDialog(tasks);
+    });
+  }
+
+  openListDialog(tasks: any) {
+    const ref = this.dialogService.open(TasksListComponent, {
+      header: 'Select Task',
+      width: '950px',
+      data: {
+        projectId: this.component.id,
+        tasks: tasks,
+      },
+      style: {
+        maxWidth: '95%',
+      },
+    });
+    ref.onClose.subscribe((e: any) => {
+      if (e) {
+        this.getMeetings();
+      }
+    });
+  }
+
+  private getStatus(status: any) {
+    switch (status) {
+      case 1:
+        return 'Pending';
+      case 2:
+        return 'In progress';
+      case 3:
+        return 'Done';
+      default:
+        return 'Unknown';
+    }
   }
 }

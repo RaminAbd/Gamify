@@ -1,7 +1,7 @@
 export class TaskRequestModel {
   projectId: string;
-  groupId: string;
-  source: string;
+  groupId?: string;
+  source?: string;
   name: string;
   description: string;
   type: number;

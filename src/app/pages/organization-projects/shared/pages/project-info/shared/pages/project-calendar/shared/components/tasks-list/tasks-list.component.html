@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="list">
+    <div class="item" *ngFor="let item of tasks" (click)="getItem(item)">
+      <div class="col">
+        <label>Name</label>
+        <p>{{ item.name }}</p>
+      </div>
+      <div class="col">
+        <label>Start date</label>
+        <p>{{ item.startTime }}</p>
+      </div>
+      <div class="col">
+        <label>Deadline</label>
+        <p>{{ item.deadline }}</p>
+      </div>
+      <div class="col">
+        <label>Assignee Name</label>
+        <p>{{ item.assignee.firstName + " " + item.assignee.lastName }}</p>
+      </div>
+      <div class="col">
+        <label>Status</label>
+        <p>{{ item.status }}</p>
+      </div>
+      <div class="btn">
+        <button>
+          <i class="pi pi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="ref.close()">{{ "Cancel" }}</button>
+  </div>
+
+</div>

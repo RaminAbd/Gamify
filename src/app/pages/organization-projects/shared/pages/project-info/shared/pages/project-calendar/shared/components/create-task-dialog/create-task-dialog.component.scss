@@ -2,24 +2,29 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  form{
-    button{
+  form {
+    button {
       width: 70px;
       height: 48px;
       border-radius: 12px;
-      background: #F6F6F6;
+      background: #f6f6f6;
       font-size: 14px;
       font-weight: 600;
       background: var(--primary-color);
-      color: #FFF;
+      color: #fff;
     }
   }
   .inputs {
     display: flex;
-    //flex-direction: column;
+    flex-direction: column;
     gap: 16px;
     align-items: flex-end;
     width: 100%;
+    .row {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+    }
     .input-item {
       display: flex;
       flex-direction: column;
@@ -31,6 +36,12 @@
         font-size: 14px;
         font-weight: 500;
       }
+      ::ng-deep .p-datepicker {
+        width: 100%;
+      }
+      ::ng-deep .p-inputtext {
+        border-radius: 12px !important;
+      }
 
       input {
         width: 100%;
@@ -40,17 +51,21 @@
         font-size: 14px;
         height: 48px !important;
       }
+
+      textarea {
+        border-radius: 12px !important;
+      }
     }
   }
-  .btns{
+  .btns {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-    button{
+    button {
       width: 147px;
       height: 41px;
       border-radius: 12px;
-      background: #F6F6F6;
+      background: #f6f6f6;
       color: #656668;
       font-size: 14px;
       font-weight: 600;
@@ -58,9 +73,9 @@
         width: auto;
         flex: 1;
       }
-      &.save{
+      &.save {
         background: var(--primary-color);
-        color: #FFF;
+        color: #fff;
       }
     }
   }
@@ -120,4 +135,7 @@
       }
     }
   }
+}
+.invalid{
+  border-radius: 12px !important;
 }
