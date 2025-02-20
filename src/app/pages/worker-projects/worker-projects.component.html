@@ -1,0 +1,9 @@
+<div class="admins-wrapper">
+  <app-table
+    [Array]="projects"
+    [cols]="cols"
+    [TableName]="'Projects'"
+    [showCreate]="false"
+    (Action)="tableActionHandler($event)"
+  ></app-table>
+</div>

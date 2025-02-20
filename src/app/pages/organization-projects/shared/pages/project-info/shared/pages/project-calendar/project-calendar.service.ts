@@ -37,9 +37,10 @@ export class ProjectCalendarService {
   }
 
   getMeetings() {
-    let req = {
+    let req:any = {
       projectId: this.component.id,
     };
+    if(this.component.userId) req.workerId = this.component.userId;
     this.service.getAllByProject(req).subscribe((resp) => {
       resp.data = resp.data.map((item: any) => ({
         ...item,

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BaseCrudApiService} from '../../../../core/services/base-crud.api.service';
-import {HttpClient} from '@angular/common/http';
-import {ApplicationMessageCenterService} from '../../../../core/services/ApplicationMessageCenter.service';
+import { BaseCrudApiService } from '../../../../core/services/base-crud.api.service';
+import { HttpClient } from '@angular/common/http';
+import { ApplicationMessageCenterService } from '../../../../core/services/ApplicationMessageCenter.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectsApiService extends BaseCrudApiService {
   serviceUrl = 'Projects/';
@@ -12,7 +12,11 @@ export class ProjectsApiService extends BaseCrudApiService {
     super(http, handler);
   }
 
-  GetAllByOrganization(id:string){
+  GetAllByOrganization(id: string) {
     return this.get(this.serviceUrl + 'get-all-by-organization/', id);
+  }
+
+  GetAllByWorker(id: string) {
+    return this.get(this.serviceUrl + 'get-all-by-worker/', id);
   }
 }

@@ -6,12 +6,19 @@ import { AdminChildrenRoutes } from './system-pages/admin/shared/models/admin-ch
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { OrganizationSignUpComponent } from './auth/organization-sign-up/organization-sign-up.component';
 import { OrganizationChildrenRoutes } from './system-pages/organization/shared/models/organization-children-routes';
+import { WorkerSignupUpComponent } from './auth/worker-signup-up/worker-signup-up.component';
+import { WorkerChildrenRoutes } from './system-pages/worker/shared/models/worker-children-routes';
 
 export const routes: Routes = [
   { path: 'auth', component: SignInComponent, data: { title: 'Sign in' } },
   {
     path: 'org-sign-up',
     component: OrganizationSignUpComponent,
+    data: { title: 'Sign Up' },
+  },
+  {
+    path: 'worker-sign-up/:id',
+    component: WorkerSignupUpComponent,
     data: { title: 'Sign Up' },
   },
   {
@@ -39,6 +46,17 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { permissionTypes: CodeByRoleName['organization'] },
         children: OrganizationChildrenRoutes.children,
+      },
+
+      {
+        path: 'worker',
+        loadComponent: () =>
+          import('./system-pages/worker/worker.component').then(
+            (m) => m.WorkerComponent,
+          ),
+        canActivate: [RoleGuard],
+        data: { permissionTypes: CodeByRoleName['worker'] },
+        children: WorkerChildrenRoutes.children,
       },
       { path: '**', redirectTo: 'admin', pathMatch: 'full' },
       { path: '', redirectTo: 'admin', pathMatch: 'full' },

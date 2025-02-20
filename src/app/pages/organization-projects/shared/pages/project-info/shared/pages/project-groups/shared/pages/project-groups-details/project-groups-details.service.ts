@@ -23,7 +23,6 @@ export class ProjectGroupsDetailsService {
       .GetById(this.service.serviceUrl, this.component.id)
       .subscribe((resp) => {
         this.component.group = resp.data;
-        this.getParticipants();
       });
   }
 
@@ -35,11 +34,5 @@ export class ProjectGroupsDetailsService {
       });
   }
 
-  private getParticipants() {
-    this.participantsService
-      .GetAllByGroup(this.component.id)
-      .subscribe((resp) => {
-        this.component.groupParticipants = resp.data;
-      });
-  }
+
 }

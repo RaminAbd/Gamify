@@ -30,6 +30,7 @@ export class ProjectCalendarComponent {
   showMessage: boolean = false;
   quizzes: QuizzesResponseModel[] = [];
   groups: GroupsResponseModel[] = [];
+  userId = this.route.snapshot.paramMap.get('id') as string;
   constructor() {
     this.service.component = this;
     this.meetingsRequest.educatorId = localStorage.getItem('userId') as string;

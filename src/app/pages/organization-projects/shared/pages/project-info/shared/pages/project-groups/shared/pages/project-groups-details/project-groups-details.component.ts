@@ -28,7 +28,6 @@ export class ProjectGroupsDetailsComponent {
   group: GroupsResponseModel = new GroupsResponseModel();
   project: ProjectsRequestModel = new ProjectsRequestModel();
 
-  groupParticipants: GroupInvitedMenResponseModel[] = [];
   constructor() {
     console.log(this.projectId);
     this.service.component = this;
