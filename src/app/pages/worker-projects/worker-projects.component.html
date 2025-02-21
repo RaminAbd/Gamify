@@ -1,9 +1,25 @@
-<div class="admins-wrapper">
-  <app-table
-    [Array]="projects"
-    [cols]="cols"
-    [TableName]="'Projects'"
-    [showCreate]="false"
-    (Action)="tableActionHandler($event)"
-  ></app-table>
+<div class="wrapper">
+  <div class="heading">
+    <h3>Projects</h3>
+  </div>
+  <div class="list">
+    <div class="item" *ngFor="let item of projects">
+      <div class="image">
+        <img [src]="item.image" alt="">
+      </div>
+      <div class="info">
+        <div class="organization">
+          <p class="name">{{item.organization}}</p>
+          <p>{{item.status === 1 ? 'Ongoing' : 'Finished'}}</p>
+        </div>
+        <div class="name">
+          <p>{{item.name}}</p>
+        </div>
+        <div class="bottom">
+
+          <button (click)="getDetail(item.id)">See Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

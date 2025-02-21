@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component';
 import { ProjectsResponseModel } from '../admin-projects/shared/models/projects-response.model';
 import { WorkerProjectsService } from './worker-projects.service';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-worker-projects',
-  imports: [TableComponent],
+  imports: [TableComponent, NgForOf],
   templateUrl: './worker-projects.component.html',
   styleUrl: './worker-projects.component.scss',
 })
@@ -20,7 +21,7 @@ export class WorkerProjectsComponent {
     this.service.setCols();
   }
 
-  tableActionHandler(e: any) {
-    this.service.tableActionHandler(e);
+  getDetail(id:string):void {
+    this.service.getDetail(id)
   }
 }

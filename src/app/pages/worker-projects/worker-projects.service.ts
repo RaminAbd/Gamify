@@ -29,11 +29,7 @@ export class WorkerProjectsService {
     ];
   }
 
-  tableActionHandler(e: any) {
-    switch (e.type) {
-      case 4:
-        this.router.navigate(['/main/worker/projects', e.data.id]);
-        break;
-    }
+  getDetail(id: any) {
+    this.router.navigate(['/main/worker/projects', id]);
   }
 }

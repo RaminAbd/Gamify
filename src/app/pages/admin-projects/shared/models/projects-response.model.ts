@@ -5,4 +5,5 @@ export class ProjectsResponseModel {
   status: number;
   participantAmount: number;
   workerAmount: number;
+  image:string
 }

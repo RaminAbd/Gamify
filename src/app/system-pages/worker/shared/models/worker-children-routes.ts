@@ -4,6 +4,7 @@ import { ProjectCalendarComponent } from '../../../../pages/organization-project
 import { WorkerProjectsComponent } from '../../../../pages/worker-projects/worker-projects.component';
 import { WorkerProjectInfoComponent } from '../../../../pages/worker-projects/shared/pages/worker-project-info/worker-project-info.component';
 import { InvitationsComponent } from '../../../../pages/invitations/invitations.component';
+import { WorkerProjectDetailsComponent } from '../../../../pages/worker-projects/shared/pages/worker-project-details/worker-project-details.component';
 
 export class WorkerChildrenRoutes {
   static children: Route[] = [
@@ -19,27 +20,32 @@ export class WorkerChildrenRoutes {
     },
     {
       path: 'projects/:id',
-      component: WorkerProjectInfoComponent,
+      component: WorkerProjectDetailsComponent,
       data: { title: 'Projects' },
-      children: [
-        {
-          path: 'about',
-          component: ProjectDetailsComponent,
-          data: { title: 'Projects' },
-        },
-        {
-          path: 'calendar',
-          component: ProjectCalendarComponent,
-          data: { title: 'Projects' },
-        },
-        {
-          path: 'calendar/:id',
-          component: ProjectCalendarComponent,
-          data: { title: 'Projects' },
-        },
-        { path: '', redirectTo: 'about', pathMatch: 'full' },
-      ],
     },
+    // {
+    //   path: 'projects/:id',
+    //   component: WorkerProjectInfoComponent,
+    //   data: { title: 'Projects' },
+    //   children: [
+    //     {
+    //       path: 'about',
+    //       component: ProjectDetailsComponent,
+    //       data: { title: 'Projects' },
+    //     },
+    //     {
+    //       path: 'calendar',
+    //       component: ProjectCalendarComponent,
+    //       data: { title: 'Projects' },
+    //     },
+    //     {
+    //       path: 'calendar/:id',
+    //       component: ProjectCalendarComponent,
+    //       data: { title: 'Projects' },
+    //     },
+    //     { path: '', redirectTo: 'about', pathMatch: 'full' },
+    //   ],
+    // },
     { path: '', redirectTo: 'projects', pathMatch: 'full' },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' },
   ];

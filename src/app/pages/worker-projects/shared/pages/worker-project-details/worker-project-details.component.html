@@ -1,0 +1,66 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3>Projects</h3>
+  </div>
+  <div class="content-calendar">
+    <div class="content">
+      <div class="image">
+        <img [src]="response.image" alt="" />
+      </div>
+      <div class="info">
+        <div class="name-status">
+          <p class="name">{{ response.name }}</p>
+          <p class="status">{{ response.status ? "Ongoing" : "Finished" }}</p>
+        </div>
+        <div class="organization">
+          <img [src]="response.organizationLogo" alt="" />
+        </div>
+        <div class="about">
+          <div class="description">
+            <label>About project</label>
+            <p>{{ response.description }}</p>
+          </div>
+          <div class="group-stars">
+            <label>My group</label>
+            <div class="stars">
+              <div class="item">
+                <label>Tasks</label>
+                <div class="value">
+                  <img
+                    src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                    alt=""
+                  />
+                  <p>{{ response.totalInPerformance }}</p>
+                </div>
+              </div>
+              <div class="item">
+                <label>Quizzes</label>
+                <div class="value">
+                  <img
+                    src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                    alt=""
+                  />
+                  <p>{{ response.totalInQuizzes }}</p>
+                </div>
+              </div>
+              <div class="item">
+                <label>Attendance</label>
+                <div class="value">
+                  <img
+                    src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                    alt=""
+                  />
+                  <p>{{ response.totalInAttendance }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calendar">
+      <app-worker-calendar [id]="id"></app-worker-calendar>
+    </div>
+  </div>
+</div>

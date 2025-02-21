@@ -19,4 +19,7 @@ export class ProjectsApiService extends BaseCrudApiService {
   GetAllByWorker(id: string) {
     return this.get(this.serviceUrl + 'get-all-by-worker/', id);
   }
+  getDetailsByWorker(req:any) {
+    return this.get(this.serviceUrl + 'get-details-for-worker', null, req);
+  }
 }

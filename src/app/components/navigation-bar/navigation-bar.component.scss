@@ -1,20 +1,21 @@
 .nav-bar-wrapper {
   display: flex;
-  width: 230px;
+  width: 252px;
   height: 100svh;
   flex-direction: column;
   align-items: flex-start;
   flex-shrink: 0;
-  border-right: 1px solid #bcc9d3;
-  background: var(--blue-text);
+  border-right: 1px solid rgba(127, 39, 233, 0.20);
+  //background: var(--blue-text);
   gap: 32px;
   position: relative;
+  padding: 29px 43px;
   .heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 24px;
+    //padding: 24px;
     padding-bottom: 0;
     .logo {
       height: 100%;
@@ -43,7 +44,7 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 24px;
-      padding: 0 24px;
+      //padding: 0 24px;
       a {
         color: #2d4583;
         font-size: 14px;
@@ -80,25 +81,29 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    //gap: 16px;
+    gap: 12px;
     width: 100%;
     a {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       color: #fff;
       font-size: 15px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
       letter-spacing: 0.3px;
+      border: 1px solid transparent;
       p {
-        color: #fff;
+        color: #131313;
       }
       &.active {
         //color: #6C57E5;
+        border-radius: 12px;
+        border: 1px solid #8577E6;
+        background: #F0E7FA !important;
         p {
-          color: #fff !important;
+          color: #8577E6;
         }
 
       }
@@ -118,6 +123,6 @@
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.3px;
-    color: #fff;
+    color: #8577E6;
   }
 }

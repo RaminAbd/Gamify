@@ -1,0 +1,140 @@
+<!--<button (click)="createTask()">Create Task</button>-->
+<div class="schedule-wrapper">
+  <div class="schedule-content">
+    <div class="left">
+      <div class="paging-info">
+        <div class="paging">
+          <div class="icons">
+            <svg
+              (click)="handlePreviousMonth()"
+              xmlns="http://www.w3.org/2000/svg"
+              width="7"
+              height="11"
+              viewBox="0 0 7 11"
+              fill="none"
+            >
+              <path
+                d="M5.5 1.25L1 5.5L5.5 9.75"
+                stroke="#605F65"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p>{{ monthData.monthName }} {{ currentDate.getFullYear() }}</p>
+            <svg
+              (click)="handleNextMonth()"
+              xmlns="http://www.w3.org/2000/svg"
+              width="7"
+              height="11"
+              viewBox="0 0 7 11"
+              fill="none"
+            >
+              <path
+                d="M1.5 9.75L6 5.5L1.5 1.25"
+                stroke="#605F65"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="board">
+        <div class="row week-days">
+          <div class="week-day" *ngFor="let day of weekDays">
+            <p>{{ day.shortName[0] }}</p>
+          </div>
+        </div>
+        <div class="weeks">
+          <div class="days" *ngFor="let week of monthData.weeks; let i = index">
+            <div
+              class="day"
+              *ngFor="let day of week.days"
+              [ngClass]="{ active: isActive(day), today: isToday(day.date) }"
+              (click)="handleSetDateInfo(day)"
+            >
+              <div class="day-num" *ngIf="day.tasks.length === 0">
+                <p class="day-number">{{ day.dayNumber }}</p>
+              </div>
+              <div class="has-task" *ngIf="day.tasks.length > 0">🔥</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activities-back" [ngClass]="{ active: showActivities }">
+      <div class="activities">
+        <div class="heading">
+          <div class="active-date">
+            <p>{{ activeDateInfo.dateString.formattedDate }}</p>
+            <p class="w-day">{{ activeDateInfo.dateString.dayOfWeek }}</p>
+          </div>
+          <div class="close" (click)="showActivities = false">
+            <i class="pi pi-times"></i>
+          </div>
+        </div>
+        <div class="items" *ngIf="activeDateInfo.tasks.length > 0">
+          <div
+            class="wrap"
+            *ngFor="let task of activeDateInfo.tasks"
+            [ngClass]="{
+              attendance: task.type === 1,
+              performance: task.type === 2,
+              quiz: task.type === 3,
+            }"
+          >
+            <div class="block">
+              <div class="image">
+                <img
+                  *ngIf="task.type === 1"
+                  src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
+                  alt=""
+                />
+                <img
+                  *ngIf="task.type === 2"
+                  src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
+                  alt=""
+                />
+                <img
+                  *ngIf="task.type === 3"
+                  src="https://blobstudentportal.blob.core.windows.net/test/85fc5795-fb5b-4763-91d8-bd9465108739image%20%285%29.png"
+                  alt=""
+                />
+              </div>
+              <div class="info">
+                <div class="row">
+                  <p class="name">{{ task.name }}</p>
+                  <p class="time">
+                    <img style="width: 15px;" src="https://blobstudentportal.blob.core.windows.net/test/73a81a1e-ea1a-4301-a720-0d90364ac0d2e1d563b6bbf3f2f02164f104c9384d58-_1_.webp" alt="" /> {{ task.time }}
+                  </p>
+                </div>
+                <div class="stars">
+                  <div class="star">
+                    <img
+                      src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                      alt=""
+                    />
+                  </div>
+                  <p>+50</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="empty" *ngIf="activeDateInfo.tasks.length === 0">
+          <h3>{{ "You’ve got a free day today" }}</h3>
+          <p>
+            {{
+              "Go ahead, take a nap, binge - watch a show, or enjoy some well - deserved freedom!"
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showMessage" class="toast">
+  {{ "Copied to clipboard" }}
+</div>
