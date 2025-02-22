@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {UpsertHeadingComponent} from '../../../../../../../../components/upsert-heading/upsert-heading.component';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectsRequestModel} from '../../../../../../../admin-projects/shared/models/projects-request.model';
 import {
@@ -11,7 +10,6 @@ import {DatePipe} from '@angular/common';
 @Component({
   selector: 'app-project-details',
   imports: [
-    UpsertHeadingComponent,
     DatePipe
   ],
   templateUrl: './project-details.component.html',

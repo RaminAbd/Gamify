@@ -1,6 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { NgClass, NgForOf, NgIf, SlicePipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { MonthModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/month.model';
 import { ActiveDateInfoModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/active-date-info.model';
 import { EducatorMeetingsRequestModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/educator-meetings-request.model';
@@ -11,12 +10,11 @@ import { WorkerCalendarService } from './worker-calendar.service';
 
 @Component({
   selector: 'app-worker-calendar',
-  imports: [NgForOf, NgIf, SlicePipe, NgClass],
+  imports: [NgForOf, NgIf, NgClass],
   templateUrl: './worker-calendar.component.html',
   styleUrl: './worker-calendar.component.scss',
 })
 export class WorkerCalendarComponent {
-  private route: ActivatedRoute = inject(ActivatedRoute);
   private service: WorkerCalendarService = inject(WorkerCalendarService);
 
   showActivities: boolean = false;

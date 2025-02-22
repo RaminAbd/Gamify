@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { TableComponent } from '../../components/table/table.component';
 import { ProjectsResponseModel } from '../admin-projects/shared/models/projects-response.model';
 import { WorkerProjectsService } from './worker-projects.service';
 import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-worker-projects',
-  imports: [TableComponent, NgForOf],
+  imports: [NgForOf],
   templateUrl: './worker-projects.component.html',
   styleUrl: './worker-projects.component.scss',
 })

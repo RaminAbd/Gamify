@@ -1,5 +1,5 @@
+import { WorkerHeaderComponent } from '../../components/headers/worker-header/worker-header.component';
+
 export const HeaderComponentByRole = {
-  // 'Admin':AdminHeaderComponent,
-  // 'Educator':EducatorHeaderComponent,
-  // 'Student':StudentHeaderComponent,
+  ROLE_YOUTHWORKER: WorkerHeaderComponent,
 };
