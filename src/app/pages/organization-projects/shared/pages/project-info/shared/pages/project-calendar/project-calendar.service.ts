@@ -218,7 +218,10 @@ export class ProjectCalendarService {
 
   getTasks(task: ScheduleTaskModel) {
     this.component.showActivities = false;
-    this.tasksService.getAllByRoot(task.id).subscribe((resp) => {
+    const req = {
+      rootId:task.id
+    }
+    this.tasksService.getAllByRoot(req).subscribe((resp) => {
       console.log(resp);
       let tasks = resp.data.map((item: any) => ({
         ...item,

@@ -12,7 +12,8 @@ export class TasksApiService extends BaseCrudApiService {
     super(http, handler);
   }
 
-  getAllByRoot(id: string) {
-    return this.get(this.serviceUrl + 'get-all-by-root/', id);
+  getAllByRoot(req:any) {
+    return this.get(this.serviceUrl + 'get-all-by-root', null, req);
   }
+
 }

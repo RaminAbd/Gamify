@@ -1,0 +1,67 @@
+<div class="activities">
+  <div class="heading">
+    <div class="active-date">
+      <p class="name">{{ activeDateInfo.name }}</p>
+      <p class="w-day">{{ activeDateInfo.description }}</p>
+    </div>
+    <div class="active-date">
+      <p>{{ activeDateInfo.dateString.formattedDate }}</p>
+      <p class="w-day">{{ activeDateInfo.dateString.dayOfWeek }}</p>
+    </div>
+  </div>
+  <div class="items">
+    <div
+      class="wrap"
+      *ngFor="let task of items"
+      (click)="getTask(task)"
+      [ngClass]="{
+              attendance: task.type === 1,
+              performance: task.type === 2,
+              quiz: task.type === 3,
+            }"
+    >
+      <div class="block">
+        <div class="image">
+          <img
+            *ngIf="task.type === 1"
+            src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
+            alt=""
+          />
+          <img
+            *ngIf="task.type === 2"
+            src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
+            alt=""
+          />
+          <img
+            *ngIf="task.type === 3"
+            src="https://blobstudentportal.blob.core.windows.net/test/85fc5795-fb5b-4763-91d8-bd9465108739image%20%285%29.png"
+            alt=""
+          />
+        </div>
+        <div class="info">
+          <div class="row">
+            <p class="name">{{ task.assignee.firstName + ' ' +  task.assignee.lastName}}</p>
+            <p class="time">
+              <img style="width: 15px;" src="https://blobstudentportal.blob.core.windows.net/test/73a81a1e-ea1a-4301-a720-0d90364ac0d2e1d563b6bbf3f2f02164f104c9384d58-_1_.webp" alt="" /> {{ task.time }}
+            </p>
+          </div>
+          <div class="stars">
+            <div class="star">
+              <img
+                src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                alt=""
+              />
+            </div>
+            <p>+50</p>
+          </div>
+        </div>
+      </div>
+      <div class="status" *ngIf="task.status===3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+          <path d="M12.9842 0.751373C12.7546 0.623759 12.5021 0.542627 12.2412 0.512611C11.9802 0.482595 11.7159 0.504283 11.4633 0.576437C11.2107 0.648591 10.9748 0.769797 10.7691 0.933132C10.5633 1.09647 10.3918 1.29873 10.2642 1.52837L6.55125 8.21037L4.42625 6.08537C4.24175 5.89435 4.02106 5.74199 3.77706 5.63717C3.53305 5.53235 3.27061 5.47718 3.00505 5.47487C2.73949 5.47256 2.47613 5.52317 2.23034 5.62373C1.98455 5.72429 1.76124 5.8728 1.57346 6.06058C1.38567 6.24837 1.23717 6.47167 1.1366 6.71746C1.03604 6.96326 0.985439 7.22662 0.987746 7.49218C0.990054 7.75773 1.04523 8.02017 1.15004 8.26418C1.25486 8.50819 1.40723 8.72888 1.59825 8.91337L5.59825 12.9134C5.97625 13.2924 6.48625 13.5004 7.01225 13.5004L7.28925 13.4804C7.5958 13.4375 7.88821 13.324 8.14347 13.149C8.39872 12.9739 8.60986 12.7419 8.76025 12.4714L13.7602 3.47137C13.8879 3.24182 13.9691 2.98938 13.9992 2.72845C14.0293 2.46753 14.0077 2.20323 13.9356 1.95065C13.8635 1.69807 13.7424 1.46216 13.5792 1.25639C13.416 1.05062 13.2138 0.879011 12.9842 0.751373Z" fill="white"/>
+        </svg>
+        <p>Completed</p>
+      </div>
+    </div>
+  </div>
+</div>

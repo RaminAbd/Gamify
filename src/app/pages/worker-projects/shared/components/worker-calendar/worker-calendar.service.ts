@@ -28,29 +28,15 @@ import {WorkerCalendarComponent} from './worker-calendar.component';
 export class WorkerCalendarService {
   component: WorkerCalendarComponent;
   private service: TaskRootsApiService = inject(TaskRootsApiService);
-  public dialogService: DialogService = inject(DialogService);
-  public groupsService: GroupsApiService = inject(GroupsApiService);
-  public quizService: QuizzesApiService = inject(QuizzesApiService);
-  public tasksService: TasksApiService = inject(TasksApiService);
-  constructor() {}
 
-  getGroups() {
-    this.groupsService.GetAllByProject(this.component.projectId).subscribe((resp) => {
-      this.component.groups = resp.data;
-    });
+  constructor() {
   }
 
-  getQuizzes() {
-    let id = localStorage.getItem('id') as string;
-    this.quizService.GetAllByOrganization(id).subscribe((resp) => {
-      this.component.quizzes = resp.data;
-    });
-  }
 
-  getMeetings() {
-    let req:any = {
+  getTasks() {
+    let req: any = {
       projectId: this.component.projectId,
-      workerId:localStorage.getItem('id') as string,
+      workerId: localStorage.getItem('id') as string,
     };
 
     this.service.getAllByProject(req).subscribe((resp) => {
@@ -58,27 +44,18 @@ export class WorkerCalendarService {
         ...item,
         time: this.formatTime(item.deadline),
       }));
-
       this.component.monthData = this.updateMonthData(
         this.component.currentDate,
         resp.data,
       );
-      console.log(resp.data);
     });
   }
+
 
   formatTime(date: any) {
     return new FormatDate(new Date(date), true).formattedDate;
   }
 
-
-
-  extractTime(isoDate: string): string {
-    const dateObj = new Date(isoDate);
-    const hours = dateObj.getUTCHours().toString().padStart(2, '0');
-    const minutes = dateObj.getUTCMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
-  }
 
   buildDateRequest(date: Date) {
     const today = date;
@@ -86,7 +63,7 @@ export class WorkerCalendarService {
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     this.component.meetingsRequest.from = firstDay.toISOString();
     this.component.meetingsRequest.to = lastDay.toISOString();
-    this.getMeetings();
+    this.getTasks();
   }
 
   getWeekDays(): { name: string; shortName: string }[] {
@@ -97,8 +74,8 @@ export class WorkerCalendarService {
       const date = new Date(baseDate);
       date.setDate(baseDate.getDate() + i);
       weekDays.push({
-        name: date.toLocaleString('default', { weekday: 'long' }),
-        shortName: date.toLocaleString('default', { weekday: 'short' }),
+        name: date.toLocaleString('default', {weekday: 'long'}),
+        shortName: date.toLocaleString('default', {weekday: 'short'}),
       });
     }
     return weekDays;
@@ -110,7 +87,7 @@ export class WorkerCalendarService {
   ): { monthName: string; weeks: any[] } {
     const year = date.getFullYear();
     const month = date.getMonth();
-    const monthName = date.toLocaleString('default', { month: 'long' });
+    const monthName = date.toLocaleString('default', {month: 'long'});
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const daysArray: any[] = [];
     for (let i = 1; i <= daysInMonth; i++) {
@@ -123,14 +100,14 @@ export class WorkerCalendarService {
     }
 
     const weeks: any[] = [];
-    let currentWeek: any = { days: [] };
+    let currentWeek: any = {days: []};
 
     daysArray.forEach((dayItem, index) => {
       const dayOfWeek = dayItem.date.getDay();
       currentWeek.days.push(dayItem);
       if (dayOfWeek === 0 || index === daysArray.length - 1) {
         weeks.push(currentWeek);
-        currentWeek = { days: [] };
+        currentWeek = {days: []};
       }
     });
 
@@ -196,7 +173,7 @@ export class WorkerCalendarService {
         this.component.dayItemStateSaver = dayItem;
       }
     });
-    return { monthName, weeks };
+    return {monthName, weeks};
   }
 
   formatDate(dateString: string): { formattedDate: string; dayOfWeek: string } {
@@ -209,73 +186,7 @@ export class WorkerCalendarService {
     const dayOfWeek = new Intl.DateTimeFormat('en-US', {
       weekday: 'long',
     }).format(date);
-    return { formattedDate, dayOfWeek };
+    return {formattedDate, dayOfWeek};
   }
 
-  openCreateDialog() {
-    const ref = this.dialogService.open(CreateTaskDialogComponent, {
-      header: 'Add Task',
-      width: '650px',
-      data: {
-        projectId: this.component.projectId,
-        quizzes: this.component.quizzes,
-        groups: this.component.groups,
-      },
-      style: {
-        maxWidth: '95%',
-      },
-    });
-    ref.onClose.subscribe((e: any) => {
-      if (e) {
-        this.getMeetings();
-      }
-    });
-  }
-
-  getTasks(task: ScheduleTaskModel) {
-    this.component.showActivities = false;
-    this.tasksService.getAllByRoot(task.id).subscribe((resp) => {
-      console.log(resp);
-      let tasks = resp.data.map((item: any) => ({
-        ...item,
-        startTime: new FormatDate(new Date(item.startTime), true).formattedDate,
-        deadline: new FormatDate(new Date(item.deadline), true).formattedDate,
-        status: this.getStatus(item.status),
-      }));
-      console.log(tasks);
-      this.openListDialog(tasks);
-    });
-  }
-
-  openListDialog(tasks: any) {
-    const ref = this.dialogService.open(TasksListComponent, {
-      header: 'Select Task',
-      width: '950px',
-      data: {
-        projectId: this.component.projectId,
-        tasks: tasks,
-      },
-      style: {
-        maxWidth: '95%',
-      },
-    });
-    ref.onClose.subscribe((e: any) => {
-      if (e) {
-        this.getMeetings();
-      }
-    });
-  }
-
-  private getStatus(status: any) {
-    switch (status) {
-      case 1:
-        return 'Pending';
-      case 2:
-        return 'In progress';
-      case 3:
-        return 'Done';
-      default:
-        return 'Unknown';
-    }
-  }
 }

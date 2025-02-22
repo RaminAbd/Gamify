@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { OrganizationsResponseModel } from '../../../../admin-organizations/shared/models/organizations-response.model';
 import { WorkerProjectDetailsService } from './worker-project-details.service';
 import {ProjectDetailedResponseModel} from '../../models/project-detailed-response.model';
@@ -18,11 +18,16 @@ export class WorkerProjectDetailsComponent {
     WorkerProjectDetailsService,
   );
   private route: ActivatedRoute = inject(ActivatedRoute);
+  private router: Router = inject(Router);
   id = this.route.snapshot.paramMap.get('id') as string;
   response: ProjectDetailedResponseModel = new ProjectDetailedResponseModel();
   organizations: OrganizationsResponseModel[] = [];
   constructor() {
     this.service.component = this;
     this.service.getItem();
+  }
+
+  getTask($event: any) {
+    this.router.navigate(['main/worker/tasks', $event.id]);
   }
 }

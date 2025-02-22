@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { MonthModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/month.model';
 import { ActiveDateInfoModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/active-date-info.model';
@@ -29,16 +29,13 @@ export class WorkerCalendarComponent {
   quizzes: QuizzesResponseModel[] = [];
   groups: GroupsResponseModel[] = [];
   projectId: string;
+  @Output() emitTask:any = new EventEmitter();
   @Input() set id(e: string) {
     if (e) {
       this.projectId = e
-      this.service.getGroups();
-      this.service.getQuizzes();
-
       this.service.buildDateRequest(new Date());
       this.weekDays = this.service.getWeekDays();
       this.monthData = this.service.updateMonthData(new Date());
-      // if (!this.isMobile()) this.handleSetDateInfo(this.dayItemStateSaver);
     }
   }
   constructor() {
@@ -46,10 +43,7 @@ export class WorkerCalendarComponent {
     this.meetingsRequest.educatorId = localStorage.getItem('userId') as string;
   }
 
-  isMobile(): boolean {
-    console.log(window.matchMedia('(max-width: 1250px)').matches);
-    return window.matchMedia('(max-width: 1250px)').matches;
-  }
+
 
   handlePreviousMonth(): void {
     const previousMonth = new Date(
@@ -96,23 +90,7 @@ export class WorkerCalendarComponent {
     );
   }
 
-  copyToClipboard(item: any) {
-    navigator.clipboard
-      .writeText(item.link)
-      .then(() => {
-        this.showMessage = true;
-        setTimeout(() => {
-          this.showMessage = false;
-        }, 2000);
-      })
-      .catch((err) => console.error('Failed to copy: ', err));
-  }
-
-  getTasks(task: ScheduleTaskModel) {
-    this.service.getTasks(task);
-  }
-
-  createTask() {
-    this.service.openCreateDialog();
+  getTask(task:any) {
+    this.emitTask.emit(task)
   }
 }

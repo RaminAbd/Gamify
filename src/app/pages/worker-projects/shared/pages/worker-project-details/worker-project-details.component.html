@@ -60,7 +60,7 @@
     </div>
 
     <div class="calendar">
-      <app-worker-calendar [id]="id"></app-worker-calendar>
+      <app-worker-calendar [id]="id" (emitTask)="getTask($event)"></app-worker-calendar>
     </div>
   </div>
 </div>

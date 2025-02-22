@@ -79,6 +79,7 @@
           <div
             class="wrap"
             *ngFor="let task of activeDateInfo.tasks"
+            (click)="getTask(task)"
             [ngClass]="{
               attendance: task.type === 1,
               performance: task.type === 2,

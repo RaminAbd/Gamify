@@ -7,4 +7,6 @@ export class ActiveDateInfoModel {
   dayNumber: number;
   disabled: boolean;
   dateString: DateStringModel = new DateStringModel();
+  name:string;
+  description:string;
 }
