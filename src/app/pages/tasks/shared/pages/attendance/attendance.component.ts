@@ -37,7 +37,6 @@ export class AttendanceComponent {
         this.assignee = res.assignee;
         this.taskId = res.taskId;
         this.showInfo = true;
-        console.log(res)
       }
       else{
         this.showWarning = true;

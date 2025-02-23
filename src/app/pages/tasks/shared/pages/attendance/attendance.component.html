@@ -1,9 +1,15 @@
 <div class="wrapper">
   <div class="scanner">
-    <zxing-scanner
-      [formats]="allowedFormats"
-      (scanSuccess)="onScanSuccess($event)">
-    </zxing-scanner>
+    <div class="scanner-overlay">
+      <div class="background"></div>
+      <zxing-scanner
+        [formats]="allowedFormats"
+        (scanSuccess)="onScanSuccess($event)">
+      </zxing-scanner>
+    </div>
+    <div class="scanner-box">
+
+    </div>
   </div>
 </div>
 <div class="back" *ngIf="showInfo">
