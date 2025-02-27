@@ -1,25 +1,5 @@
-import {inject, Injectable} from '@angular/core';
-import {
-  TaskRootsApiService
-} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/services/task-roots.api.service';
-import {DialogService} from 'primeng/dynamicdialog';
-import {
-  GroupsApiService
-} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-groups/shared/services/groups.api.service';
-import {QuizzesApiService} from '../../../../organization-quizzes/shared/services/quizzes.api.service';
-import {
-  TasksApiService
-} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/services/tasks.api.service';
-import {
-  CreateTaskDialogComponent
-} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/components/create-task-dialog/create-task-dialog.component';
-import {
-  ScheduleTaskModel
-} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/schedule-task.model';
+import {Injectable} from '@angular/core';
 import {FormatDate} from '../../../../../core/extensions/format-date';
-import {
-  TasksListComponent
-} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/components/tasks-list/tasks-list.component';
 import {WorkerCalendarComponent} from './worker-calendar.component';
 
 @Injectable({
@@ -27,30 +7,6 @@ import {WorkerCalendarComponent} from './worker-calendar.component';
 })
 export class WorkerCalendarService {
   component: WorkerCalendarComponent;
-  private service: TaskRootsApiService = inject(TaskRootsApiService);
-
-  constructor() {
-  }
-
-
-  getTasks() {
-    let req: any = {
-      projectId: this.component.projectId,
-      workerId: localStorage.getItem('id') as string,
-    };
-
-    this.service.getAllByProject(req).subscribe((resp) => {
-      resp.data = resp.data.map((item: any) => ({
-        ...item,
-        time: this.formatTime(item.deadline),
-      }));
-      this.component.monthData = this.updateMonthData(
-        this.component.currentDate,
-        resp.data,
-      );
-    });
-  }
-
 
   formatTime(date: any) {
     return new FormatDate(new Date(date), true).formattedDate;
@@ -63,7 +19,7 @@ export class WorkerCalendarService {
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     this.component.meetingsRequest.from = firstDay.toISOString();
     this.component.meetingsRequest.to = lastDay.toISOString();
-    this.getTasks();
+    this.component.monthData = this.updateMonthData(this.component.currentDate, this.component.DATA);
   }
 
   getWeekDays(): { name: string; shortName: string }[] {

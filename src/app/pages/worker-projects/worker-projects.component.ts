@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ProjectsResponseModel } from '../admin-projects/shared/models/projects-response.model';
 import { WorkerProjectsService } from './worker-projects.service';
-import {NgForOf} from '@angular/common';
+import { NgForOf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-worker-projects',
@@ -11,16 +12,15 @@ import {NgForOf} from '@angular/common';
 })
 export class WorkerProjectsComponent {
   private service: WorkerProjectsService = inject(WorkerProjectsService);
+  private router: Router = inject(Router);
   projects: ProjectsResponseModel[] = [];
-  cols: any[] = [];
 
   constructor() {
     this.service.component = this;
     this.service.getAll();
-    this.service.setCols();
   }
 
-  getDetail(id:string):void {
-    this.service.getDetail(id)
+  getDetail(id: string): void {
+    this.router.navigate(['/main/worker/projects', id]);
   }
 }

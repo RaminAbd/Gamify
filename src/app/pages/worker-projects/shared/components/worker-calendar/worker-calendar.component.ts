@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { MonthModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/month.model';
 import { ActiveDateInfoModel } from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/models/active-date-info.model';
@@ -28,22 +28,25 @@ export class WorkerCalendarComponent {
   showMessage: boolean = false;
   quizzes: QuizzesResponseModel[] = [];
   groups: GroupsResponseModel[] = [];
-  projectId: string;
-  @Output() emitTask:any = new EventEmitter();
-  @Input() set id(e: string) {
+  DATA: any;
+  @Output() emitTask: any = new EventEmitter();
+  @Input() set data(e: any) {
     if (e) {
-      this.projectId = e
       this.service.buildDateRequest(new Date());
       this.weekDays = this.service.getWeekDays();
-      this.monthData = this.service.updateMonthData(new Date());
+      e = e.map((item: any) => ({
+        ...item,
+        time: this.service.formatTime(item.deadline),
+      }));
+      this.DATA = e;
+      this.monthData = this.service.updateMonthData(this.currentDate, e);
     }
   }
+
   constructor() {
     this.service.component = this;
     this.meetingsRequest.educatorId = localStorage.getItem('userId') as string;
   }
-
-
 
   handlePreviousMonth(): void {
     const previousMonth = new Date(
@@ -90,7 +93,7 @@ export class WorkerCalendarComponent {
     );
   }
 
-  getTask(task:any) {
-    this.emitTask.emit(task)
+  getTask(task: any) {
+    this.emitTask.emit(task);
   }
 }

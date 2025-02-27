@@ -60,10 +60,12 @@
     </div>
 
     <div class="calendar">
-      <app-worker-calendar
-        (emitTask)="getTask($event)"
-        [data]="Tasks"
-      ></app-worker-calendar>
+      <div class="calendar">
+        <app-worker-calendar
+          (emitTask)="getTask($event)"
+          [data]="Tasks"
+        ></app-worker-calendar>
+      </div>
     </div>
   </div>
 </div>

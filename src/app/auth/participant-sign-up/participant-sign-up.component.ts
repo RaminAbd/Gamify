@@ -1,23 +1,19 @@
-import {Component, inject} from '@angular/core';
-import {NgIf} from '@angular/common';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ActivatedRoute, RouterLink} from '@angular/router';
-import {OrganizationsRequestModel} from '../../pages/admin-organizations/shared/models/organizations-request.model';
-import {WorkerSignupUpService} from './worker-signup-up.service';
-import {WorkerSignupRequestModel} from './shared/models/worker-signup-request.model';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { WorkerSignupRequestModel } from '../worker-sign-up/shared/models/worker-signup-request.model';
+import { NgIf } from '@angular/common';
+import { ParticipantSignUpService } from './participant-sign-up.service';
+import { ParticipantSignupRequestModel } from './shared/models/participant-signup-request.model';
 
 @Component({
-  selector: 'app-worker-signup-up',
-  imports: [
-    NgIf,
-    ReactiveFormsModule,
-    RouterLink
-  ],
-  templateUrl: './worker-signup-up.component.html',
-  styleUrl: './worker-signup-up.component.scss'
+  selector: 'app-participant-sign-up',
+  imports: [NgIf, ReactiveFormsModule, RouterLink],
+  templateUrl: './participant-sign-up.component.html',
+  styleUrl: './participant-sign-up.component.scss',
 })
-export class WorkerSignupUpComponent {
-  private service:WorkerSignupUpService = inject(WorkerSignupUpService);
+export class ParticipantSignUpComponent {
+  private service: ParticipantSignUpService = inject(ParticipantSignUpService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   isSubmitted: boolean = false;
   passVisible: boolean = false;
@@ -25,7 +21,7 @@ export class WorkerSignupUpComponent {
   requestSent: boolean = false;
   signinLoading: boolean = false;
   private fb: FormBuilder = inject(FormBuilder);
-  request: WorkerSignupRequestModel = new WorkerSignupRequestModel();
+  request: ParticipantSignupRequestModel = new ParticipantSignupRequestModel();
   groupWorkerId = this.route.snapshot.paramMap.get('id') as string;
   requestForm = this.fb.group({
     email: [
@@ -41,7 +37,7 @@ export class WorkerSignupUpComponent {
 
   constructor() {
     this.service.component = this;
-    this.service.getGroupWorker()
+    this.service.getGroupWorker();
   }
 
   validateField(field: string) {

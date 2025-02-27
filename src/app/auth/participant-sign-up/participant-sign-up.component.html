@@ -38,58 +38,23 @@
             </div>
             <div class="row">
               <div class="input-item">
-                <label for="name">{{ "Organization name" }}</label>
+                <label for="email">{{ "Email" }}</label>
                 <input
                   type="text"
-                  formControlName="name"
-                  [(ngModel)]="request.name"
-                  id="name"
-                  [class.invalid]="validateField('name')"
+                  formControlName="email"
+                  [(ngModel)]="request.email"
+                  id="email"
+                  [class.invalid]="validateField('email')"
                 />
               </div>
-              <div class="input-item">
-                <label for="organizationId">{{ "Organization Id" }}</label>
-                <input
-                  type="text"
-                  formControlName="organizationId"
-                  [(ngModel)]="request.organizationId"
-                  id="organizationId"
-                  [class.invalid]="validateField('organizationId')"
-                />
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-item">
-                <label for="website">{{ "Website URL" }}</label>
-                <input
-                  type="text"
-                  formControlName="website"
-                  [(ngModel)]="request.website"
-                  id="website"
-                  [class.invalid]="validateField('website')"
-                />
-              </div>
-              <div class="input-item">
-                <label for="socialMediaLink">{{ "Social media link" }}</label>
-                <input
-                  type="text"
-                  formControlName="socialMediaLink"
-                  [(ngModel)]="request.socialMediaLink"
-                  id="socialMediaLink"
-                  [class.invalid]="validateField('socialMediaLink')"
-                />
-              </div>
-            </div>
-            <div class="row">
               <div class="input-item file-input">
-                <label>{{ "logo" }}</label>
+                <label>{{ "Image" }}</label>
                 <label
                   class="file-label"
                   for="file"
-                  [class.invalid]="!request.logo.fileUrl && isSubmitted"
+                  [class.invalid]="!request.image.fileUrl && isSubmitted"
                 >
-                  <p *ngIf="!request.logo.fileUrl && !request.logo.fileLoading">
+                  <p *ngIf="!request.image.fileUrl && !request.image.fileLoading">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="200"
@@ -106,44 +71,21 @@
                     </svg>
                   </p>
                   <i
-                    *ngIf="request.logo.fileLoading"
+                    *ngIf="request.image.fileLoading"
                     class="pi pi-spin pi-spinner"
                   ></i>
-                  <p *ngIf="request.logo.fileUrl && !request.logo.fileLoading">
-                    {{ getFileName(request.logo.fileName) }}
+                  <p *ngIf="request.image.fileUrl && !request.image.fileLoading">
+                    {{ getFileName(request.image.fileName) }}
                   </p>
                 </label>
                 <input
                   id="file"
                   type="file"
-                  [(ngModel)]="request.logo.fakeFile"
+                  [(ngModel)]="request.image.fakeFile"
                   (change)="getFile($event)"
-                  formControlName="logo"
+                  formControlName="image"
                   multiple="false"
                   accept="image/*"
-                />
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-item">
-                <label for="country">{{ "Country" }}</label>
-                <input
-                  type="text"
-                  formControlName="country"
-                  [(ngModel)]="request.country"
-                  id="country"
-                  [class.invalid]="validateField('country')"
-                />
-              </div>
-              <div class="input-item">
-                <label for="email">{{ "Email" }}</label>
-                <input
-                  type="text"
-                  formControlName="email"
-                  [(ngModel)]="request.email"
-                  id="email"
-                  [class.invalid]="validateField('email')"
                 />
               </div>
             </div>
@@ -158,22 +100,22 @@
                     [(ngModel)]="request.password"
                     formControlName="password"
                     [class.invalid]="
-                      requestForm.get('password')?.hasError('pattern') ||
-                      (!requestForm.get('password')?.value && isSubmitted)
-                    "
+                    requestForm.get('password')?.hasError('pattern') ||
+                    (!requestForm.get('password')?.value && isSubmitted)
+                  "
                   />
                   <span>
-                    <i
-                      *ngIf="!passVisible"
-                      (click)="passVisible = !passVisible"
-                      class="pi pi-eye"
-                    ></i>
-                    <i
-                      *ngIf="passVisible"
-                      (click)="passVisible = !passVisible"
-                      class="pi pi-eye-slash"
-                    ></i>
-                  </span>
+                  <i
+                    *ngIf="!passVisible"
+                    (click)="passVisible = !passVisible"
+                    class="pi pi-eye"
+                  ></i>
+                  <i
+                    *ngIf="passVisible"
+                    (click)="passVisible = !passVisible"
+                    class="pi pi-eye-slash"
+                  ></i>
+                </span>
                 </div>
               </div>
               <div class="input-item">
@@ -185,25 +127,25 @@
                     formControlName="repeatPass"
                     [(ngModel)]="request.repeatPassword"
                     [class.invalid]="
-                      requestForm.get('repeatPass')?.hasError('pattern') ||
-                      (!requestForm.get('repeatPass')?.value && isSubmitted) ||
-                      (requestForm.get('password')?.value !==
-                        requestForm.get('repeatPass')?.value &&
-                        isSubmitted)
-                    "
+                    requestForm.get('repeatPass')?.hasError('pattern') ||
+                    (!requestForm.get('repeatPass')?.value && isSubmitted) ||
+                    (requestForm.get('password')?.value !==
+                      requestForm.get('repeatPass')?.value &&
+                      isSubmitted)
+                  "
                   />
                   <span>
-                    <i
-                      *ngIf="!repeatPassVisible"
-                      (click)="repeatPassVisible = !repeatPassVisible"
-                      class="pi pi-eye"
-                    ></i>
-                    <i
-                      *ngIf="repeatPassVisible"
-                      (click)="repeatPassVisible = !repeatPassVisible"
-                      class="pi pi-eye-slash"
-                    ></i>
-                  </span>
+                  <i
+                    *ngIf="!repeatPassVisible"
+                    (click)="repeatPassVisible = !repeatPassVisible"
+                    class="pi pi-eye"
+                  ></i>
+                  <i
+                    *ngIf="repeatPassVisible"
+                    (click)="repeatPassVisible = !repeatPassVisible"
+                    class="pi pi-eye-slash"
+                  ></i>
+                </span>
                 </div>
               </div>
             </div>

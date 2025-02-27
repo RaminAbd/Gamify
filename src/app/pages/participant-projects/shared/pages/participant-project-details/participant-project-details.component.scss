@@ -1,0 +1,185 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+  @media (max-width: 769px) {
+    gap: 15px;
+  }
+  .heading {
+    width: 100%;
+    //max-width: 650px;
+    @media (max-width: 769px) {
+      display: none;
+    }
+    h3 {
+      color: #131313;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+  .content-calendar {
+    display: flex;
+    gap: 30px;
+
+    justify-content: center;
+
+    @media (max-width: 1311px) {
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    @media (max-width: 769px) {
+      width: 100%;
+      margin-top: 0px;
+    }
+  }
+  .content {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    max-width: 650px;
+    width: 100%;
+    .image {
+      width: 100%;
+      max-height: 227px;
+      height: 220px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+    }
+    .info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      .name-status {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        .name {
+          color: #131313;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+        }
+        .status {
+          color: #0fcf4f;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+        }
+      }
+      .organization {
+
+        img {
+          width: 101px;
+          height: 30px;
+          flex-shrink: 0;
+        }
+      }
+      .about {
+        margin-top: 30px;
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+        @media (max-width: 769px) {
+          flex-direction: column-reverse;
+          margin-top: 15px;
+        }
+        .description {
+          display: flex;
+          width: 328px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          @media (max-width: 769px) {
+            width: 100%;
+          }
+          label {
+            color: #0f121d;
+            /* font-family: Poppins; */
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+          p {
+            color: rgba(7, 10, 21, 0.6);
+            /* font-family: Poppins; */
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+        .group-stars {
+          display: flex;
+          width: 302px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          @media (max-width: 769px) {
+            width: 100%;
+          }
+          label {
+            color: #0f121d;
+            /* font-family: Poppins; */
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+          .stars {
+            display: flex;
+            padding: 18px 16px;
+            align-items: flex-start;
+            gap: 8px;
+            align-self: stretch;
+            border-radius: 24px;
+            background: #f0e7fa;
+            .item {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 6px;
+              flex: 1 0 0;
+              label {
+                color: rgba(15, 18, 29, 0.7);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+              }
+              .value {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                p {
+                  color: rgba(15, 18, 29, 0.7);
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: normal;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .calendar {
+    max-width: 650px;
+    width: 100%;
+  }
+}

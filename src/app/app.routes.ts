@@ -6,8 +6,10 @@ import { AdminChildrenRoutes } from './system-pages/admin/shared/models/admin-ch
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { OrganizationSignUpComponent } from './auth/organization-sign-up/organization-sign-up.component';
 import { OrganizationChildrenRoutes } from './system-pages/organization/shared/models/organization-children-routes';
-import { WorkerSignupUpComponent } from './auth/worker-signup-up/worker-signup-up.component';
 import { WorkerChildrenRoutes } from './system-pages/worker/shared/models/worker-children-routes';
+import { WorkerSignUpComponent } from './auth/worker-sign-up/worker-sign-up.component';
+import { ParticipantSignUpComponent } from './auth/participant-sign-up/participant-sign-up.component';
+import { ParticipantChildrenRoutes } from './system-pages/participant/shared/models/participant-children-routes';
 
 export const routes: Routes = [
   { path: 'auth', component: SignInComponent, data: { title: 'Sign in' } },
@@ -18,7 +20,12 @@ export const routes: Routes = [
   },
   {
     path: 'worker-sign-up/:id',
-    component: WorkerSignupUpComponent,
+    component: WorkerSignUpComponent,
+    data: { title: 'Sign Up' },
+  },
+  {
+    path: 'participant-sign-up/:id',
+    component: ParticipantSignUpComponent,
     data: { title: 'Sign Up' },
   },
   {
@@ -57,6 +64,16 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { permissionTypes: CodeByRoleName['worker'] },
         children: WorkerChildrenRoutes.children,
+      },
+      {
+        path: 'participant',
+        loadComponent: () =>
+          import('./system-pages/participant/participant.component').then(
+            (m) => m.ParticipantComponent,
+          ),
+        canActivate: [RoleGuard],
+        data: { permissionTypes: CodeByRoleName['participant'] },
+        children: ParticipantChildrenRoutes.children,
       },
       { path: '**', redirectTo: 'admin', pathMatch: 'full' },
       { path: '', redirectTo: 'admin', pathMatch: 'full' },

@@ -11,4 +11,9 @@ export class ParticipantsApiService  extends BaseCrudApiService {
   constructor(http: HttpClient, handler: ApplicationMessageCenterService) {
     super(http, handler);
   }
+
+
+  SignUp(req:any){
+    return this.post(this.serviceUrl + 'sign-up', req);
+  }
 }

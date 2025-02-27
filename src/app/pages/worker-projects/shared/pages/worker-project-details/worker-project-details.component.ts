@@ -22,9 +22,14 @@ export class WorkerProjectDetailsComponent {
   id = this.route.snapshot.paramMap.get('id') as string;
   response: ProjectDetailedResponseModel = new ProjectDetailedResponseModel();
   organizations: OrganizationsResponseModel[] = [];
+  Tasks:any[]=[]
   constructor() {
     this.service.component = this;
     this.service.getItem();
+    this.getTasks()
+  }
+  getTasks() {
+    this.service.getTasks();
   }
 
   getTask($event: any) {
