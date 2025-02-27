@@ -80,6 +80,6 @@ export class HeaderComponent {
 
   logout() {
     this.signInService.logout();
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/']);
   }
 }

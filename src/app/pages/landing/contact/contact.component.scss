@@ -1,0 +1,104 @@
+.wrapper{
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.divider {
+  margin: 1.5rem 0;
+  width: 2rem;
+  height: 0.125rem;
+  background-color: #515d6d;
+}
+
+.col-lg-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+.mb-8, .my-8 {
+  margin-bottom: 3rem !important;
+}
+.container{
+  max-width: 1140px;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-row .col-12 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.form-control-soft-light {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  background: #FFF;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.168627451);
+}
+input{
+  height: 44px;
+}
+input::placeholder {
+  color: rgba(0, 0, 0, 0.48);
+}
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.48);
+}
+textarea{
+  min-height: 188px;
+  resize:none;
+}
+.btn-soft-white {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0.5625rem 1.125rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.3125rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background: rgba(255, 255, 255, 0.1);
+  background: #FFF;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.168627451);
+  width: 100% ;
+}
+button{
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0.5625rem 1.125rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.3125rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background: rgba(255, 255, 255, 0.1);
+  background: #FFF;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.168627451);
+  width: 100% ;
+}
+@media (max-width: 768px) {
+  .col-lg-9{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

@@ -47,6 +47,287 @@ input[disabled] {
   background: #555;
 }
 
+
+
+
+
+
+:root{
+  --primary-orange: #FF521D;
+  --night-blue: #050530;
+  --sky-blue:#2B4FE2;
+  --background: black;
+  --paragraphs: #e6e6e699;
+  --light: #e6e6e6;
+  --border: #e6e6e633;
+  --dark: #191819;
+  --big-card-corners: .94em;
+}
+* {
+  box-sizing: border-box;
+  font-family: "Georgian", sans-serif !important;
+  color: #4f4f4f !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 2px;
+  border-radius: 15px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--grey);
+}
+
+*::-webkit-scrollbar-thumb {
+  background:var(--primary-orange)
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.pi {
+  font-family: "primeicons" !important;
+}
+.p-dropdown{
+  width: 100%;
+  height: 44px;
+  border: 1px solid #bcc9d3;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4b4b4b;
+  padding-left: 10px;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+textarea{
+  width: 100%;
+  height: 100px;
+  border: 1px solid #bcc9d3;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4b4b4b;
+  outline: none;
+  resize: none;
+  padding: 10px;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item{
+  padding: 0.5rem 1rem;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+  border: 1px solid #d1d5db !important;
+}
+.p-dropdown:not(.p-disabled).p-focus {
+  border-color: var(--half-grey) !important;
+  box-shadow: 0 0 0 0.2 var(--primary-orange) !important;
+}
+
+.invalid{
+  border: 1px solid #ff0000 !important;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-text{
+  flex: 1 1 auto;
+}
+.p-toast .p-toast-message.p-toast-message-error{
+  background: #ffcdd2;
+  border: solid #e60017;
+  border-width: 0 0 0 6px;
+  color: #73000c;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-summary {
+  font-weight: 700;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-detail {
+  margin: 0.5rem 0 0 0;
+}
+.p-toast .p-toast-message .p-toast-message-content {
+  padding: 1rem;
+  border-width: 0 0 0 6px;
+}
+.p-toast-message-content {
+  display: flex;
+  align-items: flex-start;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 0 0 1rem !important;
+}
+.table-wrapper {
+  .p-datatable-header {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    padding-bottom: 16px !important;
+  }
+  .p-datatable .p-datatable-thead > tr > th {
+    padding: 12px 16px !important;
+    color: #4b4b5a;
+    /* font-family: Inter; */
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 1px solid var(--input-border) !important;
+    border-width: 1px 0 0 0 !important;
+  }
+  .p-datatable .p-sortable-column .p-sortable-column-icon {
+    font-size: 12px !important;
+  }
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 12px 16px !important;
+    color: #4b4b5a;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    border: 1px solid var(--input-border) !important;
+    border-width: 0 0 1px 0 !important;
+    line-height: normal;
+  }
+  .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    min-width: 1rem !important;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: var(--primary-color);
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+  }
+  .p-paginator .p-paginator-first,
+  .p-paginator .p-paginator-prev,
+  .p-paginator .p-paginator-next,
+  .p-paginator .p-paginator-last {
+    min-width: 1rem !important;
+    width: 20px;
+    height: 20px;
+  }
+  .p-datatable .p-paginator-bottom {
+    gap: 5px !important;
+    color: #6b6b6b;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 13px 0 !important;
+  }
+  .p-paginator .p-paginator-current {
+    height: 20px !important;
+  }
+  .p-button {
+    background: none !important;
+    border: none !important;
+    padding: 1px !important;
+    z-index: 1 !important;
+  }
+}
+.p-confirm-popup {
+  width: 222px !important;
+  .p-confirm-popup-content {
+    padding: 10px !important;
+    padding-bottom: 0 !important;
+  }
+  .p-confirm-popup-footer {
+    padding: 10px !important;
+    button {
+      width: 60px !important;
+      height: 30px !important;
+      flex-shrink: 0;
+      color: #000;
+    }
+    button:last-child {
+      width: 60px !important;
+      height: 30px !important;
+      flex-shrink: 0 !important;
+      font-size: 14px !important;
+      font-style: normal !important;
+      font-weight: 500 !important;
+      line-height: normal !important;
+      border-radius: 6px;
+      background: var(--primary-color);
+      border: none !important;
+      outline: none !important;
+      color: #fff !important;
+      padding: 0;
+    }
+  }
+}
+.p-button:focus {
+  box-shadow: none !important;
+}
+.p-button.p-button-text:enabled:active,
+.p-button.p-button-text:enabled:hover {
+  color: #000000 !important;
+  background: none !important;
+}
+.p-confirm-popup .p-confirm-popup-message {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.p-confirm-popup .p-confirm-popup-icon {
+  color: var(--primary-color);
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-detail {
+  font-size: 13px;
+}
+.p-dialog .p-dialog-header {
+  padding: 14px 24px 14px 24px !important;
+  .p-dialog-title {
+    color: #000;
+    /* font-family: Inter; */
+    font-size: 18px !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: normal;
+  }
+  .p-dialog-header-icon:focus {
+    box-shadow: none !important;
+  }
+  .p-dialog-header-icon:enabled:hover {
+    border: none !important;
+    background: none !important;
+  }
+}
+.p-dialog .p-dialog-content:last-of-type {
+  padding: 0 24px 24px 24px !important;
+}
+.p-datatable .p-datatable-tbody > tr {
+  background: var(--sidebar) ;
+}
+.table-wrapper .p-datatable .p-datatable-thead tr th{
+  //background: var(--background) !important;
+  color:var(--text-color) !important;
+}
+
+button{
+  border: none;
+  outline:none;
+}
+
+
+
+
+
+
+
+
+
 button {
   border: none;
   border-radius: 10px;

@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <div class="container align-self-center text-white text-center">
+    <div class="row">
+      <div class="col-12 col-lg-9 mx-lg-auto">
+        <h2 class="h1 mb-4 animate__animated animate__fadeInUp visible" data-animation="fadeInUp">Contact Us</h2>
+        <div class="divider bg-white mx-auto animate__animated animate__fadeInUp visible" data-animation="fadeInUp" style="animation-delay: 0.2s;"></div>
+        <p class="animate__animated mb-8 animate__fadeInUp visible" data-animation="fadeInUp" style="animation-delay: 0.4s;">We’re here to help! Have questions or need assistance? Reach out to us, and our team will get back to you promptly.</p>
+        <div class="contact-form text-left animate__animated animate__fadeInUp visible" data-animation="fadeInUp" style="animation-delay: 0.6s;">
+          <form class="mb-0" id="cf" name="cf" action="include/sendemail.php" method="post" autocomplete="off" novalidate="novalidate">
+            <div class="form-row">
+
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <input type="text" [(ngModel)]="form.name" id="cf-name" name="cf-name" placeholder="Enter your name" class="form-control form-control-soft-light required">
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <input type="email" [(ngModel)]="form.email" id="cf-email" name="cf-email" placeholder="Enter your email address" class="form-control form-control-soft-light required">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <input type="text" [(ngModel)]="form.subject" id="cf-subject" name="cf-subject" placeholder="Subject (Optional)" class="form-control form-control-soft-light">
+                </div>
+              </div>
+
+              <div class="col-12 mb-4">
+                <div class="form-group">
+                  <textarea name="cf-message" [(ngModel)]="form.message" id="cf-message" placeholder="Here goes your message" class="form-control form-control-soft-light required" rows="7"></textarea>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <button class="btn btn-soft-white" type="submit" id="cf-submit" name="cf-submit" (click)="sendMessage()">Send Message</button>
+              </div>
+
+            </div>
+          </form>
+          <div class="contact-form-result text-center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

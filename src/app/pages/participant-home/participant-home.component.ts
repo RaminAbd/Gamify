@@ -16,12 +16,14 @@ export class ParticipantHomeComponent {
   private service: ParticipantHomeService = inject(ParticipantHomeService);
   Tasks: any[] = [];
   assignee:AssigneeModel = new AssigneeModel();
+
   constructor() {
     this.service.component = this;
     this.service.getALlTasks();
     this.service.getParticipant();
   }
+
   getTask($event: any) {
-    this.router.navigate(['main/worker/tasks', $event.id]);
+    this.router.navigate(['main/participant/tasks', $event.id]);
   }
 }

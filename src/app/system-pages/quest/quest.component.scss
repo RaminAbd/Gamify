@@ -1,0 +1,91 @@
+.gradient-background {
+  z-index: 1;
+  //background-image: linear-gradient(270deg, black, #0000), linear-gradient(17deg, #0031ac99, black 62%);
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  background-size: cover;
+  //background-image: url(https://metagroupblob.blob.core.windows.net/metacontainer/e1029f06-4f54-421a-88f0-f2eaa109ec46-pexels-pixabay-273209.jpg)
+  //background-color: #5085ec
+}
+
+.main-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0.7em;
+  color: #fff;
+  z-index: 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  min-height: calc(100vh - 150px);
+}
+
+.overlay-inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bg-dark {
+  //background-color: #030507 !important;
+  background-color: #fcf9f3 !important;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.absolute-element {
+  z-index: -1;
+  position: absolute;
+}
+
+.dotted-line {
+  width: 100%;
+  top: 150px;
+  left: 0;
+  right: 0;
+}
+
+.pollygon1 {
+  top: 10px;
+  left: 0;
+}
+
+.pollygon2 {
+  top: 450px;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.pink-confetti {
+  top: 1200px;
+  right: 0;
+}
+
+.yellow-confetti {
+  top: 750px;
+  left: 0;
+}
+
+.ellipse {
+  top: 1300px;
+  left: 0;
+}
+
+.rocket {
+  top: 1500px;
+  right: 0;
+}
+
+.blue-star {
+  top: 2000px;
+  left: 0;
+}

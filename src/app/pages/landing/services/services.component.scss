@@ -1,0 +1,32 @@
+.wrapper{
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.divider {
+  margin: 1.5rem 0;
+  width: 2rem;
+  height: 0.125rem;
+  background-color: #515d6d;
+}
+img{
+  width: 48px;
+}
+h5{
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.heading p{
+  margin-bottom: 3rem !important;
+}
+@media (max-width: 768px) {
+  .wrapper{
+    margin-top: 50px;
+  }
+  .items{
+    gap: 30px;
+  }
+}

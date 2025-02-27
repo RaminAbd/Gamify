@@ -1,0 +1,181 @@
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(1.52em - 0.7em) 2.2em 0 1.52em;
+  position: relative;
+  z-index: 3;
+  .logo {
+    img {
+      height: 30px;
+    }
+  }
+  nav {
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    background-color: #8577E6;
+    border-radius: 0.76em;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35em;
+    display: flex;
+    @media (max-width: 767px) {
+      display: none;
+    }
+    a {
+      color: #FFF !important;
+      cursor: pointer;
+      background-color: #ddd0;
+      border-radius: 0.59em;
+      padding: 1.05em 1.5em;
+      font-size: 0.82em;
+      font-weight: 700;
+      line-height: 1.1em;
+      transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-decoration: none;
+      //opacity: 1;
+      &.active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.6);
+      }
+      //&:hover ~ a:not(:hover) {
+      //  opacity: 0.3;
+      //}
+    }
+  }
+}
+.navigation a {
+  transition: all 0.3s ease-in-out; /* Smooth transition for opacity */
+  opacity: 1; /* Default opacity */
+}
+
+.navigation:hover a {
+  opacity: 0.4; /* Dim all links when hovering over the container */
+}
+
+.navigation a:hover {
+  opacity: 1; /* Keep the hovered link fully visible */
+}
+.w-nav-button {
+  position: relative;
+  float: right;
+  padding: 18px;
+  font-size: 24px;
+  display: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  @media (max-width: 767px){
+    display: block;
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    color: var(--light);
+    background-color: #A1BBD1;
+    border-radius: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .54em;
+    transition: background-color .3s cubic-bezier(.25, .46, .45, .94);
+    display: flex;
+  }
+  .icon-menu{
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i{
+      font-size: 0.7em;
+      line-height: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .w-nav[data-collapse='small'] .w-nav-button {
+    display: block;
+  }
+}
+@media screen and (max-width: 767px) {
+  .icon-menu {
+    font-size: .96em;
+    line-height: 1em;
+  }
+}
+
+
+.nav-overlay-mobile {
+  position: absolute;
+  overflow: hidden;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.nav-overlay-mobile {
+  position: fixed;
+  top: 5.52em;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Start with height of 0 */
+  overflow: hidden; /* Hide overflow when collapsed */
+
+  &.hide{
+    opacity: 0;
+    z-index: -999;
+  } /* Initially hidden */
+  &.show{
+    z-index: 999;
+    opacity: 1;
+  }
+  .navigation{
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    background-color: #A1BBD1;
+    border-radius: .76em;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: .35em;
+    display: flex;
+    margin-left: .6em;
+    margin-right: .6em;
+    flex-direction: column;
+    align-items: baseline;
+    a{
+      width: 100%;
+      text-align: start;
+    }
+  }
+}
+
+.navigation a {
+  display: block;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+.nav-overlay-mobile {
+  overflow: hidden;
+}
+
+.myNav {
+  transition: all 400ms ease-in-out;
+}

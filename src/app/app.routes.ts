@@ -10,6 +10,13 @@ import { WorkerChildrenRoutes } from './system-pages/worker/shared/models/worker
 import { WorkerSignUpComponent } from './auth/worker-sign-up/worker-sign-up.component';
 import { ParticipantSignUpComponent } from './auth/participant-sign-up/participant-sign-up.component';
 import { ParticipantChildrenRoutes } from './system-pages/participant/shared/models/participant-children-routes';
+import {HomeComponent} from './pages/landing/home/home.component';
+import {SubscribeComponent} from './pages/landing/subscribe/subscribe.component';
+import {AboutUsComponent} from './pages/landing/about-us/about-us.component';
+import {ServicesComponent} from './pages/landing/services/services.component';
+import {ContactComponent} from './pages/landing/contact/contact.component';
+import {FaqComponent} from './pages/landing/faq/faq.component';
+import {QuestChildrenRoutes} from './system-pages/quest/shared/models/quest-children-routes';
 
 export const routes: Routes = [
   { path: 'auth', component: SignInComponent, data: { title: 'Sign in' } },
@@ -28,6 +35,27 @@ export const routes: Routes = [
     component: ParticipantSignUpComponent,
     data: { title: 'Sign Up' },
   },
+
+
+  {
+    path: '',
+    loadComponent: () =>
+      import('./system-pages/quest/quest.component').then((m) => m.QuestComponent),
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'subscribe', component: SubscribeComponent },
+      { path: 'about', component: AboutUsComponent },
+      { path: 'services', component: ServicesComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'tool', component: FaqComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },
+    ],
+  },
+
+
+
+
   {
     path: 'main',
     canActivate: [MainPageGuard],
@@ -80,5 +108,5 @@ export const routes: Routes = [
     ],
   },
   { path: '**', redirectTo: 'main', pathMatch: 'full' },
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
 ];
