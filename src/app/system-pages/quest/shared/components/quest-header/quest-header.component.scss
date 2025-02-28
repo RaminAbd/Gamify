@@ -5,6 +5,9 @@
   padding: calc(1.52em - 0.7em) 2.2em 0 1.52em;
   position: relative;
   z-index: 3;
+  @media (max-width: 768px) {
+    padding: calc(1.52em - 0.7em) 1em 0 1em;
+  }
   .logo {
     img {
       height: 30px;
@@ -77,7 +80,7 @@
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     color: var(--light);
-    background-color: #A1BBD1;
+    background-color: #8577E6;
     border-radius: 100%;
     flex-direction: row;
     justify-content: center;
@@ -100,6 +103,7 @@
     i{
       font-size: 0.7em;
       line-height: 1em;
+      color: #fff !important;
     }
   }
 }
@@ -147,7 +151,7 @@
     grid-row-gap: 4px;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
-    background-color: #A1BBD1;
+    background-color: #8577E6;
     border-radius: .76em;
     flex-flow: wrap;
     justify-content: center;

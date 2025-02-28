@@ -66,7 +66,7 @@ input[disabled] {
 * {
   box-sizing: border-box;
   font-family: "Georgian", sans-serif !important;
-  color: #4f4f4f !important;
+  color: #4f4f4f;
 }
 
 body {
@@ -359,19 +359,29 @@ h4,
 h1,
 label,
 h2 {
-  color: var(--text-color);
+  color: #0F121D;
   font-family: "Inter", serif;
   font-style: normal;
   margin: 0 !important;
 }
 
 button {
+  color: #fff !important;
   p,
   i {
     color: #fff !important;
   }
 }
-
+.row1{
+  margin: 0 !important;
+  .input-item{
+    padding: 0 !important;
+  }
+}
+.row > * {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 input {
   width: 200px;
   height: 40px;

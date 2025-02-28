@@ -5,7 +5,7 @@
     (save)="save()"
   ></app-upsert-heading>
     <div class="form">
-      <div class="row">
+      <div class="row1">
         <div class="input-item">
           <label for="name">Name</label>
           <input id="name" type="text" [(ngModel)]="request.name">
@@ -15,7 +15,7 @@
           <input id="description" type="text" [(ngModel)]="request.description">
         </div>
       </div>
-      <div class="row">
+      <div class="row1">
         <div class="input-item">
           <label>Start date</label>
           <p-datepicker [(ngModel)]="startDate" />
@@ -25,7 +25,7 @@
           <p-datepicker [(ngModel)]="endDate" />
         </div>
       </div>
-      <div class="row">
+      <div class="row1">
         <div class="input-item">
           <label for="rewardRules">Reward rules</label>
           <input id="rewardRules" type="text" [(ngModel)]="request.rewardRules">

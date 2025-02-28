@@ -8,7 +8,7 @@
     padding: 50px 10px;
   }
 }
-.row {
+.row1 {
   max-width: 1140px;
 }
 .tab-panel {
@@ -80,4 +80,7 @@
 .items {
   display: flex;
   flex-direction: column;
+}
+h2, p{
+  color: #131313 !important;
 }

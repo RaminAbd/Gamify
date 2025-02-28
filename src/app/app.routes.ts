@@ -36,7 +36,6 @@ export const routes: Routes = [
     data: { title: 'Sign Up' },
   },
 
-
   {
     path: '',
     loadComponent: () =>
@@ -49,7 +48,7 @@ export const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'tool', component: FaqComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' },
+      // { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
 
@@ -103,10 +102,10 @@ export const routes: Routes = [
         data: { permissionTypes: CodeByRoleName['participant'] },
         children: ParticipantChildrenRoutes.children,
       },
-      { path: '**', redirectTo: 'admin', pathMatch: 'full' },
+      // { path: '**', redirectTo: 'admin', pathMatch: 'full' },
       { path: '', redirectTo: 'admin', pathMatch: 'full' },
     ],
   },
-  { path: '**', redirectTo: 'main', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'main', pathMatch: 'full' },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
 ];

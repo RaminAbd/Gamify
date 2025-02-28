@@ -5,10 +5,10 @@
   justify-content: center;
   flex-direction: column;
   @media (max-width: 767px) {
-    padding: 50px 10px;
+    padding: 20px 10px 20px;
   }
 }
-.row {
+.row1 {
   max-width: 1140px;
 }
 .tab-panel {
@@ -80,4 +80,24 @@
 .items {
   display: flex;
   flex-direction: column;
+}
+h2,
+p,
+span {
+  color: #131313 !important;
+}
+p {
+  @media (max-width: 767px) {
+    font-size: 14px !important;
+  }
+}
+h2 {
+  @media (max-width: 767px) {
+    margin-bottom: 0 !important;
+  }
+}
+.divider {
+  @media (max-width: 767px) {
+    display: none !important;
+  }
 }

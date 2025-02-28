@@ -43,6 +43,7 @@
             <div class="block">
               <div class="image">
                 <img
+
                   *ngIf="task.type === 1"
                   src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
                   alt=""
@@ -59,7 +60,7 @@
                 />
               </div>
               <div class="info">
-                <div class="row">
+                <div class="row1">
                   <p class="name">
                     {{ task.assignee.firstName + " " + task.assignee.lastName }}
                   </p>
@@ -105,7 +106,7 @@
     <div class="calendar-info">
      <div class="block">
        <div class="info">
-         <img src="https://blobstudentportal.blob.core.windows.net/test/c2796965-889a-4753-8603-96428e96a8e2image%20%285%29.png" alt="">
+         <img class="img" src="https://blobstudentportal.blob.core.windows.net/test/c2796965-889a-4753-8603-96428e96a8e2image%20%285%29.png" alt="">
          <div class="txt">
            <div class="name">
              <p>{{assignee.firstName + ' ' + assignee.lastName}}</p>

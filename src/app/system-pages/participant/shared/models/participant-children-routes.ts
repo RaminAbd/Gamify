@@ -63,7 +63,7 @@ export class ParticipantChildrenRoutes {
     },
 
 
-    { path: '', redirectTo: 'projects', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     // { path: '**', redirectTo: 'projects', pathMatch: 'full' },
   ];
 }
