@@ -27,10 +27,35 @@ export class ParticipantProjectDetailsComponent {
     this.getTasks();
   }
   getTasks() {
-    this.service.getTasks();
+    this.service.getALlTasks();
   }
 
   getTask($event: any) {
-    this.router.navigate(['main/worker/tasks', $event.id]);
+    console.log($event);
+    switch ($event.type) {
+      case 1:
+        if ($event.status === 1)
+          this.router.navigate([
+            'main/participant/tasks/attendance',
+            $event.id,
+          ]);
+        break;
+      case 2:
+        if ($event.status === 1)
+          this.router.navigate([
+            'main/participant/tasks/performance',
+            $event.id,
+          ]);
+        break;
+      case 3:
+        if ($event.status === 1)
+          this.router.navigate(['main/participant/tasks/quiz', $event.id]);
+        else
+          this.router.navigate([
+            'main/participant/tasks/quiz-details',
+            $event.id,
+          ]);
+        break;
+    }
   }
 }

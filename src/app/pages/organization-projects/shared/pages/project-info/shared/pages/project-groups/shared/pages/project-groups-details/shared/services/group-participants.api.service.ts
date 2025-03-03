@@ -17,4 +17,12 @@ export class GroupParticipantsApiService extends BaseCrudApiService {
   Invite(req: any) {
     return this.post(this.serviceUrl + 'invite', req);
   }
+
+  GetInvitations(id: string) {
+    return this.get(this.serviceUrl + 'get-invitations/', id);
+  }
+
+  Accept(req: any) {
+    return this.post(this.serviceUrl + 'accept-invitation', req);
+  }
 }

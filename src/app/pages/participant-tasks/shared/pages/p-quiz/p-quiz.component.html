@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <div class="wallpaper">
+    <div class="back">
+      <img
+        src="https://blobstudentportal.blob.core.windows.net/test/cb0753d6-1610-444e-94de-9814686aa4f4537aefc6b6e8aaea03d77bc7285afef6%20%281%29.webp"
+        alt=""
+      />
+    </div>
+    <div class="type-name">
+      <div class="type">
+        <img
+          src="https://blobstudentportal.blob.core.windows.net/test/91b7c925-3fee-43b9-bd5c-d04beca5046fimage%20%287%29%20%281%29.webp"
+          alt=""
+        />
+      </div>
+      <div class="name">
+        <p>{{ task.name }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="items-wrapper" style="margin-top: 30px">
+    <div class="items">
+      <div class="item" *ngFor="let question of task.questions; let i = index">
+        <p>{{ i + 1 }}. {{ question.question }}</p>
+        <div class="answers">
+          <div class="answer" *ngFor="let ans of question.answers" (click)="setCorrect(question, ans)">
+            <div class="check">
+              <div class="checked" *ngIf="ans.correct"></div>
+            </div>
+            <div class="name">
+              <p>{{ ans.answer }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="finish()">Finish</button>
+  </div>
+</div>

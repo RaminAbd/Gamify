@@ -53,8 +53,6 @@ export const routes: Routes = [
   },
 
 
-
-
   {
     path: 'main',
     canActivate: [MainPageGuard],

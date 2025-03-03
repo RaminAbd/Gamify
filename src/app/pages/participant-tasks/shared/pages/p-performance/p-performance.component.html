@@ -1,0 +1,88 @@
+<div class="wrapper">
+  <div class="wallpaper">
+    <div class="back">
+      <img
+        src="https://blobstudentportal.blob.core.windows.net/test/a944c8dd-2f19-4a8f-8560-290b133698fc456a17baac72aae945cdf1def6773e51%20%282%29.webp"
+        alt=""
+      />
+    </div>
+    <div class="type-name">
+      <div class="type">
+        <img
+          src="https://blobstudentportal.blob.core.windows.net/test/88e04d0e-5d3f-4072-b253-e953304b78a03363af83fb1e0ac3bb15a6cadaef83ee%20%281%29.webp"
+          alt=""
+        />
+      </div>
+      <div class="name">
+        <p>{{task.name}}</p>
+      </div>
+    </div>
+    <div class="desc">
+      <p>
+        {{task.description}}
+      </p>
+    </div>
+  </div>
+  <div class="image">
+    <img
+      src="https://blobstudentportal.blob.core.windows.net/test/2676ce2e-3e50-44f3-a7bf-186ca189b73cimage%2031%20%281%29%20%281%29.webp"
+      alt=""
+      class="arrow"
+    />
+    <div class="steps">
+      <div class="list">
+        <div class="step">
+          <img
+            src="https://blobstudentportal.blob.core.windows.net/test/bac026c2-f169-47ba-81e5-a6f12c874f95624da450f28ca39c07a2b7bb89b6c332%20%281%29.webp"
+            alt=""
+          />
+          <p>1. Take a photo</p>
+        </div>
+        <div class="step">
+          <img
+            src="https://blobstudentportal.blob.core.windows.net/test/a4ade2af-0f24-45f2-a9d5-b9a22913c90f3aa802865e4745f9397c6b9e7edab2c9%20%281%29.webp"
+            alt=""
+          />
+          <p>2. Upload</p>
+        </div>
+        <div class="step">
+          <img
+            src="https://blobstudentportal.blob.core.windows.net/test/58780d50-e3d9-48e3-a3e2-1ff4fd8951eaac6da24fdf98175ffa5fcc1e1fcf30b6%20%281%29.webp"
+            alt=""
+          />
+          <p>3. Collect your points</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="uploaded-images" *ngIf="task.files.length > 0">
+    <div class="item" *ngFor="let item of task.files">
+      <i class="pi pi-trash" (click)="removeFile(item.id)"></i>
+      <img [src]="item.fileUrl" alt="">
+    </div>
+  </div>
+  <div class="btns">
+    <div class="input-item file-input">
+      <label
+        class="file-label"
+        for="file"
+      >
+        <p *ngIf="!request.file.fileUrl && !request.file.fileLoading">Upload</p>
+        <i *ngIf="request.file.fileLoading" class="pi pi-spin pi-spinner"></i>
+        <p *ngIf="request.file.fileUrl && !request.file.fileLoading">
+          {{ getFileName(request.file.fileName) }}
+        </p>
+      </label>
+      <input
+        id="file"
+        type="file"
+        [(ngModel)]="request.file.fakeFile"
+        (change)="getFile($event)"
+        multiple="false"
+        accept="image/*"
+      />
+    </div>
+    <button (click)="finishTask()">Finish</button>
+  </div>
+
+</div>

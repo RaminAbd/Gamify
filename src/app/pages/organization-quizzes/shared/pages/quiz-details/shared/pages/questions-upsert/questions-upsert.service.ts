@@ -38,8 +38,7 @@ export class QuestionsUpsertService {
 
   private buildRequest() {
     this.component.request.id = this.component.id;
-    let request: QuizRequestModel = new QuizRequestModel();
-    request = structuredClone(this.component.request);
+    let request: QuizRequestModel = structuredClone(this.component.request);
     request.questions = request.questions.sort((a, b) => a.index - b.index);
     this.setQuestions(request);
   }
