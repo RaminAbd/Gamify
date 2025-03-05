@@ -74,6 +74,20 @@
         ></p-dropdown>
       </div>
     </div>
+    <div class="row1" *ngIf="request.type === 1 || request.type === 3">
+<!--      expectedPoints-->
+      <div class="input-item">
+        <label for="expectedPoints">{{ "Expected Points" }}</label>
+        <input
+          type="number"
+          id="expectedPoints"
+          [(ngModel)]="request.expectedPoints"
+          [ngClass]="{
+            invalid: !request.expectedPoints && isSubmitted,
+          }"
+        />
+      </div>
+    </div>
     <div class="row1">
       <div class="input-item">
         <label>Description</label>

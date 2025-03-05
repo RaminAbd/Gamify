@@ -23,9 +23,8 @@ export class LevelUpsertComponent {
   request: LevelRequestModel = new LevelRequestModel();
   isSubmitted: boolean = false;
   types: any[] = [
-    { name: 'Type 1', value: 1 },
-    { name: 'Type 2', value: 2 },
-    { name: 'Type 3', value: 3 },
+    { name: 'Participant', value: 1 },
+    { name: 'Worker', value: 2 },
   ];
   constructor() {
     this.service.component = this;

@@ -24,7 +24,7 @@ export class PerformanceService {
 
   finishTask() {
     const req = {
-      taskId: this.component.task.id,
+      taskId: this.component.id,
       points: this.component.points,
     };
     this.service.Complete(req).subscribe((resp) => {

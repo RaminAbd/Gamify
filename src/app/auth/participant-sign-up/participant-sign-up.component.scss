@@ -59,11 +59,17 @@
             display: flex;
             gap: 16px;
             width: 100%;
+            @media (max-width: 769px) {
+              flex-direction: column;
+            }
             .input-item {
               display: flex;
               flex-direction: column;
               gap: 8px;
               flex: 1;
+              @media (max-width: 769px) {
+                width: 100%;
+              }
               label {
                 color: #90928d;
                 font-size: 14px;
@@ -293,4 +299,8 @@
 ;
   align-items: center;
   justify-content: center;
+  @media (max-width: 769px) {
+    height: auto;
+    margin-top: 30px;
+  }
 }

@@ -48,10 +48,10 @@ export class WorkerHomeService {
   getALlTasks() {
     // const id = localStorage.getItem('id') as string;
     const req = {
-      assigneeId: localStorage.getItem('id') as string,
+      workerId: localStorage.getItem('id') as string,
       projectId:this.component.selectedProject.id
     }
-    this.service.getAllForParticipant(req).subscribe((resp) => {
+    this.service.getAllForWorker(req).subscribe((resp) => {
       this.component.Tasks = resp.data.map((task: any) => ({
         ...task,
         time: this.formatTime(task.deadline),

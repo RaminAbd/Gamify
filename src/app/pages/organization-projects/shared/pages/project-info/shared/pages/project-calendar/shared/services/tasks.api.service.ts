@@ -23,5 +23,7 @@ export class TasksApiService extends BaseCrudApiService {
   getAllForParticipant(req: any) {
     return this.get(this.serviceUrl + 'get-all-by-assignee', null, req);
   }
-
+  getAllForWorker(req: any) {
+    return this.get(this.serviceUrl + 'get-all-by-worker', null, req);
+  }
 }

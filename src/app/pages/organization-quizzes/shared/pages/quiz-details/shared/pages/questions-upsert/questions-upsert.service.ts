@@ -20,11 +20,13 @@ export class QuestionsUpsertService {
       .GetById(this.service.serviceUrl, this.component.id)
       .subscribe((resp) => {
         this.component.request = resp.data;
+        console.log(this.component.request);
         this.component.request.questions.forEach((item, i) => {
           item.index = i + 1;
         });
         this.component.request.questions =
           this.component.request.questions.sort((a, b) => b.index - a.index);
+        console.log(this.component.request);
       });
   }
 

@@ -25,6 +25,7 @@ export class ParticipantHomeComponent {
   selectedProject: ProjectsResponseModel = new ProjectsResponseModel();
   projectDetails:ProjectDetailsModel = new ProjectDetailsModel();
   levelInfo:LevelResponseModel = new LevelResponseModel();
+  showWarning: boolean = false;
   constructor() {
     this.service.component = this;
     this.service.getParticipant();
@@ -37,7 +38,21 @@ export class ParticipantHomeComponent {
     console.log(this.selectedProject);
   }
 
+  isValidTask(task: any): boolean {
+    const now = new Date(); // Current date and time
+    const startTime = new Date(task.startTime);
+    const deadline = new Date(task.deadline);
+    console.log(startTime, deadline, now);
+    return startTime >= now && deadline >= now;
+  }
+
   getTask($event: any) {
+    if (!this.isValidTask($event)) {
+      this.showWarning = true;
+      console.log(this.showWarning);
+      return;
+    }
+
     console.log($event);
     switch ($event.type) {
       case 1:

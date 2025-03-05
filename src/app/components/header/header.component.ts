@@ -23,7 +23,6 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
         style({
           width: '*',
           visibility: 'visible',
-          display: 'block',
         }),
       ),
       state(
@@ -53,13 +52,13 @@ export class HeaderComponent {
     var questPages = document.querySelector('.burger') as Element;
     if (this.showMenu) {
       questPages.classList.add('active');
-      setTimeout(() => {
-        this.isHidden = true;
-      }, 500);
+      this.isHidden = false;
+
     } else {
       questPages.classList.remove('active');
-      this.isHidden = false;
+
     }
+    console.log(this.isHidden);
   }
 
   closeBurger() {

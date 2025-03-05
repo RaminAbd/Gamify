@@ -7,4 +7,5 @@ export class TaskRequestModel {
   type: number;
   startTime: string;
   deadline: string;
+  expectedPoints:number;
 }

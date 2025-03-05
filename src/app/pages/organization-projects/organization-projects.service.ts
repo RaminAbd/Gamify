@@ -18,9 +18,13 @@ export class OrganizationProjectsService {
   getAll() {
     const id = localStorage.getItem('id') as string;
     this.service.GetAllByOrganization(id).subscribe((resp) => {
-      this.component.projects = resp.data;
+      this.component.projects = resp.data.map((item:any) => ({
+        ...item,
+        status:item.status === 1 ? 'On going' : 'Complete'
+      }))
     });
   }
+
 
   setCols() {
     this.component.cols = [

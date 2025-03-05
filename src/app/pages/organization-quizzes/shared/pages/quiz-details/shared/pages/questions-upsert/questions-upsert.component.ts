@@ -1,12 +1,12 @@
-import {Component, inject} from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {UpsertHeadingComponent} from '../../../../../../../../components/upsert-heading/upsert-heading.component';
-import {ActivatedRoute, Router} from '@angular/router';
-import {QuizRequestModel} from '../../../../../models/quizzes-request.model';
-import {QuestionModel} from '../../../../../models/question.model';
-import {AnswerModel} from '../../../../../models/answer.model';
-import {QuestionsUpsertService} from './questions-upsert.service';
+import { Component, inject } from '@angular/core';
+import { NgForOf, NgIf } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpsertHeadingComponent } from '../../../../../../../../components/upsert-heading/upsert-heading.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuizRequestModel } from '../../../../../models/quizzes-request.model';
+import { QuestionModel } from '../../../../../models/question.model';
+import { AnswerModel } from '../../../../../models/answer.model';
+import { QuestionsUpsertService } from './questions-upsert.service';
 
 @Component({
   selector: 'app-questions-upsert',
@@ -15,10 +15,10 @@ import {QuestionsUpsertService} from './questions-upsert.service';
     NgIf,
     ReactiveFormsModule,
     UpsertHeadingComponent,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './questions-upsert.component.html',
-  styleUrl: './questions-upsert.component.scss'
+  styleUrl: './questions-upsert.component.scss',
 })
 export class QuestionsUpsertComponent {
   private service: QuestionsUpsertService = inject(QuestionsUpsertService);
@@ -33,7 +33,12 @@ export class QuestionsUpsertComponent {
 
   addQuestion() {
     let newItem = new QuestionModel();
-    newItem.index = this.request.questions[0].index + 1;
+    if (this.request.questions.length > 0) {
+      newItem.index = this.request.questions[0].index + 1;
+    }
+    else{
+      newItem.index = 0
+    }
     this.request.questions.unshift(newItem);
   }
 
@@ -48,7 +53,7 @@ export class QuestionsUpsertComponent {
 
   addAnswer(question: QuestionModel) {
     let newItem = new AnswerModel();
-    if(question.answers.length === 0) {
+    if (question.answers.length === 0) {
       newItem.correct = true;
     }
     question.answers.push(newItem);

@@ -23,10 +23,11 @@
         <div class="items">
           <div class="item rank">
             <div class="image">
-              <img src="https://blobstudentportal.blob.core.windows.net/test/9d67ac54-174b-475d-b75f-2bc013881005image%205.png" alt="">
+              <!--                 https://blobstudentportal.blob.core.windows.net/test/9d67ac54-174b-475d-b75f-2bc013881005image%205.png-->
+              <img [src]="levelInfo.image" alt="">
             </div>
             <div class="text">
-              <p>Gold 3</p>
+              <p>{{ levelInfo.name }}</p>
               <label>Rank</label>
             </div>
           </div>
@@ -35,7 +36,7 @@
               <img src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png" alt="">
             </div>
             <div class="text">
-              <p>120</p>
+              <p>{{ levelInfo.totalPoints }}</p>
               <label>Stars</label>
             </div>
           </div>

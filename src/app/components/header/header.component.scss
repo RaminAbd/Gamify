@@ -102,6 +102,8 @@ nav {
       right: 0;
       height: 100svh;
       width: 100%;
+      display: block;
+
 
       ul {
         flex-direction: column;
@@ -170,5 +172,5 @@ nav {
   transform: translateY(-7px) rotate(-45deg);
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
