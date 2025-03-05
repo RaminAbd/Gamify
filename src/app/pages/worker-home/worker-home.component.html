@@ -1,0 +1,158 @@
+<div class="wrapper">
+  <div class="heading">
+    <p-dropdown
+      [style]="{ width: '100%', height: '40px' }"
+      [options]="projects"
+      optionLabel="name"
+      [(ngModel)]="selectedProject"
+      id="implementationType"
+      (ngModelChange)="getInfos()"
+    ></p-dropdown>
+  </div>
+  <div class="content-calendar">
+    <div class="content">
+      <div class="group-info">
+        <div class="image-info">
+          <div class="image">
+            <!--            https://blobstudentportal.blob.core.windows.net/test/33c6bf5f-b2a5-49c4-a9c5-3fb3e650a5e7image%20%286%29.png-->
+            <img
+              [src]="projectDetails.groupImage"
+              alt=""
+            />
+          </div>
+          <div class="info">
+            <h4>{{ projectDetails.groupName }} 🔥</h4>
+            <p>Group name</p>
+          </div>
+        </div>
+        <div class="stars">
+          <p class="count">
+            <img
+              src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+              alt=""
+            />
+            {{ projectDetails.total }}
+          </p>
+          <label>Total stars</label>
+        </div>
+      </div>
+      <div class="activities">
+        <div class="items">
+          <div
+            class="wrap"
+            *ngFor="let task of Tasks"
+            (click)="getTask(task)"
+            [ngClass]="{
+              attendance: task.type === 1,
+              performance: task.type === 2,
+              quiz: task.type === 3,
+            }"
+          >
+            <div class="block">
+              <div class="image">
+                <img
+
+                  *ngIf="task.type === 1"
+                  src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
+                  alt=""
+                />
+                <img
+                  *ngIf="task.type === 2"
+                  src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
+                  alt=""
+                />
+                <img
+                  *ngIf="task.type === 3"
+                  src="https://blobstudentportal.blob.core.windows.net/test/85fc5795-fb5b-4763-91d8-bd9465108739image%20%285%29.png"
+                  alt=""
+                />
+              </div>
+              <div class="info">
+                <div class="row1">
+                  <p class="name">
+                    {{ task.assignee.firstName + " " + task.assignee.lastName }}
+                  </p>
+                  <p class="time">
+                    <img
+                      style="width: 15px"
+                      src="https://blobstudentportal.blob.core.windows.net/test/73a81a1e-ea1a-4301-a720-0d90364ac0d2e1d563b6bbf3f2f02164f104c9384d58-_1_.webp"
+                      alt=""
+                    />
+                    {{ task.time }}
+                  </p>
+                </div>
+                <div class="stars">
+                  <div class="star">
+                    <img
+                      src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                      alt=""
+                    />
+                  </div>
+                  <p *ngIf="task.expectedPoints>0">+{{ task.expectedPoints }}</p>
+                  <p *ngIf="task.expectedPoints===0">+<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.641 0.00485818C9.47103 -0.0551418 8.43103 0.444858 7.75103 1.26986C7.75103 1.26986 6.98603 2.25986 6.98603 2.25486C6.98603 2.25486 6.02103 3.51986 6.02603 3.51986L5.19603 4.60986L5.13103 4.69486C4.65603 5.32986 3.81603 5.68486 2.93103 5.42486C2.59966 5.32496 2.30066 5.13909 2.06442 4.88616C1.82818 4.63323 1.66312 4.32226 1.58603 3.98486C1.5171 3.69268 1.51508 3.3887 1.58013 3.09564C1.64517 2.80257 1.7756 2.52799 1.96166 2.2924C2.14772 2.05682 2.38461 1.86632 2.65464 1.73514C2.92466 1.60397 3.22083 1.5355 3.52103 1.53486C4.12603 1.53486 4.57603 1.78986 4.88603 2.05986C5.21603 2.34986 5.72103 2.30486 5.99103 1.95486C6.22603 1.64986 6.19603 1.20986 5.91603 0.949858C4.33603 -0.500142 1.34603 -0.170142 0.391029 1.84486C-0.848971 4.45986 1.04103 7.03986 3.52103 7.03986C4.61103 7.03986 5.58603 6.55486 6.23103 5.77486L6.44603 5.49486C6.44603 5.49486 6.99103 4.77986 6.99103 4.78486C6.99103 4.78486 7.95603 3.51986 7.95103 3.51986L8.79603 2.41486L8.85603 2.33986C9.29103 1.74986 10.041 1.41486 10.866 1.57486C11.596 1.71986 12.201 2.28986 12.381 3.01486C12.711 4.32986 11.721 5.51486 10.456 5.51486C9.86103 5.51486 9.41103 5.25986 9.10103 4.98486C9.02274 4.91621 8.93119 4.86437 8.83204 4.83257C8.73289 4.80078 8.62826 4.78969 8.52465 4.8C8.42104 4.81032 8.32065 4.84181 8.22972 4.89253C8.13879 4.94325 8.05924 5.01212 7.99603 5.09486C7.75103 5.41486 7.79603 5.85986 8.09603 6.12986C8.56103 6.54486 9.35603 7.04986 10.456 7.04986C12.556 7.04986 14.231 5.20486 13.946 3.04986C13.726 1.38986 12.306 0.0898582 10.641 0.00485818Z" fill="#00A6ED"/>
+                  </svg>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="status" *ngIf="task.status === 3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="14"
+                viewBox="0 0 15 14"
+                fill="none"
+              >
+                <path
+                  d="M12.9842 0.751373C12.7546 0.623759 12.5021 0.542627 12.2412 0.512611C11.9802 0.482595 11.7159 0.504283 11.4633 0.576437C11.2107 0.648591 10.9748 0.769797 10.7691 0.933132C10.5633 1.09647 10.3918 1.29873 10.2642 1.52837L6.55125 8.21037L4.42625 6.08537C4.24175 5.89435 4.02106 5.74199 3.77706 5.63717C3.53305 5.53235 3.27061 5.47718 3.00505 5.47487C2.73949 5.47256 2.47613 5.52317 2.23034 5.62373C1.98455 5.72429 1.76124 5.8728 1.57346 6.06058C1.38567 6.24837 1.23717 6.47167 1.1366 6.71746C1.03604 6.96326 0.985439 7.22662 0.987746 7.49218C0.990054 7.75773 1.04523 8.02017 1.15004 8.26418C1.25486 8.50819 1.40723 8.72888 1.59825 8.91337L5.59825 12.9134C5.97625 13.2924 6.48625 13.5004 7.01225 13.5004L7.28925 13.4804C7.5958 13.4375 7.88821 13.324 8.14347 13.149C8.39872 12.9739 8.60986 12.7419 8.76025 12.4714L13.7602 3.47137C13.8879 3.24182 13.9691 2.98938 13.9992 2.72845C14.0293 2.46753 14.0077 2.20323 13.9356 1.95065C13.8635 1.69807 13.7424 1.46216 13.5792 1.25639C13.416 1.05062 13.2138 0.879011 12.9842 0.751373Z"
+                  fill="white"
+                />
+              </svg>
+              <p>Completed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calendar-info">
+      <div class="block">
+        <div class="info">
+          <img class="img" src="https://blobstudentportal.blob.core.windows.net/test/c2796965-889a-4753-8603-96428e96a8e2image%20%285%29.png" alt="">
+          <div class="txt">
+            <div class="name">
+              <p>{{assignee.firstName + ' ' + assignee.lastName}}</p>
+            </div>
+            <div class="items">
+              <div class="item rank">
+                <div class="image">
+                  <!--                 https://blobstudentportal.blob.core.windows.net/test/9d67ac54-174b-475d-b75f-2bc013881005image%205.png-->
+                  <img [src]="levelInfo.image" alt="">
+                </div>
+                <div class="text">
+                  <p>{{ levelInfo.name }}</p>
+                  <label>Rank</label>
+                </div>
+              </div>
+              <div class="item star">
+                <div class="image">
+                  <img src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png" alt="">
+                </div>
+                <div class="text">
+                  <p>{{ levelInfo.totalPoints }}</p>
+                  <label>Stars</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="calendar">
+        <app-worker-calendar
+          (emitTask)="getTask($event)"
+          [data]="Tasks"
+        ></app-worker-calendar>
+      </div>
+    </div>
+  </div>
+</div>

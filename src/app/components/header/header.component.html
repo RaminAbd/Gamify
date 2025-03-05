@@ -22,10 +22,7 @@
     <ul class="nav-links" *ngFor="let section of sections">
       <li *ngFor="let link of section.links" (click)="closeBurger()">
         <a [routerLink]="link.url" [routerLinkActive]="['active']">
-           <span
-             style="display: flex"
-             [innerHTML]="sanitize(link.icon)"
-           ></span>
+          <img [src]="'navigation-images/'+link.iconURL" alt="">
           <p>{{ link.name }}</p>
         </a>
       </li>

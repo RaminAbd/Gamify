@@ -13,10 +13,7 @@
             [routerLink]="link.url"
             [routerLinkActive]="['active']"
           >
-            <span
-              style="display: flex"
-              [innerHTML]="sanitize(link.icon)"
-            ></span>
+            <img [src]="'navigation-images/'+link.iconURL" alt="">
             <p>{{ link.name }}</p>
           </a>
         </div>

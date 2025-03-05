@@ -9,9 +9,18 @@ import {QuizComponent} from '../../../../pages/tasks/shared/pages/quiz/quiz.comp
 import {
   TaskRootDetailsComponent
 } from '../../../../pages/tasks/shared/pages/task-root-details/task-root-details.component';
+import {WorkerHomeComponent} from '../../../../pages/worker-home/worker-home.component';
+import {
+  PQuizDetailsComponent
+} from '../../../../pages/participant-tasks/shared/pages/p-quiz-details/p-quiz-details.component';
 
 export class WorkerChildrenRoutes {
   static children: Route[] = [
+    {
+      path: 'home',
+      component: WorkerHomeComponent,
+      data: { title: 'Home' },
+    },
     {
       path: 'invitations',
       component: InvitationsComponent,
@@ -52,9 +61,13 @@ export class WorkerChildrenRoutes {
       component: QuizComponent,
       data: { title: 'Tasks' },
     },
+    {
+      path: 'tasks/quiz-details/:id',
+      component: PQuizDetailsComponent,
+      data: { title: 'Tasks' },
+    },
 
-
-    { path: '', redirectTo: 'projects', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     // { path: '**', redirectTo: 'projects', pathMatch: 'full' },
   ];
 }

@@ -16,6 +16,9 @@ import {
 import {
   ProjectCalendarComponent
 } from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-calendar/project-calendar.component';
+import {
+  ProjectLevelsComponent
+} from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-levels/project-levels.component';
 
 export class OrganizationChildrenRoutes {
   static children: Route[] = [
@@ -68,6 +71,11 @@ export class OrganizationChildrenRoutes {
         {
           path: 'calendar',
           component: ProjectCalendarComponent,
+          data: { title: 'Projects' },
+        },
+        {
+          path: 'levels',
+          component: ProjectLevelsComponent,
           data: { title: 'Projects' },
         },
         { path: '', redirectTo: 'about', pathMatch: 'full' },

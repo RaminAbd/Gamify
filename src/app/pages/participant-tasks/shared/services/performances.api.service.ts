@@ -18,4 +18,8 @@ export class PerformancesApiService extends BaseCrudApiService {
   RemoveFile(req:any){
     return this.post(this.serviceUrl + 'remove-file', req);
   }
+
+  Complete(req:any){
+    return this.post(this.serviceUrl + 'complete', req);
+  }
 }

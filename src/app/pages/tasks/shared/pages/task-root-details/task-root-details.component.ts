@@ -40,7 +40,11 @@ export class TaskRootDetailsComponent {
         this.router.navigate(['main/worker/tasks/performance', $event.id]);
         break;
       case 3:
-        this.router.navigate(['main/worker/tasks/quiz', $event.id]);
+        this.router.navigate([
+          'main/worker/tasks/quiz-details',
+          $event.id,
+        ]);
+        // this.router.navigate(['main/worker/tasks/quiz', $event.id]);
         break;
     }
   }

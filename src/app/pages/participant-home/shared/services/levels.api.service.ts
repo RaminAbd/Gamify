@@ -15,4 +15,12 @@ export class LevelsApiService extends BaseCrudApiService {
   GetParticipantLevel(req:any){
     return this.get(this.serviceUrl + 'get-participant-level',null,  req)
   }
+
+  GetWorkerLevel(req:any){
+    return this.get(this.serviceUrl + 'get-worker-level',null,  req)
+  }
+
+  GetAllByProject(id:string){
+    return this.get(this.serviceUrl + 'getAll/', id)
+  }
 }

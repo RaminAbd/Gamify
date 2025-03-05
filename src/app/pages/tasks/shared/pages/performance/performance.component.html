@@ -1,1 +1,39 @@
-<p>performance works!</p>
+<div class="wrapper">
+  <div class="wallpaper">
+    <div class="back">
+      <img
+        src="https://blobstudentportal.blob.core.windows.net/test/a944c8dd-2f19-4a8f-8560-290b133698fc456a17baac72aae945cdf1def6773e51%20%282%29.webp"
+        alt=""
+      />
+    </div>
+    <div class="type-name">
+      <div class="type">
+        <img
+          src="https://blobstudentportal.blob.core.windows.net/test/88e04d0e-5d3f-4072-b253-e953304b78a03363af83fb1e0ac3bb15a6cadaef83ee%20%281%29.webp"
+          alt=""
+        />
+      </div>
+      <div class="name">
+        <p>{{ task.name }}</p>
+      </div>
+    </div>
+    <div class="desc">
+      <p>
+        {{ task.description }}
+      </p>
+    </div>
+  </div>
+
+  <div class="uploaded-images" *ngIf="task.files.length > 0">
+    <div class="item" *ngFor="let item of task.files">
+      <img [src]="item.fileUrl" alt="" />
+    </div>
+  </div>
+  <div class="input-item">
+    <label>Earned Points</label>
+    <input type="number" [(ngModel)]="points" />
+  </div>
+  <div class="btns">
+    <button (click)="finishTask()">Finish</button>
+  </div>
+</div>

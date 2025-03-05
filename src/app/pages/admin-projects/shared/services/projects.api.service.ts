@@ -29,4 +29,7 @@ export class ProjectsApiService extends BaseCrudApiService {
   getDetailsByParticipant(req:any) {
     return this.get(this.serviceUrl + 'get-details-for-participant', null, req);
   }
+  getDetailsForWorker(req:any) {
+    return this.get(this.serviceUrl + 'get-details-for-worker', null, req);
+  }
 }

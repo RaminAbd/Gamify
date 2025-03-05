@@ -1,3 +1,13 @@
+.heading{
+  h3{
+    color: #131313;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
 .course-info {
   display: flex;
   flex-direction: column;
@@ -89,6 +99,8 @@
         width: 100%;
         padding: 20px;
         border-bottom: 1px solid #e3e3e2;
+        border-radius: 16px;
+        background: #32BF77;
         @media (max-width: 769px) {
           flex-wrap: wrap;
           gap: 20px;
@@ -121,7 +133,10 @@
           font-size: 14px;
           font-weight: 600;
           line-height: 16.94px;
-          color: #90928d;
+          color: #FFF;
+        }
+        p{
+          color: #FFF;
         }
         .value {
           display: flex;
@@ -131,15 +146,16 @@
             font-size: 14px;
             font-weight: 500;
             line-height: 16.94px;
+            color: #FFF;
           }
         }
         button {
           padding: 15px;
-          background: var(--dark-blue);
+          background: #FFF;
           font-weight: 600;
           font-size: 16px;
           line-height: 19px;
-          color: #fff;
+          color: #32BF77 !important;
           border: none;
           outline: none;
           cursor: pointer;
@@ -147,6 +163,7 @@
           align-items: center;
           justify-content: center;
           position: relative;
+          border-radius: 10px;
         }
       }
     }

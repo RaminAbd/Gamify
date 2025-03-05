@@ -10,13 +10,12 @@ import { WorkerChildrenRoutes } from './system-pages/worker/shared/models/worker
 import { WorkerSignUpComponent } from './auth/worker-sign-up/worker-sign-up.component';
 import { ParticipantSignUpComponent } from './auth/participant-sign-up/participant-sign-up.component';
 import { ParticipantChildrenRoutes } from './system-pages/participant/shared/models/participant-children-routes';
-import {HomeComponent} from './pages/landing/home/home.component';
-import {SubscribeComponent} from './pages/landing/subscribe/subscribe.component';
-import {AboutUsComponent} from './pages/landing/about-us/about-us.component';
-import {ServicesComponent} from './pages/landing/services/services.component';
-import {ContactComponent} from './pages/landing/contact/contact.component';
-import {FaqComponent} from './pages/landing/faq/faq.component';
-import {QuestChildrenRoutes} from './system-pages/quest/shared/models/quest-children-routes';
+import { HomeComponent } from './pages/landing/home/home.component';
+import { SubscribeComponent } from './pages/landing/subscribe/subscribe.component';
+import { AboutUsComponent } from './pages/landing/about-us/about-us.component';
+import { ServicesComponent } from './pages/landing/services/services.component';
+import { ContactComponent } from './pages/landing/contact/contact.component';
+import { FaqComponent } from './pages/landing/faq/faq.component';
 
 export const routes: Routes = [
   { path: 'auth', component: SignInComponent, data: { title: 'Sign in' } },
@@ -39,7 +38,9 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./system-pages/quest/quest.component').then((m) => m.QuestComponent),
+      import('./system-pages/quest/quest.component').then(
+        (m) => m.QuestComponent,
+      ),
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'subscribe', component: SubscribeComponent },
@@ -51,7 +52,6 @@ export const routes: Routes = [
       // { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
-
 
   {
     path: 'main',
