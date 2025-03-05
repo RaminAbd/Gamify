@@ -19,6 +19,12 @@ import {
 import {
   ProjectLevelsComponent
 } from '../../../../pages/organization-projects/shared/pages/project-info/shared/pages/project-levels/project-levels.component';
+import {AttendanceComponent} from '../../../../pages/tasks/shared/pages/attendance/attendance.component';
+import {PerformanceComponent} from '../../../../pages/tasks/shared/pages/performance/performance.component';
+import {QuizComponent} from '../../../../pages/tasks/shared/pages/quiz/quiz.component';
+import {
+  PQuizDetailsComponent
+} from '../../../../pages/participant-tasks/shared/pages/p-quiz-details/p-quiz-details.component';
 
 export class OrganizationChildrenRoutes {
   static children: Route[] = [
@@ -103,6 +109,27 @@ export class OrganizationChildrenRoutes {
         },
         { path: '', redirectTo: 'about', pathMatch: 'full' },
       ],
+    },
+
+    {
+      path: 'tasks/attendance/:taskId',
+      component: AttendanceComponent,
+      data: { title: 'Tasks' },
+    },
+    {
+      path: 'tasks/performance/:taskId',
+      component: PerformanceComponent,
+      data: { title: 'Tasks' },
+    },
+    {
+      path: 'tasks/quiz/:taskId',
+      component: QuizComponent,
+      data: { title: 'Tasks' },
+    },
+    {
+      path: 'tasks/quiz-details/:id',
+      component: PQuizDetailsComponent,
+      data: { title: 'Tasks' },
     },
     { path: '', redirectTo: 'projects', pathMatch: 'full' },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' },

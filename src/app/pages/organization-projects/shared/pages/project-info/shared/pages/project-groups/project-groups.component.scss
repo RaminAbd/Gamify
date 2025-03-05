@@ -12,7 +12,7 @@
     height: 35px;
     border-radius: 6px;
     background-color: #c6e7ff;
-    color: var(--dark-blue);
+    color: var(--dark-blue) !important;
     font-weight: 600;
     font-size: 16px;
     &.not-allowed {

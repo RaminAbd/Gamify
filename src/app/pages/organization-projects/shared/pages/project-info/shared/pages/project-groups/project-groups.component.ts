@@ -64,6 +64,6 @@ export class ProjectGroupsComponent {
   }
 
   editGroup() {
-    this.service.openDialog(this.selectedGroup.id, this.selectedGroup);
+   this.service.getItem()
   }
 }

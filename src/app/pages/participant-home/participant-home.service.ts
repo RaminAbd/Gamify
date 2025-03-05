@@ -27,9 +27,7 @@ export class ParticipantHomeService {
         name: project.name + '`s tasks',
       }));
       this.component.selectedProject = this.component.projects[0];
-      this.getDetails()
-      this.getALlTasks()
-      this.getParticipantLevel()
+      this.component.getInfos()
     });
   }
 

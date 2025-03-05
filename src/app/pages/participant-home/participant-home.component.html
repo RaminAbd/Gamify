@@ -6,6 +6,7 @@
       optionLabel="name"
       [(ngModel)]="selectedProject"
       id="implementationType"
+      (ngModelChange)="getInfos()"
     ></p-dropdown>
   </div>
   <div class="content-calendar">

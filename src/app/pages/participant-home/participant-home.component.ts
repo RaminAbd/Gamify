@@ -30,6 +30,12 @@ export class ParticipantHomeComponent {
     this.service.getParticipant();
     this.service.getProjects();
   }
+  getInfos(){
+    this.service.getDetails()
+    this.service.getALlTasks()
+    this.service.getParticipantLevel()
+    console.log(this.selectedProject);
+  }
 
   getTask($event: any) {
     console.log($event);

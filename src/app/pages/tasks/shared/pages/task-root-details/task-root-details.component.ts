@@ -31,7 +31,7 @@ export class TaskRootDetailsComponent {
 
 
   getTask($event: any) {
-    if($event.status === 3) return;
+    // if($event.status === 3) return;
     switch ($event.type) {
       case 1:
         this.router.navigate(['main/worker/tasks/attendance', $event.id]);

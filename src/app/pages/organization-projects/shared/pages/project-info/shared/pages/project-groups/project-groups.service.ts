@@ -29,7 +29,7 @@ export class ProjectGroupsService {
     const ref = this.dialogService.open(GroupUpsertComponent, {
       header: 'Group',
       width: '460px',
-      data: group ? group.name : '',
+      data: group,
       style: {
         maxWidth: '95%',
       },
@@ -38,7 +38,8 @@ export class ProjectGroupsService {
       if (e) {
         const req: any = {
           projectId: this.component.id,
-          name: e,
+          name: e.name,
+          image: e.image,
         };
         if (groupId === 'create') this.create(req);
         else {
@@ -74,5 +75,13 @@ export class ProjectGroupsService {
         this.getGroups();
       }
     });
+  }
+
+  getItem() {
+    this.service
+      .GetById(this.service.serviceUrl, this.component.selectedGroup.id)
+      .subscribe((resp) => {
+        this.openDialog(this.component.selectedGroup.id, resp.data);
+      });
   }
 }

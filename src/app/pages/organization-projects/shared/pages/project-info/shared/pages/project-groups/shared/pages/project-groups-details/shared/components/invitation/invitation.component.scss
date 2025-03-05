@@ -51,7 +51,7 @@
       height: 41px;
       border-radius: 12px;
       background: #F6F6F6;
-      color: #656668;
+      color: #656668 !important;
       font-size: 14px;
       font-weight: 600;
       @media (max-width: 400px) {
@@ -60,7 +60,7 @@
       }
       &.save{
         background: var(--primary-color);
-        color: #FFF;
+        color: #FFF !important;
       }
     }
   }
