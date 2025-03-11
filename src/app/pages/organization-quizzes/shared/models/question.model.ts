@@ -4,4 +4,5 @@ export class QuestionModel {
   index:number;
   question: string;
   answers: AnswerModel[] = [];
+  points:number;
 }

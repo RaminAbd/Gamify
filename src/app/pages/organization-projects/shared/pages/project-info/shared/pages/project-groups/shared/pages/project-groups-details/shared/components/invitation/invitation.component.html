@@ -18,6 +18,10 @@
   </form>
   <div class="items">
     <div class="item" *ngFor="let item of selectedEmails; let i = index">
+      <div class="col" style="max-width: 100px;">
+        <label>{{ "Index" }}</label>
+        <p class="value">{{ i + 1 }}</p>
+      </div>
       <div class="col">
         <label>{{ "Email" }}</label>
         <p class="value">{{ item }}</p>

@@ -14,6 +14,7 @@
     <div class="item" *ngFor="let question of request.questions; let i = index">
       <div class="q-name">
         {{ question.index }}.
+        <input type="number" [(ngModel)]="question.points" style="max-width: 100px;min-width: 100px"/>
         <input type="text" [(ngModel)]="question.question" />
         <img src="delete.svg" alt="" (click)="removeQuestion(i)" />
       </div>

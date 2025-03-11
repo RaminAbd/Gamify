@@ -31,7 +31,7 @@ export class GroupWorkersService {
   open() {
     const ref = this.dialogService.open(InvitationComponent, {
       header: 'Add worker',
-      width: '460px',
+      width: '800px',
       data: this.component.groupWorkers,
       style: {
         maxWidth: '95%',

@@ -25,6 +25,7 @@ import {QuizComponent} from '../../../../pages/tasks/shared/pages/quiz/quiz.comp
 import {
   PQuizDetailsComponent
 } from '../../../../pages/participant-tasks/shared/pages/p-quiz-details/p-quiz-details.component';
+import {OrganizationProfileComponent} from '../../../../pages/organization-profile/organization-profile.component';
 
 export class OrganizationChildrenRoutes {
   static children: Route[] = [
@@ -130,6 +131,13 @@ export class OrganizationChildrenRoutes {
       path: 'tasks/quiz-details/:id',
       component: PQuizDetailsComponent,
       data: { title: 'Tasks' },
+    },
+
+
+    {
+      path: 'profile',
+      component: OrganizationProfileComponent,
+      data: { title: 'Profile' },
     },
     { path: '', redirectTo: 'projects', pathMatch: 'full' },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' },

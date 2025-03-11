@@ -5,6 +5,7 @@
         <label>Start date</label>
         <p-datepicker
           [(ngModel)]="startDate"
+          [showTime]="true"
           [ngClass]="{
             invalid: !startDate && isSubmitted,
           }"
@@ -14,6 +15,7 @@
         <label>End date</label>
         <p-datepicker
           [(ngModel)]="endDate"
+          [showTime]="true"
           [ngClass]="{
             invalid: !endDate && isSubmitted,
           }"

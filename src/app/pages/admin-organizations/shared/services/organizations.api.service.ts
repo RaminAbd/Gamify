@@ -14,4 +14,12 @@ export class OrganizationsApiService extends BaseCrudApiService {
   SignUp(req: any) {
     return this.post(this.serviceUrl + 'sign-up', req);
   }
+
+  ChangeOrganizationId(req: any) {
+    return this.post(this.serviceUrl + 'change-organizationid', req);
+  }
+
+  ChangeEmail(req: any) {
+    return this.post(this.serviceUrl + 'change-email', req);
+  }
 }

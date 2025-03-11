@@ -29,19 +29,8 @@ export class OrganizationSignUpComponent {
   request: OrganizationsRequestModel = new OrganizationsRequestModel();
   requestForm = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    organizationId: ['', Validators.required],
-    name: ['', Validators.required],
-    country: ['', Validators.required],
-    website: ['', Validators.required],
-    socialMediaLink: ['', Validators.required],
     password: ['', Validators.required],
-    logo: [''],
     repeatPass: ['', Validators.required],
-  });
-  otpForm = this.fb.group({
-    otpCode: ['', Validators.required],
   });
 
   constructor() {
@@ -57,43 +46,12 @@ export class OrganizationSignUpComponent {
     );
   }
 
-  getFile(e: any) {
-    this.request.logo.fileLoading = true;
-    this.service.getFile(e, (resp: any) => {
-      this.request.logo.fileLoading = false;
-      this.request.logo = resp.data;
-      this.request.logo.fakeFile = null;
-      this.request.logo.isValid = true;
-    });
-  }
-
-  getFileName(fileName: string): string {
-    if (fileName) {
-      if (fileName.length > 30) {
-        return this.changeFileName(fileName);
-      } else {
-        return fileName;
-      }
-    } else {
-      return '';
-    }
-  }
-
-  changeFileName(name: string) {
-    return (
-      name.substring(0, 10) +
-      '...' +
-      name.substring(name.length - 5, name.length)
-    );
-  }
-
   Action() {
     console.log(this.requestForm.value, 'requestFOrm', this.requestForm.valid);
     console.log(this.request);
     this.isSubmitted = true;
     if (
       this.requestForm.valid &&
-      this.request.logo.fileUrl &&
       this.request.password === this.request.repeatPassword
     ) {
       this.service.checkUserName();

@@ -31,7 +31,7 @@ export class GroupParticipantsService {
   open() {
     const ref = this.dialogService.open(InvitationComponent, {
       header: 'Add participant',
-      width: '460px',
+      width: '800px',
       data: this.component.groupParticipants,
       style: {
         maxWidth: '95%',

@@ -15,12 +15,17 @@ export class OrganizationNavigationBarComponent {
         {
           name: 'Projects',
           url: 'organization/projects',
-          iconURL:'projects.png'
+          iconURL: 'projects.png',
         },
         {
           name: 'Quizzes',
           url: 'organization/quizzes',
-          iconURL:'projects.png'
+          iconURL: 'projects.png',
+        },
+        {
+          name: 'Profile',
+          url: 'organization/profile',
+          iconURL: 'projects.png',
         },
       ],
     },
