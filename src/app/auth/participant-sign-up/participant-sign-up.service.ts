@@ -38,17 +38,6 @@ export class ParticipantSignUpService {
       });
   }
 
-  getFile(e: any, fileHandler: any) {
-    const files = e.target.files;
-    for (let i = 0; i < files.length; i++) {
-      const fd = new FormData();
-      fd.append('file', files[i]);
-      this.blob.UploadFile(fd).subscribe((resp: any) => {
-        fileHandler(resp);
-      });
-    }
-  }
-
   checkUserName() {
     this.component.signinLoading = true;
     this.authService.Exists(this.component.request.email).subscribe((resp) => {

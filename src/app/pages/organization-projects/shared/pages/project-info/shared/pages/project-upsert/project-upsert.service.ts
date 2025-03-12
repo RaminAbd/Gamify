@@ -64,11 +64,16 @@ export class ProjectUpsertService {
   }
 
   save() {
-    this.component.request.startDate = this.component.startDate.toISOString();
-    this.component.request.endDate = this.component.startDate.toISOString();
+    if (this.component.startDate) {
+      this.component.request.startDate = this.component.startDate.toISOString();
+    }
+    if (this.component.endDate) {
+      this.component.request.endDate = this.component.endDate.toISOString();
+    }
     this.component.request.organizationId = localStorage.getItem(
       'id',
     ) as string;
+
     if (this.isValid()) {
       if (this.component.id !== 'create') {
         this.update();
@@ -87,8 +92,7 @@ export class ProjectUpsertService {
       !this.component.request.endDate ||
       !this.component.request.name ||
       !this.component.request.description ||
-      !this.component.request.rewardRules ||
-      !this.component.request.image.fileUrl
+      !this.component.request.rewardRules
     )
       result = false;
     return result;
@@ -100,7 +104,7 @@ export class ProjectUpsertService {
       .subscribe((resp) => {
         if (resp.succeeded) {
           this.message.showSuccessMessage('Successfully updated.');
-          this.getItem()
+          this.getItem();
         }
       });
   }
@@ -111,7 +115,7 @@ export class ProjectUpsertService {
       .subscribe((resp) => {
         if (resp.succeeded) {
           this.message.showSuccessMessage('Successfully created.');
-          this.component.location.back()
+          this.component.location.back();
         }
       });
   }

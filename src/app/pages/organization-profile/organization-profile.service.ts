@@ -81,8 +81,14 @@ export class OrganizationProfileService {
       if (e) {
         this.component.signinLoading = true;
         this.component.request.otpCode = e;
-        this.update();
+        this.changeEmail();
       }
+    });
+  }
+
+  private changeEmail() {
+    this.service.ChangeEmail(this.component.request).subscribe((resp) => {
+      this.update();
     });
   }
 
@@ -91,15 +97,11 @@ export class OrganizationProfileService {
       .Update(this.service.serviceUrl, this.component.request)
       .subscribe((resp) => {
         if (resp.succeeded) {
-          this.changeEmail();
+          this.getOrganization();
+          this.component.signinLoading = false;
         }
       });
   }
 
-  private changeEmail() {
-    this.service.ChangeEmail(this.component.request).subscribe((resp) => {
-      this.getOrganization();
-      this.component.signinLoading = false;
-    });
-  }
+
 }

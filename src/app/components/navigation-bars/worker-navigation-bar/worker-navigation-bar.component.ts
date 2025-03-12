@@ -27,6 +27,11 @@ export class WorkerNavigationBarComponent {
           url: 'worker/invitations',
           iconURL: 'invitations.png',
         },
+        {
+          name: 'Profile',
+          url: 'worker/profile',
+          iconURL: 'profile.png',
+        },
       ],
     },
   ];

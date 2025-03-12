@@ -5,12 +5,13 @@ import {
   OrganizationsResponseModel
 } from '../../../../../../../admin-organizations/shared/models/organizations-response.model';
 import {ProjectDetailsService} from './project-details.service';
-import {DatePipe} from '@angular/common';
+import {DatePipe, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-project-details',
   imports: [
-    DatePipe
+    DatePipe,
+    NgIf
   ],
   templateUrl: './project-details.component.html',
   styleUrl: './project-details.component.scss'

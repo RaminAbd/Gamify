@@ -4,9 +4,10 @@ import { UpsertHeadingComponent } from '../../../../../components/upsert-heading
 import { AdminProjectDetailsService } from './admin-project-details.service';
 import { ProjectsRequestModel } from '../../models/projects-request.model';
 import { OrganizationsResponseModel } from '../../../../admin-organizations/shared/models/organizations-response.model';
+import {NgIf} from '@angular/common';
 @Component({
   selector: 'app-admin-project-details',
-  imports: [UpsertHeadingComponent],
+  imports: [UpsertHeadingComponent, NgIf],
   templateUrl: './admin-project-details.component.html',
   styleUrl: './admin-project-details.component.scss',
 })

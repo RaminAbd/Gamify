@@ -1,44 +1,40 @@
 import { Component, inject } from '@angular/core';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { OrganizationsRequestModel } from '../admin-organizations/shared/models/organizations-request.model';
-import { OrganizationProfileService } from './organization-profile.service';
+import { WorkerProfileService } from './worker-profile.service';
+import { WorkerSignupRequestModel } from '../../auth/worker-sign-up/shared/models/worker-signup-request.model';
 
 @Component({
-  selector: 'app-organization-profile',
-  imports: [NgIf, ReactiveFormsModule, RouterLink],
-  templateUrl: './organization-profile.component.html',
-  styleUrl: './organization-profile.component.scss',
+  selector: 'app-worker-profile',
+  imports: [FormsModule, NgIf, ReactiveFormsModule],
+  templateUrl: './worker-profile.component.html',
+  styleUrl: './worker-profile.component.scss',
 })
-export class OrganizationProfileComponent {
-  private service: OrganizationProfileService = inject(
-    OrganizationProfileService,
-  );
+export class WorkerProfileComponent {
+  private service: WorkerProfileService = inject(WorkerProfileService);
   isSubmitted: boolean = false;
   passVisible: boolean = false;
   repeatPassVisible: boolean = false;
-  requestSent: boolean = false;
   signinLoading: boolean = false;
   private fb: FormBuilder = inject(FormBuilder);
-  request: OrganizationsRequestModel = new OrganizationsRequestModel();
+  request: WorkerSignupRequestModel = new WorkerSignupRequestModel();
   requestForm = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    organizationId: ['', Validators.required],
-    name: ['', Validators.required],
-    country: ['', Validators.required],
-    website: ['', Validators.required],
-    socialMediaLink: ['', Validators.required],
     password: ['', Validators.required],
-    logo: [''],
+    image: [''],
     repeatPass: ['', Validators.required],
   });
 
   constructor() {
     this.service.component = this;
-    this.service.getOrganization();
+    this.service.getGroupWorker();
   }
 
   validateField(field: string) {
@@ -51,12 +47,12 @@ export class OrganizationProfileComponent {
   }
 
   getFile(e: any) {
-    this.request.logo.fileLoading = true;
+    this.request.image.fileLoading = true;
     this.service.getFile(e, (resp: any) => {
-      this.request.logo.fileLoading = false;
-      this.request.logo = resp.data;
-      this.request.logo.fakeFile = null;
-      this.request.logo.isValid = true;
+      this.request.image.fileLoading = false;
+      this.request.image = resp.data;
+      this.request.image.fakeFile = null;
+      this.request.image.isValid = true;
     });
   }
 
@@ -82,15 +78,14 @@ export class OrganizationProfileComponent {
 
   Action() {
     this.isSubmitted = true;
-
     if (
       this.requestForm.valid &&
-      this.request.logo.fileUrl &&
+      this.request.image.fileUrl &&
       this.request.password === this.request.repeatPassword
     ) {
       this.signinLoading = true;
-      if (this.service.OrganizationCopy.email !== this.request.email) {
-        console.log(this.service.OrganizationCopy.email, this.request.email)
+      if (this.service.Copy.email !== this.request.email) {
+        console.log(this.service.Copy.email, this.request.email);
         this.service.checkUserName();
       } else {
         this.service.update();
@@ -98,5 +93,8 @@ export class OrganizationProfileComponent {
     } else {
       this.service.message.showWarningMessage('Fields are not valid');
     }
+  }
+  openAvatars() {
+    this.service.openAvatars();
   }
 }

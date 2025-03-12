@@ -2,17 +2,15 @@ import { Route } from '@angular/router';
 import { WorkerProjectsComponent } from '../../../../pages/worker-projects/worker-projects.component';
 import { InvitationsComponent } from '../../../../pages/invitations/invitations.component';
 import { WorkerProjectDetailsComponent } from '../../../../pages/worker-projects/shared/pages/worker-project-details/worker-project-details.component';
-import {TasksComponent} from '../../../../pages/tasks/tasks.component';
-import {AttendanceComponent} from '../../../../pages/tasks/shared/pages/attendance/attendance.component';
-import {PerformanceComponent} from '../../../../pages/tasks/shared/pages/performance/performance.component';
-import {QuizComponent} from '../../../../pages/tasks/shared/pages/quiz/quiz.component';
-import {
-  TaskRootDetailsComponent
-} from '../../../../pages/tasks/shared/pages/task-root-details/task-root-details.component';
-import {WorkerHomeComponent} from '../../../../pages/worker-home/worker-home.component';
-import {
-  PQuizDetailsComponent
-} from '../../../../pages/participant-tasks/shared/pages/p-quiz-details/p-quiz-details.component';
+import { TasksComponent } from '../../../../pages/tasks/tasks.component';
+import { AttendanceComponent } from '../../../../pages/tasks/shared/pages/attendance/attendance.component';
+import { PerformanceComponent } from '../../../../pages/tasks/shared/pages/performance/performance.component';
+import { QuizComponent } from '../../../../pages/tasks/shared/pages/quiz/quiz.component';
+import { TaskRootDetailsComponent } from '../../../../pages/tasks/shared/pages/task-root-details/task-root-details.component';
+import { WorkerHomeComponent } from '../../../../pages/worker-home/worker-home.component';
+import { PQuizDetailsComponent } from '../../../../pages/participant-tasks/shared/pages/p-quiz-details/p-quiz-details.component';
+import { OrganizationProfileComponent } from '../../../../pages/organization-profile/organization-profile.component';
+import { WorkerProfileComponent } from '../../../../pages/worker-profile/worker-profile.component';
 
 export class WorkerChildrenRoutes {
   static children: Route[] = [
@@ -65,6 +63,12 @@ export class WorkerChildrenRoutes {
       path: 'tasks/quiz-details/:id',
       component: PQuizDetailsComponent,
       data: { title: 'Tasks' },
+    },
+
+    {
+      path: 'profile',
+      component: WorkerProfileComponent,
+      data: { title: 'Profile' },
     },
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },

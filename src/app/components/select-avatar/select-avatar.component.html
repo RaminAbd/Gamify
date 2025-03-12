@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="items">
+    <div
+      class="item"
+      *ngFor="let item of avatars"
+      [ngClass]="{ selected: item.id === selected.id }"
+      (click)="selected = item"
+    >
+      <img [src]="item.imageUrl" alt="" />
+    </div>
+  </div>
+
+  <div class="btns">
+    <button (click)="ref.close()">{{ "Cancel" }}</button>
+    <button class="save" (click)="save()">{{ "Save" }}</button>
+  </div>
+</div>

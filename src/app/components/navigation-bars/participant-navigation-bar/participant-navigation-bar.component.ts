@@ -27,6 +27,11 @@ export class ParticipantNavigationBarComponent {
           url: 'participant/invitations',
           iconURL: 'invitations.png',
         },
+        {
+          name: 'Profile',
+          url: 'participant/profile',
+          iconURL: 'profile.png',
+        },
       ],
     },
   ];

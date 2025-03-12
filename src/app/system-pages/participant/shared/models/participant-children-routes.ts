@@ -29,6 +29,8 @@ import {
 import {
   ParticipantInvitationsComponent
 } from '../../../../pages/participant-invitations/participant-invitations.component';
+import {WorkerProfileComponent} from '../../../../pages/worker-profile/worker-profile.component';
+import {ParticipantProfileComponent} from '../../../../pages/participant-profile/participant-profile.component';
 
 export class ParticipantChildrenRoutes {
   static children: Route[] = [
@@ -52,6 +54,7 @@ export class ParticipantChildrenRoutes {
       component: ParticipantProjectDetailsComponent,
       data: { title: 'Projects' },
     },
+
     // {
     //   path: 'tasks',
     //   component: TasksComponent,
@@ -91,6 +94,12 @@ export class ParticipantChildrenRoutes {
       component: PQuizDetailsComponent,
       data: { title: 'Tasks' },
     },
+    {
+      path: 'profile',
+      component: ParticipantProfileComponent,
+      data: { title: 'Profile' },
+    },
+
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     // { path: '**', redirectTo: 'projects', pathMatch: 'full' },
   ];

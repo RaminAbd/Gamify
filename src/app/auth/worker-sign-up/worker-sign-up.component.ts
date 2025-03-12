@@ -17,7 +17,6 @@ export class WorkerSignUpComponent {
   isSubmitted: boolean = false;
   passVisible: boolean = false;
   repeatPassVisible: boolean = false;
-  requestSent: boolean = false;
   signinLoading: boolean = false;
   private fb: FormBuilder = inject(FormBuilder);
   request: WorkerSignupRequestModel = new WorkerSignupRequestModel();
@@ -27,10 +26,7 @@ export class WorkerSignUpComponent {
       { value: '', disabled: true },
       [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)],
     ],
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
     password: ['', Validators.required],
-    image: [''],
     repeatPass: ['', Validators.required],
   });
 
@@ -48,43 +44,10 @@ export class WorkerSignUpComponent {
     );
   }
 
-  getFile(e: any) {
-    this.request.image.fileLoading = true;
-    this.service.getFile(e, (resp: any) => {
-      this.request.image.fileLoading = false;
-      this.request.image = resp.data;
-      this.request.image.fakeFile = null;
-      this.request.image.isValid = true;
-    });
-  }
-
-  getFileName(fileName: string): string {
-    if (fileName) {
-      if (fileName.length > 30) {
-        return this.changeFileName(fileName);
-      } else {
-        return fileName;
-      }
-    } else {
-      return '';
-    }
-  }
-
-  changeFileName(name: string) {
-    return (
-      name.substring(0, 10) +
-      '...' +
-      name.substring(name.length - 5, name.length)
-    );
-  }
-
   Action() {
-    console.log(this.requestForm.value, 'requestFOrm', this.requestForm.valid);
-    console.log(this.request);
     this.isSubmitted = true;
     if (
       this.requestForm.valid &&
-      this.request.image.fileUrl &&
       this.request.password === this.request.repeatPassword
     ) {
       this.service.checkUserName();

@@ -25,7 +25,7 @@ export class OrganizationNavigationBarComponent {
         {
           name: 'Profile',
           url: 'organization/profile',
-          iconURL: 'projects.png',
+          iconURL: 'profile.png',
         },
       ],
     },
