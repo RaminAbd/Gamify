@@ -16,6 +16,7 @@ import { AboutUsComponent } from './pages/landing/about-us/about-us.component';
 import { ServicesComponent } from './pages/landing/services/services.component';
 import { ContactComponent } from './pages/landing/contact/contact.component';
 import { FaqComponent } from './pages/landing/faq/faq.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: 'auth', component: SignInComponent, data: { title: 'Sign in' } },
@@ -33,6 +34,11 @@ export const routes: Routes = [
     path: 'participant-sign-up/:id',
     component: ParticipantSignUpComponent,
     data: { title: 'Sign Up' },
+  },
+  {
+    path: 'forgot',
+    component: ForgotPasswordComponent,
+    data: { title: 'Forgot' },
   },
 
   {

@@ -50,7 +50,7 @@
                 </div>
               </div>
             </div>
-            <div class="row1">
+            <div class="row1 forgot">
               <div class="remember">
                 <input
                   type="checkbox"
@@ -60,12 +60,17 @@
                 />
                 <label for="rememberMe">{{ "Remember me" }}</label>
               </div>
+              <a routerLink="/forgot">Forgot password ?</a>
             </div>
             <button>
               {{ "Login"
               }}<i class="pi pi-spin pi-spinner" *ngIf="signinLoading"></i>
             </button>
-            <button style="margin-top: -10px;" type="button" routerLink="/org-sign-up">
+            <button
+              style="margin-top: -10px"
+              type="button"
+              routerLink="/org-sign-up"
+            >
               {{ "Sign Up as an Organization" }}
             </button>
           </div>
