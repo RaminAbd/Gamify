@@ -37,7 +37,7 @@ export class QuestionsUpsertComponent {
       newItem.index = this.request.questions[0].index + 1;
     }
     else{
-      newItem.index = 0
+      newItem.index = 1
     }
     this.request.questions.unshift(newItem);
   }

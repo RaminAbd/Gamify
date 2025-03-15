@@ -14,8 +14,8 @@
     <div class="item" *ngFor="let question of request.questions; let i = index">
       <div class="q-name">
         {{ question.index }}.
-        <input type="number" [(ngModel)]="question.points" style="max-width: 100px;min-width: 100px"/>
-        <input type="text" [(ngModel)]="question.question" />
+        <input type="number" [(ngModel)]="question.points" placeholder="Point" style="max-width: 100px;min-width: 100px"/>
+        <input type="text" [(ngModel)]="question.question" placeholder="Question"/>
         <img src="delete.svg" alt="" (click)="removeQuestion(i)" />
       </div>
       <div class="answers">
@@ -30,7 +30,7 @@
             <div class="checked" *ngIf="ans.correct"></div>
           </div>
           <div class="name">
-            <input type="text" [(ngModel)]="ans.answer" />
+            <input type="text" [(ngModel)]="ans.answer" placeholder="Answer {{j+1}}" />
             <img src="delete.svg" alt="" (click)="removeAnswer(j, question)" />
           </div>
         </div>

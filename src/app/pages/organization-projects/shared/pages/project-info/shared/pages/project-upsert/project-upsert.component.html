@@ -10,26 +10,6 @@
           <label for="name">Name</label>
           <input id="name" type="text" [(ngModel)]="request.name">
         </div>
-        <div class="input-item">
-          <label for="description">Description</label>
-          <input id="description" type="text" [(ngModel)]="request.description">
-        </div>
-      </div>
-      <div class="row1">
-        <div class="input-item">
-          <label>Start date</label>
-          <p-datepicker [(ngModel)]="startDate" />
-        </div>
-        <div class="input-item">
-          <label>End date</label>
-          <p-datepicker [(ngModel)]="endDate" />
-        </div>
-      </div>
-      <div class="row1">
-        <div class="input-item">
-          <label for="rewardRules">Reward rules</label>
-          <input id="rewardRules" type="text" [(ngModel)]="request.rewardRules">
-        </div>
         <div class="input-item file-input">
           <label>{{ "Image (650x220px)" }}</label>
           <label
@@ -70,6 +50,27 @@
             accept="image/*"
 
           />
+        </div>
+
+      </div>
+      <div class="row1">
+        <div class="input-item">
+          <label>Start date</label>
+          <p-datepicker [(ngModel)]="startDate" />
+        </div>
+        <div class="input-item">
+          <label>End date</label>
+          <p-datepicker [(ngModel)]="endDate" />
+        </div>
+      </div>
+      <div class="row1">
+        <div class="input-item">
+          <label for="rewardRules">Reward rules</label>
+          <textarea id="rewardRules" type="text" [(ngModel)]="request.rewardRules"></textarea>
+        </div>
+        <div class="input-item">
+          <label for="description">Description</label>
+          <textarea id="description" type="text" [(ngModel)]="request.description"></textarea>
         </div>
       </div>
 

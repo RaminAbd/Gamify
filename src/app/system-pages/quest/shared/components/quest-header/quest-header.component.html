@@ -5,11 +5,11 @@
   </div>
   <nav class="navigation">
     <a routerLink="home" [routerLinkActive]="['active']">Home</a>
-    <a routerLink="subscribe" [routerLinkActive]="['active']">Subscribe</a>
+<!--    <a routerLink="subscribe" [routerLinkActive]="['active']">Subscribe</a>-->
     <a routerLink="about" [routerLinkActive]="['active']">About Us</a>
     <a routerLink="tool" [routerLinkActive]="['active']">Tool</a>
     <a routerLink="contact" [routerLinkActive]="['active']">Contact Us</a>
-    <a routerLink="auth" [routerLinkActive]="['active']">Login</a>
+    <a routerLink="auth" [routerLinkActive]="['active']">Sign in</a>
   </nav>
   <div class="menu-button w-nav-button" (click)="toggleMenu()" >
     <div class="icon-menu w-icon-nav-menu"><i class="pi pi-bars"></i></div>
@@ -17,11 +17,11 @@
   <div class="nav-overlay-mobile"  [@menuExpand]="isOpen ? 'open' : 'closed'" >
     <nav class="myNav navigation">
       <a routerLink="home" (click)="isOpen = false" [routerLinkActive]="['active']">Home</a>
-      <a routerLink="subscribe" (click)="isOpen = false" [routerLinkActive]="['active']">Subscribe</a>
+<!--      <a routerLink="subscribe" (click)="isOpen = false" [routerLinkActive]="['active']">Subscribe</a>-->
       <a routerLink="about" (click)="isOpen = false" [routerLinkActive]="['active']">About Us</a>
       <a routerLink="tool" (click)="isOpen = false" [routerLinkActive]="['active']">Tool</a>
       <a routerLink="contact" (click)="isOpen = false" [routerLinkActive]="['active']">Contact Us</a>
-      <a routerLink="auth" [routerLinkActive]="['active']">Login</a>
+      <a routerLink="auth" [routerLinkActive]="['active']">Sign in</a>
     </nav>
   </div>
 </header>

@@ -43,7 +43,7 @@ export class ParticipantHomeComponent {
     const startTime = new Date(task.startTime);
     const deadline = new Date(task.deadline);
     console.log(startTime, deadline, now);
-    return startTime >= now && deadline >= now;
+    return now >= startTime && now <= deadline;
   }
 
   getTask($event: any) {

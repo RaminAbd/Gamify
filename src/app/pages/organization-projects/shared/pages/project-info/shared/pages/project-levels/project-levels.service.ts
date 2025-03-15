@@ -21,15 +21,20 @@ export class ProjectLevelsService {
   component: ProjectLevelsComponent;
   constructor() {}
 
+
   getAll() {
     this.service.GetAllByProject(this.component.id).subscribe((resp) => {
-      this.component.levels = resp.data;
+      this.component.levels = resp.data.map((item:any) => ({
+        ...item,
+        type:item.type === 1 ? 'Participant' : 'Worker',
+      }));
     });
   }
 
   setCols() {
     this.component.cols = [
       { field: 'name', header: 'Name' },
+      { field: 'type', header: 'Type' },
       { field: 'fromPoints', header: 'From Points' },
       { field: 'toPoints', header: 'To Points' },
       { field: 'crudActions', header: 'Actions' },
