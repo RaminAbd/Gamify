@@ -56,6 +56,16 @@ export class ParticipantProjectDetailsComponent {
             $event.id,
           ]);
         break;
+      case 4:
+        this.router.navigate(['main/participant/tasks/voting', $event.id]);
+        // if ($event.status === 1)
+
+        // else
+        //   this.router.navigate([
+        //     'main/participant/tasks/quiz-details',
+        //     $event.id,
+        //   ]);
+        break;
     }
   }
 }

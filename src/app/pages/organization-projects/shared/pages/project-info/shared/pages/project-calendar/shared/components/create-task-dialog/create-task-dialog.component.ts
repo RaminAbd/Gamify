@@ -45,6 +45,7 @@ export class CreateTaskDialogComponent {
     { name: 'Attendance', value: 1 },
     { name: 'Performance', value: 2 },
     { name: 'Quiz', value: 3 },
+    { name: 'Voting', value: 4 },
   ];
   startDate: any;
   endDate: any;

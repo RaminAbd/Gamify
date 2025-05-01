@@ -11,6 +11,7 @@ import { WorkerHomeComponent } from '../../../../pages/worker-home/worker-home.c
 import { PQuizDetailsComponent } from '../../../../pages/participant-tasks/shared/pages/p-quiz-details/p-quiz-details.component';
 import { OrganizationProfileComponent } from '../../../../pages/organization-profile/organization-profile.component';
 import { WorkerProfileComponent } from '../../../../pages/worker-profile/worker-profile.component';
+import {VotingComponent} from '../../../../pages/tasks/shared/pages/voting/voting.component';
 
 export class WorkerChildrenRoutes {
   static children: Route[] = [
@@ -57,6 +58,11 @@ export class WorkerChildrenRoutes {
     {
       path: 'tasks/quiz/:taskId',
       component: QuizComponent,
+      data: { title: 'Tasks' },
+    },
+    {
+      path: 'tasks/voting/:id',
+      component: VotingComponent,
       data: { title: 'Tasks' },
     },
     {

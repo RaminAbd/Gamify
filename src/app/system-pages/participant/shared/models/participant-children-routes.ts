@@ -31,6 +31,7 @@ import {
 } from '../../../../pages/participant-invitations/participant-invitations.component';
 import {WorkerProfileComponent} from '../../../../pages/worker-profile/worker-profile.component';
 import {ParticipantProfileComponent} from '../../../../pages/participant-profile/participant-profile.component';
+import {PVotingComponent} from '../../../../pages/participant-tasks/shared/pages/p-voting/p-voting.component';
 
 export class ParticipantChildrenRoutes {
   static children: Route[] = [
@@ -81,6 +82,11 @@ export class ParticipantChildrenRoutes {
     {
       path: 'tasks/quiz/:id',
       component: PQuizComponent,
+      data: { title: 'Tasks' },
+    },
+    {
+      path: 'tasks/voting/:id',
+      component: PVotingComponent,
       data: { title: 'Tasks' },
     },
     {

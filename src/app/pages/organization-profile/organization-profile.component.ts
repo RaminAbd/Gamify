@@ -26,7 +26,7 @@ export class OrganizationProfileComponent {
     email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    organizationId: ['', Validators.required],
+    // organizationId: ['', Validators.required],
     name: ['', Validators.required],
     country: ['', Validators.required],
     website: ['', Validators.required],

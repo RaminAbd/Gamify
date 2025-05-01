@@ -75,6 +75,10 @@ export class WorkerHomeComponent {
         this.router.navigate(['main/worker/tasks/quiz-details', $event.id]);
 
         break;
+      case 4:
+        this.router.navigate(['main/worker/tasks/voting', $event.id]);
+
+        break;
     }
   }
 }

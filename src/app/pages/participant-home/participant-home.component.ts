@@ -42,7 +42,9 @@ export class ParticipantHomeComponent {
     const now = new Date(); // Current date and time
     const startTime = new Date(task.startTime);
     const deadline = new Date(task.deadline);
-    console.log(startTime, deadline, now);
+    // console.log(startTime, deadline, now);
+    console.log("now >= startTime:", now >= startTime);
+    console.log("now <= deadline:", now <= deadline);
     return now >= startTime && now <= deadline;
   }
 
@@ -77,6 +79,16 @@ export class ParticipantHomeComponent {
             'main/participant/tasks/quiz-details',
             $event.id,
           ]);
+        break;
+      case 4:
+        this.router.navigate(['main/participant/tasks/voting', $event.id]);
+        // if ($event.status === 1)
+
+        // else
+        //   this.router.navigate([
+        //     'main/participant/tasks/quiz-details',
+        //     $event.id,
+        //   ]);
         break;
     }
   }

@@ -955,3 +955,6 @@ p-datepicker {
     height: 300px;
   }
 }
+.p-datepicker-select-month, .p-datepicker-select-year{
+  color: var(--p-datepicker-select-month-hover-color) !important;
+}

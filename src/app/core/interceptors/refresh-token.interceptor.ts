@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   throwError as observableThrowError,
   Observable,
@@ -11,11 +11,11 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import {Router} from '@angular/router';
-import {StorageService} from '../services/storage.service';
-import {AuthApiService} from '../../auth/shared/services/auth.api.service';
-import {AuthRequestModel} from '../../auth/shared/models/auth-request.model';
-import {SignInService} from '../../auth/sign-in/sign-in.service';
+import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
+import { AuthApiService } from '../../auth/shared/services/auth.api.service';
+import { AuthRequestModel } from '../../auth/shared/models/auth-request.model';
+import { SignInService } from '../../auth/sign-in/sign-in.service';
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {
@@ -24,8 +24,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
     private router: Router,
     private apiService: AuthApiService,
     private signInService: SignInService,
-  ) {
-  }
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -38,19 +37,28 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
             'authRequest',
           ) as AuthRequestModel;
           if (req && req.remember) {
-            this.signInService.SignIn(req);
+            this.SignIn(req);
           } else {
-            this.navigateToSignIn().then(() => {
-            });
+            this.navigateToSignIn().then(() => {});
           }
         }
         if (errorResponse.status === 403) {
-          this.navigateToSignIn().then(() => {
-          });
+          this.navigateToSignIn().then(() => {});
         }
         return observableThrowError(errorResponse);
       }),
     );
+  }
+
+  SignIn(req: AuthRequestModel) {
+    this.apiService.SignIn(req).subscribe((resp: any) => {
+      if (!resp.succeeded) {
+        this.navigateToSignIn();
+      } else {
+        this.signInService.setToStorage(resp.data, req);
+        this.signInService.navigateByRole(resp.data);
+      }
+    });
   }
 
   async navigateToSignIn() {

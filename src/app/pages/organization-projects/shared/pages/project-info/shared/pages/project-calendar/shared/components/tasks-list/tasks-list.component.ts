@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { NgForOf } from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TasksResponseModel } from '../../models/tasks-response.model';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks-list',
-  imports: [NgForOf],
+  imports: [NgForOf, NgIf],
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.scss',
 })
@@ -16,8 +16,21 @@ export class TasksListComponent {
   public router: Router = inject(Router);
   id: string = this.config.data.projectId;
   tasks: TasksResponseModel[] = this.config.data.tasks;
+  showWarning: boolean = false;
+  isValidTask(task: any): boolean {
+    const now = new Date(); // Current date and time
+    const startTime = new Date(task.startTime);
+    const deadline = new Date(task.deadline);
+    console.log(startTime, deadline, now);
+    return now >= startTime && now <= deadline;
+  }
 
   getTask($event: any) {
+    if (!this.isValidTask($event)) {
+      this.showWarning = true;
+      console.log(this.showWarning);
+      return;
+    }
     // if ($event.status === 3) return;
     this.ref.close()
     switch ($event.type) {
@@ -29,6 +42,9 @@ export class TasksListComponent {
         break;
       case 3:
         this.router.navigate(['main/organization/tasks/quiz-details', $event.id]);
+        break;
+      case 4:
+        this.router.navigate(['main/organization/tasks/voting', $event.id]);
         break;
     }
   }

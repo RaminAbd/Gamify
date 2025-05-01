@@ -34,3 +34,11 @@
     }
   }
 }
+::ng-deep {
+  .p-confirmdialog-accept-button {
+    .p-button-label,
+     .p-button-icon {
+      color: #fff;
+    }
+  }
+}

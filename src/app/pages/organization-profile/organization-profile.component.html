@@ -44,41 +44,6 @@
                   [class.invalid]="validateField('name')"
                 />
               </div>
-              <div class="input-item">
-                <label for="organizationId">{{ "Organization Id" }}</label>
-                <input
-                  type="text"
-                  formControlName="organizationId"
-                  [(ngModel)]="request.organizationId"
-                  id="organizationId"
-                  [class.invalid]="validateField('organizationId')"
-                />
-              </div>
-            </div>
-
-            <div class="row1">
-              <div class="input-item">
-                <label for="website">{{ "Website URL" }}</label>
-                <input
-                  type="text"
-                  formControlName="website"
-                  [(ngModel)]="request.website"
-                  id="website"
-                  [class.invalid]="validateField('website')"
-                />
-              </div>
-              <div class="input-item">
-                <label for="socialMediaLink">{{ "Social media link" }}</label>
-                <input
-                  type="text"
-                  formControlName="socialMediaLink"
-                  [(ngModel)]="request.socialMediaLink"
-                  id="socialMediaLink"
-                  [class.invalid]="validateField('socialMediaLink')"
-                />
-              </div>
-            </div>
-            <div class="row1">
               <div class="input-item file-input">
                 <label>{{ "logo" }}</label>
                 <label
@@ -120,7 +85,41 @@
                   accept="image/*"
                 />
               </div>
+<!--              <div class="input-item">-->
+<!--                <label for="organizationId">{{ "Organization Id" }}</label>-->
+<!--                <input-->
+<!--                  type="text"-->
+<!--                  formControlName="organizationId"-->
+<!--                  [(ngModel)]="request.organizationId"-->
+<!--                  id="organizationId"-->
+<!--                  [class.invalid]="validateField('organizationId')"-->
+<!--                />-->
+<!--              </div>-->
             </div>
+
+            <div class="row1">
+              <div class="input-item">
+                <label for="website">{{ "Website URL" }}</label>
+                <input
+                  type="text"
+                  formControlName="website"
+                  [(ngModel)]="request.website"
+                  id="website"
+                  [class.invalid]="validateField('website')"
+                />
+              </div>
+              <div class="input-item">
+                <label for="socialMediaLink">{{ "Social media link" }}</label>
+                <input
+                  type="text"
+                  formControlName="socialMediaLink"
+                  [(ngModel)]="request.socialMediaLink"
+                  id="socialMediaLink"
+                  [class.invalid]="validateField('socialMediaLink')"
+                />
+              </div>
+            </div>
+
 
             <div class="row1">
               <div class="input-item">

@@ -44,7 +44,7 @@ export class OrganizationProjectsService {
         this.router.navigate(['/main/organization/projects', 'create', 'edit']);
         break;
       case 3:
-        this.confirm(e.data.id);
+        this.delete(e.data.id);
         break;
       case 4:
         this.router.navigate(['/main/organization/projects', e.data.id]);
@@ -52,15 +52,6 @@ export class OrganizationProjectsService {
     }
   }
 
-  confirm(id: string) {
-    Confirmation.confirm(
-      this.confirmationService,
-      'Are you sure you want to delete this group project?',
-      () => {
-        this.delete(id);
-      },
-    );
-  }
 
   private delete(id: string) {
     this.service.Delete(this.service.serviceUrl, id).subscribe((resp) => {

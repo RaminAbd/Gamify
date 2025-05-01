@@ -32,7 +32,6 @@ export class ProjectUpsertComponent{
     this.service.component = this;
     this.service.GetAllOrganizations();
   }
-
   startDate:any
   endDate:any
   isSubmitted = false;
@@ -67,6 +66,9 @@ export class ProjectUpsertComponent{
   }
 
   save() {
-    this.service.save()
+    if(!this.isSubmitted){
+      this.isSubmitted = true;
+      this.service.save()
+    }
   }
 }

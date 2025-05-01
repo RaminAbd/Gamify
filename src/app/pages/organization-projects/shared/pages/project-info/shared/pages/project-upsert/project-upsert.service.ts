@@ -40,6 +40,7 @@ export class ProjectUpsertService {
         );
         this.component.startDate = new Date(resp.data.startDate);
         this.component.endDate = new Date(resp.data.endDate);
+
       });
   }
 
@@ -105,6 +106,7 @@ export class ProjectUpsertService {
         if (resp.succeeded) {
           this.message.showSuccessMessage('Successfully updated.');
           this.getItem();
+          this.component.isSubmitted = false;
         }
       });
   }
@@ -116,6 +118,7 @@ export class ProjectUpsertService {
         if (resp.succeeded) {
           this.message.showSuccessMessage('Successfully created.');
           this.component.location.back();
+
         }
       });
   }
