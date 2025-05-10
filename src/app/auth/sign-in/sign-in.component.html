@@ -11,7 +11,17 @@
           class="item expander-container"
         >
           <div class="heading">
-            <p>{{ "Account" }}</p>
+            <div class="tabs" >
+              <a class="tab-item" (click)="selectedTab=1;" [ngClass]="{'selected':selectedTab===1}">
+                <p>{{ "Participant" }}</p>
+              </a>
+              <a class="tab-item" (click)="selectedTab=2" [ngClass]="{'selected':selectedTab===2}">
+                <p>{{ "Worker" }}</p>
+              </a>
+              <a class="tab-item" (click)="selectedTab=3" [ngClass]="{'selected':selectedTab===3}">
+                <p>{{ "Organization" }}</p>
+              </a>
+            </div>
           </div>
           <div class="inputs">
             <div class="row1">
@@ -67,11 +77,12 @@
               }}<i class="pi pi-spin pi-spinner" *ngIf="signinLoading"></i>
             </button>
             <button
+              *ngIf="selectedTab===3"
               style="margin-top: -10px"
               type="button"
               routerLink="/org-sign-up"
             >
-              {{ "Sign Up as an Organization" }}
+              {{ "Sign Up" }}
             </button>
           </div>
         </form>

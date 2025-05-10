@@ -28,18 +28,26 @@ export class ForgotPasswordService {
 
   checkUserName() {
     this.component.emailLoading = true;
-    this.authService.Exists(this.component.request.email).subscribe((resp) => {
+    let email = structuredClone(this.component.request.email);
+    if (this.component.selectedTab === 1) {
+      email = 'gm_participant' + email;
+    }
+    else if(this.component.selectedTab === 2) {
+      email = 'gm_youth_worker' + email;
+    }
+    this.authService.Exists(email).subscribe((resp) => {
+      this.component.emailLoading = false;
       if (resp.data.exists) {
-        this.sendCode();
+        this.sendCode(email);
       } else {
         this.message.showWarningMessage('User with given email does not exist');
       }
     });
   }
 
-  sendCode() {
+  sendCode(email:string) {
     const req = {
-      source: this.component.request.email,
+      source: email,
     };
     this.verificationService.send(req).subscribe((resp) => {
       if (resp.succeeded) {
@@ -67,15 +75,30 @@ export class ForgotPasswordService {
   }
 
   recoverPassword() {
+    let request = structuredClone(this.component.request);
+    if (this.component.selectedTab === 1) {
+      request.email = 'gm_participant' + request.email;
+    }
+    else if(this.component.selectedTab === 2) {
+      request.email = 'gm_youth_worker' + request.email;
+    }
+
     this.authService
-      .ForgotPassword(this.component.request)
+      .ForgotPassword(request)
       .subscribe((resp) => {
         if (!resp) {
           this.component.recoverLoading = false;
           return;
         }
+        let email = structuredClone(this.component.request.email);
+        if (this.component.selectedTab === 1) {
+          email = 'gm_participant' + email;
+        }
+        else if(this.component.selectedTab === 2) {
+          email = 'gm_youth_worker' + email;
+        }
         const req: AuthRequestModel = {
-          username: this.component.request.email,
+          username: email,
           password: this.component.request.password,
           remember: false,
         };

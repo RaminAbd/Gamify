@@ -5,14 +5,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ForgotPasswordService } from './forgot-password.service';
 import { ForgotRequestModel } from './shared/models/forgot-request.model';
 
 @Component({
   selector: 'app-forgot-password',
-  imports: [FormsModule, NgIf, ReactiveFormsModule, RouterLink],
+  imports: [FormsModule, NgIf, ReactiveFormsModule, RouterLink, NgClass],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss',
 })
@@ -31,6 +31,7 @@ export class ForgotPasswordComponent {
     password: ['', Validators.required],
     repeatPass: ['', Validators.required],
   });
+  selectedTab = 1;
   showMainForm: boolean = false;
   firstSubmitted: boolean = false;
   isSubmitted: boolean = false;

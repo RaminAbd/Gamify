@@ -28,7 +28,10 @@ export class ParticipantProfileComponent {
   private fb: FormBuilder = inject(FormBuilder);
   request: ParticipantSignupRequestModel = new ParticipantSignupRequestModel();
   requestForm = this.fb.group({
-    email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
+    email: [
+      { value: '', disabled: true },
+      [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)],
+    ],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     password: ['', Validators.required],
