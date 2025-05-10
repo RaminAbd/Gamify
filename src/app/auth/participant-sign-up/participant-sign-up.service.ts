@@ -40,7 +40,9 @@ export class ParticipantSignUpService {
 
   checkUserName() {
     this.component.signinLoading = true;
-    this.authService.Exists(this.component.request.email).subscribe((resp) => {
+    let email = structuredClone(this.component.request.email);
+    email = 'gm_participant' + email;
+    this.authService.Exists(email).subscribe((resp) => {
       if (resp.data.exists) {
         this.message.showWarningMessage('User with given email already exists');
       } else {
@@ -54,7 +56,7 @@ export class ParticipantSignUpService {
     this.service.SignUp(this.component.request).subscribe((resp) => {
       if (resp.succeeded) {
         const req: AuthRequestModel = {
-          username: this.component.request.email,
+          username: 'gm_participant' + this.component.request.email,
           password: this.component.request.password,
           remember: false,
         };
