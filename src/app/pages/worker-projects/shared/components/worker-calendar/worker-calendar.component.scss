@@ -380,6 +380,11 @@
               display: flex;
               align-items: center;
               gap: 4px;
+              svg{
+                width: 20px;
+                height: 10px;
+                margin-left: 3px;
+              }
               .star {
                 display: flex;
                 /* width: 18px; */

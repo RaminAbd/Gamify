@@ -8,4 +8,5 @@ export class ScheduleTaskModel{
   completed: boolean
   isToday:boolean;
   time:any;
+  expectedPoints:number;
 }

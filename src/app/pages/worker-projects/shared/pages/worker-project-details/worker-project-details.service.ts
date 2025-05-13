@@ -29,6 +29,7 @@ export class WorkerProjectDetailsService {
 
     this.taskRootService.getAllByProject(req).subscribe((resp) => {
       this.component.Tasks = resp.data;
+      console.log(this.component.Tasks);
     });
   }
 }

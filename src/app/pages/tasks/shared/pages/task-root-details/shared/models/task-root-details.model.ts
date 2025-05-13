@@ -10,4 +10,5 @@ export class TaskRootDetailsModel {
   type: number
   status: number
   time:any;
+  expectedPoints:number;
 }
