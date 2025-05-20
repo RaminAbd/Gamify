@@ -40,7 +40,7 @@
         <div class="items">
           <div
             class="wrap"
-            *ngFor="let task of Tasks"
+            *ngFor="let task of activeTasks"
             (click)="getTask(task)"
             [ngClass]="{
               attendance: task.type === 1,
@@ -118,16 +118,32 @@
     <div class="calendar-info">
       <div class="block">
         <div class="info">
-          <img class="img" src="https://blobstudentportal.blob.core.windows.net/test/c2796965-889a-4753-8603-96428e96a8e2image%20%285%29.png" alt="">
+          <img
+            style="width: 84px; height: 84px"
+            class="img"
+            [src]="
+              assignee.image.fileUrl
+                ? assignee.image.fileUrl
+                : 'https://blobstudentportal.blob.core.windows.net/test/c2796965-889a-4753-8603-96428e96a8e2image%20%285%29.png'
+            "
+            alt=""
+          />
           <div class="txt">
             <div class="name">
-              <p>{{assignee.firstName + ' ' + assignee.lastName}}</p>
+              <p>
+                {{
+                  assignee.firstName
+                    ? assignee.firstName + " " + assignee.lastName
+                    : assignee.email
+                }}
+              </p>
+              <p class="role">( Worker )</p>
             </div>
             <div class="items">
               <div class="item rank">
                 <div class="image">
                   <!--                 https://blobstudentportal.blob.core.windows.net/test/9d67ac54-174b-475d-b75f-2bc013881005image%205.png-->
-                  <img [src]="levelInfo.image" alt="">
+                  <img [src]="levelInfo.image" alt="" />
                 </div>
                 <div class="text">
                   <p>{{ levelInfo.name }}</p>
@@ -136,7 +152,10 @@
               </div>
               <div class="item star">
                 <div class="image">
-                  <img src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png" alt="">
+                  <img
+                    src="https://blobstudentportal.blob.core.windows.net/test/ceb9b733-e9c8-449e-8b84-9630700af8afimage%20%284%29.png"
+                    alt=""
+                  />
                 </div>
                 <div class="text">
                   <p>{{ levelInfo.totalPoints }}</p>

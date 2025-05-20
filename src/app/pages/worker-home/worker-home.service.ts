@@ -56,6 +56,8 @@ export class WorkerHomeService {
         ...task,
         time: this.formatTime(task.deadline),
       }));
+      let copied = structuredClone(this.component.Tasks);
+      this.component.activeTasks = copied.filter((task: any) => task.status!==3);
     });
   }
   formatTime(date: any) {

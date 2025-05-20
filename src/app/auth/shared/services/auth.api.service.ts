@@ -26,4 +26,8 @@ export class AuthApiService extends BaseApiService {
   ForgotPassword(req:any) {
     return this.post(this.serviceUrl + 'forgot-password', req);
   }
+  ChangePassword(req:any) {
+    return this.post(this.serviceUrl + 'change-password', req);
+  }
+
 }

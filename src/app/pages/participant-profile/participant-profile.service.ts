@@ -52,8 +52,19 @@ export class ParticipantProfileService {
       .Update(this.service.serviceUrl, this.component.request)
       .subscribe((resp) => {
         if (resp.succeeded) {
-          this.getGroupWorker();
-          this.component.signinLoading = false;
+          if(this.component.request.password){
+            if(this.component.request.password === this.component.request.repeatPassword){
+              this.changePassword()
+            }
+            else{
+              this.message.showWarningMessage('Passwords dont match');
+            }
+          }
+          else{
+            this.getGroupWorker();
+            this.component.signinLoading = false;
+          }
+
         }
       });
   }
@@ -71,5 +82,12 @@ export class ParticipantProfileService {
         this.component.request.image = e;
       }
     });
+  }
+
+  changePassword() {
+    this.authService.ChangePassword(this.component.request).subscribe((resp) => {
+      this.getGroupWorker();
+      this.component.signinLoading = false;
+    })
   }
 }

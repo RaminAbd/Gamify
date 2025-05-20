@@ -42,8 +42,16 @@ export class CreateTaskDialogService {
   }
 
   private buildRequest() {
-    this.component.request.startTime = this.component.startDate.toISOString();
-    this.component.request.deadline = this.component.endDate.toISOString();
+    const start = new Date(this.component.startDate);
+    start.setSeconds(0);
+    start.setMilliseconds(0); // Optional: also remove milliseconds if needed
+
+    const end = new Date(this.component.endDate);
+    end.setSeconds(0);
+    end.setMilliseconds(0); // Optional
+
+    this.component.request.startTime = start.toISOString();
+    this.component.request.deadline = end.toISOString();
     this.component.request.projectId = this.component.id;
     if (!this.component.request.source) delete this.component.request.source;
     if (!this.component.request.groupId) delete this.component.request.groupId;
@@ -56,6 +64,7 @@ export class CreateTaskDialogService {
         if (resp.succeeded) {
           this.component.ref.close(true);
           this.message.showSuccessMessage('Successfully created');
+          this.component.isSubmitted = false;
         }
       });
   }

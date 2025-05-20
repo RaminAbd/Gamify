@@ -97,11 +97,27 @@ export class OrganizationProfileService {
       .Update(this.service.serviceUrl, this.component.request)
       .subscribe((resp) => {
         if (resp.succeeded) {
-          this.getOrganization();
-          this.component.signinLoading = false;
+          if(this.component.request.password){
+            if(this.component.request.password === this.component.request.repeatPassword){
+              this.changePassword()
+            }
+            else{
+              this.message.showWarningMessage('Passwords dont match');
+            }
+          }
+          else{
+            this.getOrganization();
+            this.component.signinLoading = false;
+          }
+
         }
       });
   }
 
-
+  changePassword() {
+    this.authService.ChangePassword(this.component.request).subscribe((resp) => {
+      this.getOrganization();
+      this.component.signinLoading = false;
+    })
+  }
 }

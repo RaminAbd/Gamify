@@ -104,6 +104,6 @@
   </div>
   <div class="btns">
     <button (click)="ref.close()">{{ "Cancel" }}</button>
-    <button class="save" (click)="save()">{{ "Save" }}</button>
+    <button class="save" (click)="save()" [disabled]="isSubmitted">{{ "Save" }}</button>
   </div>
 </div>

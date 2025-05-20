@@ -10,10 +10,7 @@
           (submit)="Action()"
           class="item expander-container"
         >
-          <div
-            class="profile-image"
-            [class.invalid]="!request.image.fileUrl && isSubmitted"
-          >
+          <div class="profile-image">
             <img
               *ngIf="request.image.fileUrl"
               [src]="request.image.fileUrl"
@@ -72,10 +69,6 @@
                     id="password"
                     [(ngModel)]="request.password"
                     formControlName="password"
-                    [class.invalid]="
-                      requestForm.get('password')?.hasError('pattern') ||
-                      (!requestForm.get('password')?.value && isSubmitted)
-                    "
                   />
                   <span>
                     <i
@@ -101,13 +94,6 @@
                     id="repeatPass"
                     formControlName="repeatPass"
                     [(ngModel)]="request.repeatPassword"
-                    [class.invalid]="
-                      requestForm.get('repeatPass')?.hasError('pattern') ||
-                      (!requestForm.get('repeatPass')?.value && isSubmitted) ||
-                      (requestForm.get('password')?.value !==
-                        requestForm.get('repeatPass')?.value &&
-                        isSubmitted)
-                    "
                   />
                   <span>
                     <i

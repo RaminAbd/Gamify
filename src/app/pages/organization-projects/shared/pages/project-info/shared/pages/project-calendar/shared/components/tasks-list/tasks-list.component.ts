@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TasksResponseModel } from '../../models/tasks-response.model';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks-list',
-  imports: [NgForOf, NgIf],
+  imports: [NgForOf, NgIf, DatePipe],
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.scss',
 })
@@ -25,7 +25,9 @@ export class TasksListComponent {
     return now >= startTime && now <= deadline;
   }
 
+
   getTask($event: any) {
+    console.log($event);
     if (!this.isValidTask($event)) {
       this.showWarning = true;
       console.log(this.showWarning);

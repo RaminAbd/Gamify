@@ -31,9 +31,9 @@ export class OrganizationProfileComponent {
     country: ['', Validators.required],
     website: ['', Validators.required],
     socialMediaLink: ['', Validators.required],
-    password: ['', Validators.required],
+    password: [''],
     logo: [''],
-    repeatPass: ['', Validators.required],
+    repeatPass: [''],
   });
 
   constructor() {
@@ -85,8 +85,7 @@ export class OrganizationProfileComponent {
 
     if (
       this.requestForm.valid &&
-      this.request.logo.fileUrl &&
-      this.request.password === this.request.repeatPassword
+      this.request.logo.fileUrl
     ) {
       this.signinLoading = true;
       if (this.service.OrganizationCopy.email !== this.request.email) {

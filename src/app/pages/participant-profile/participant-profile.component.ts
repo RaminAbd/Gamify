@@ -34,9 +34,9 @@ export class ParticipantProfileComponent {
     ],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    password: ['', Validators.required],
+    password: [''],
     image: [''],
-    repeatPass: ['', Validators.required],
+    repeatPass: [''],
   });
 
   constructor() {
@@ -56,9 +56,7 @@ export class ParticipantProfileComponent {
   Action() {
     this.isSubmitted = true;
     if (
-      this.requestForm.valid &&
-      this.request.image.fileUrl &&
-      this.request.password === this.request.repeatPassword
+      this.requestForm.valid
     ) {
       this.signinLoading = true;
       if (this.service.Copy.email !== this.request.email) {
@@ -67,6 +65,7 @@ export class ParticipantProfileComponent {
       } else {
         this.service.update();
       }
+
     } else {
       this.service.message.showWarningMessage('Fields are not valid');
     }

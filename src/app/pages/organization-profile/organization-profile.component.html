@@ -154,10 +154,7 @@
                     id="password"
                     [(ngModel)]="request.password"
                     formControlName="password"
-                    [class.invalid]="
-                      requestForm.get('password')?.hasError('pattern') ||
-                      (!requestForm.get('password')?.value && isSubmitted)
-                    "
+
                   />
                   <span>
                     <i
@@ -181,13 +178,7 @@
                     id="repeatPass"
                     formControlName="repeatPass"
                     [(ngModel)]="request.repeatPassword"
-                    [class.invalid]="
-                      requestForm.get('repeatPass')?.hasError('pattern') ||
-                      (!requestForm.get('repeatPass')?.value && isSubmitted) ||
-                      (requestForm.get('password')?.value !==
-                        requestForm.get('repeatPass')?.value &&
-                        isSubmitted)
-                    "
+
                   />
                   <span>
                     <i

@@ -33,6 +33,7 @@ export class WorkerHomeComponent {
   projectDetails: ProjectDetailsModel = new ProjectDetailsModel();
   levelInfo: LevelResponseModel = new LevelResponseModel();
   showWarning: boolean = false;
+  activeTasks:any[]=[]
   constructor() {
     this.service.component = this;
     this.service.getParticipant();

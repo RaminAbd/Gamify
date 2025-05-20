@@ -225,8 +225,8 @@ export class ProjectCalendarService {
       console.log(resp);
       let tasks = resp.data.map((item: any) => ({
         ...item,
-        startTime: new FormatDate(new Date(item.startTime), true).formattedDate,
-        deadline: new FormatDate(new Date(item.deadline), true).formattedDate,
+        // startTime: new FormatDate(new Date(item.startTime), true).formattedDate,
+        // deadline: new FormatDate(new Date(item.deadline), true).formattedDate,
         status: this.getStatus(item.status),
       }));
       console.log(tasks);
