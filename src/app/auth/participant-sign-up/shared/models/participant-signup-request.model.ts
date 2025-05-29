@@ -8,4 +8,5 @@ export class ParticipantSignupRequestModel {
   image: FileModel = new FileModel();
   password: string;
   repeatPassword: string;
+  nickName: string;
 }

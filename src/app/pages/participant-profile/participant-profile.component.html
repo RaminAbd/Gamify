@@ -26,6 +26,18 @@
           <div class="inputs">
             <div class="row1">
               <div class="input-item">
+                <label for="nickName">{{ "Nickname" }}</label>
+                <input
+                  type="text"
+                  formControlName="nickName"
+                  [(ngModel)]="request.nickName"
+                  id="nickName"
+                  [class.invalid]="validateField('nickName')"
+                />
+              </div>
+            </div>
+            <div class="row1">
+              <div class="input-item">
                 <label for="firstName">{{ "First name" }}</label>
                 <input
                   type="text"

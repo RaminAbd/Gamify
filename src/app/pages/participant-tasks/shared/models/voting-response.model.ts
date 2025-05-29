@@ -7,4 +7,5 @@ export class VotingResponseModel {
   candidates: AssigneeModel[] = [];
   name: string;
   description: string;
+  results:any[]=[];
 }

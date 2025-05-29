@@ -27,6 +27,7 @@ export class ParticipantSignUpComponent {
       { value: '', disabled: true },
       [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)],
     ],
+    nickName: ['', Validators.required],
     password: ['', Validators.required],
     repeatPass: ['', Validators.required],
   });

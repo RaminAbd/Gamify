@@ -32,6 +32,7 @@ export class ParticipantProfileComponent {
       { value: '', disabled: true },
       [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)],
     ],
+    nickName: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     password: [''],
