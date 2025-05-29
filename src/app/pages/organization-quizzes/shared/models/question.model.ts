@@ -5,4 +5,5 @@ export class QuestionModel {
   question: string;
   answers: AnswerModel[] = [];
   points:number;
+  answeredCorrectly: boolean;
 }

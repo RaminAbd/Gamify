@@ -22,9 +22,29 @@
   <div class="items-wrapper" style="margin-top: 30px">
     <div class="items">
       <div class="item" *ngFor="let question of task.questions; let i = index">
-        <p>{{ i + 1 }}. {{ question.question }}</p>
+        <div
+          class="name"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+          "
+        >
+          <p>{{ i + 1 }}. {{ question.question }}</p>
+          <p *ngIf="question.answeredCorrectly" style="color: #3fc672">
+            +{{ question.points }}
+          </p>
+        </div>
         <div class="answers">
-          <div class="answer" *ngFor="let ans of question.answers" [ngClass]="{'correct' : ans.selected && ans.correct, 'wrong': ans.selected && !ans.correct}">
+          <div
+            class="answer"
+            *ngFor="let ans of question.answers"
+            [ngClass]="{
+              correct: ans.selected && ans.correct,
+              wrong: ans.selected && !ans.correct,
+            }"
+          >
             <div class="check">
               <div class="checked" *ngIf="ans.selected"></div>
             </div>
