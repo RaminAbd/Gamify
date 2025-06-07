@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://testapp-api-gm.azurewebsites.net/api/',
-  url: 'https://testapp-api-gm.azurewebsites.net/'
+  apiUrl: 'https://gamify-youth-work-api.azurewebsites.net/api/',
+  url: 'https://gamify-youth-work-api.azurewebsites.net/'
 };
