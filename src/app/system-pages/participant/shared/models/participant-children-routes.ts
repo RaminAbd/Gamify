@@ -32,6 +32,7 @@ import {
 import {WorkerProfileComponent} from '../../../../pages/worker-profile/worker-profile.component';
 import {ParticipantProfileComponent} from '../../../../pages/participant-profile/participant-profile.component';
 import {PVotingComponent} from '../../../../pages/participant-tasks/shared/pages/p-voting/p-voting.component';
+import {PScanComponent} from '../../../../pages/participant-tasks/shared/pages/p-scan/p-scan.component';
 
 export class ParticipantChildrenRoutes {
   static children: Route[] = [
@@ -87,6 +88,11 @@ export class ParticipantChildrenRoutes {
     {
       path: 'tasks/voting/:id',
       component: PVotingComponent,
+      data: { title: 'Tasks' },
+    },
+    {
+      path: 'tasks/scan/:id',
+      component: PScanComponent,
       data: { title: 'Tasks' },
     },
     {

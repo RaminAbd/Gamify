@@ -15,4 +15,10 @@ export class AttendancesApiService  extends BaseCrudApiService {
   Scan(req:any){
     return this.post(this.serviceUrl + 'scan', req);
   }
+
+  ScanAsParticipant(req:any){
+    return this.post(this.serviceUrl + 'scan-as-participant', req);
+  }
+
+
 }

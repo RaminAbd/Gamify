@@ -14,19 +14,19 @@
         />
       </div>
       <div class="name">
-        <p>{{attendance.task.name}}</p>
+        <p>{{ attendance.task.name }}</p>
       </div>
     </div>
     <div class="desc">
-      <p>{{attendance.task.description}}</p>
+      <p>{{ attendance.task.description }}</p>
     </div>
   </div>
-
 
   <div class="image">
     <img [src]="attendance.qrCode" alt="" />
   </div>
-  <div class="btns">
+  <div class="btns" style="display: flex; flex-direction: column; gap: 10px">
+    <button (click)="goToScan()">Scan QR code</button>
     <button (click)="finishTask()">Finish</button>
   </div>
 </div>

@@ -22,4 +22,8 @@ export class PAttendanceComponent {
   finishTask(){
     this.router.navigate(['main/participant/home'])
   }
+
+  goToScan() {
+    this.router.navigate(['main/participant/tasks/scan', this.id]);
+  }
 }
