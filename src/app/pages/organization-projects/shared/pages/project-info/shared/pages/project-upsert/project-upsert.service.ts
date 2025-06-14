@@ -82,6 +82,7 @@ export class ProjectUpsertService {
         this.create();
       }
     } else {
+      this.component.isSubmitted = false;
       this.message.showWarningMessage('Fields are required.');
     }
   }

@@ -7,11 +7,11 @@
     <div class="form">
       <div class="row1">
         <div class="input-item">
-          <label for="name">Name</label>
+          <label for="name">Name <span style="color: red">*</span></label>
           <input id="name" type="text" [(ngModel)]="request.name">
         </div>
         <div class="input-item file-input">
-          <label>{{ "Image (650x220px)" }}</label>
+          <label>{{ "Image (650x220px)" }} <span style="color: red">*</span></label>
           <label
             class="file-label"
             for="file"
@@ -55,21 +55,21 @@
       </div>
       <div class="row1">
         <div class="input-item">
-          <label>Start date</label>
+          <label>Start date <span style="color: red">*</span></label>
           <p-datepicker [(ngModel)]="startDate" />
         </div>
         <div class="input-item">
-          <label>End date</label>
+          <label>End date <span style="color: red">*</span></label>
           <p-datepicker [(ngModel)]="endDate" />
         </div>
       </div>
       <div class="row1">
         <div class="input-item">
-          <label for="rewardRules">Reward rules</label>
+          <label for="rewardRules">Reward rules <span style="color: red">*</span></label>
           <textarea id="rewardRules" type="text" [(ngModel)]="request.rewardRules"></textarea>
         </div>
         <div class="input-item">
-          <label for="description">Description</label>
+          <label for="description">Description <span style="color: red">*</span></label>
           <textarea id="description" type="text" [(ngModel)]="request.description"></textarea>
         </div>
       </div>
