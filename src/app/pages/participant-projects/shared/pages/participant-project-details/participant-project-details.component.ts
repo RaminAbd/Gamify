@@ -4,10 +4,12 @@ import { ProjectDetailedResponseModel } from '../../../../worker-projects/shared
 import { OrganizationsResponseModel } from '../../../../admin-organizations/shared/models/organizations-response.model';
 import { ParticipantProjectDetailsService } from './participant-project-details.service';
 import { WorkerCalendarComponent } from '../../../../worker-projects/shared/components/worker-calendar/worker-calendar.component';
+import {NgClass, NgForOf} from '@angular/common';
+import {LeaderBoardResponseModel} from '../../models/leader-board-response.model';
 
 @Component({
   selector: 'app-participant-project-details',
-  imports: [WorkerCalendarComponent],
+  imports: [WorkerCalendarComponent, NgForOf, NgClass],
   templateUrl: './participant-project-details.component.html',
   styleUrl: './participant-project-details.component.scss',
 })
@@ -21,10 +23,19 @@ export class ParticipantProjectDetailsComponent {
   response: ProjectDetailedResponseModel = new ProjectDetailedResponseModel();
   organizations: OrganizationsResponseModel[] = [];
   Tasks: any[] = [];
+  types: any = [
+    { name: 'All', value: 0, selected: true },
+    { name: 'Attendance', value: 1, selected: false },
+    { name: 'Performance', value: 2 , selected: false},
+    { name: 'Quiz', value: 3, selected: false },
+    { name: 'Voting', value: 4 , selected: false},
+  ];
+
   constructor() {
     this.service.component = this;
     this.service.getItem();
     this.getTasks();
+    this.service.getLeaderBoard()
   }
   getTasks() {
     this.service.getALlTasks();
@@ -67,5 +78,11 @@ export class ParticipantProjectDetailsComponent {
         //   ]);
         break;
     }
+  }
+  leaderboard:LeaderBoardResponseModel[]=[]
+  selectType(type: any) {
+    this.types.map((x:any)=>x.selected = false);
+    type.selected = true;
+    this.service.getLeaderBoard();
   }
 }

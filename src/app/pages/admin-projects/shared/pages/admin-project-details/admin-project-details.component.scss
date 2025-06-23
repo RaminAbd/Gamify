@@ -43,3 +43,116 @@
     }
   }
 }
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px 0;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    min-width: 60px;
+    align-items: center;
+    p {
+      color: #90928d;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    &.selected {
+      border-bottom: 1px solid black;
+      p {
+        color: var(--text-color);
+      }
+    }
+  }
+}
+.list {
+  margin-top: 24px;
+  width: 100%;
+  //border: 1px solid #e3e3e2;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .item {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e3e3e2;
+    border-radius: 16px;
+    background: #32BF77;
+    @media (max-width: 769px) {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      @media (max-width: 769px) {
+        min-width: 130px;
+      }
+    }
+    .name {
+      p {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 18.15px;
+      }
+      .type {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16.94px;
+      }
+    }
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16.94px;
+      color: #FFF;
+    }
+    p{
+      color: #FFF;
+    }
+    .value {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      p {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16.94px;
+        color: #FFF;
+      }
+    }
+    button {
+      padding: 15px;
+      background: #FFF;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      color: #32BF77 !important;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 10px;
+      @media (max-width: 769px) {
+        width: 100%;
+      }
+    }
+  }
+}

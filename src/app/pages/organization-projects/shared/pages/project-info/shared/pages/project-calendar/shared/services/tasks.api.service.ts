@@ -26,4 +26,7 @@ export class TasksApiService extends BaseCrudApiService {
   getAllForWorker(req: any) {
     return this.get(this.serviceUrl + 'get-all-by-worker', null, req);
   }
+  getLeaderBoard(req: any) {
+    return this.get(this.serviceUrl + 'get-leader-board', null, req);
+  }
 }

@@ -43,4 +43,18 @@ export class ParticipantProjectDetailsService {
   formatTime(date: any) {
     return new FormatDate(new Date(date), true).formattedDate;
   }
+
+  getLeaderBoard(){
+    let selected = this.component.types.find((type:any) => type.selected);
+    const req:any = {
+      projectId:this.component.id,
+    }
+    if(selected.value !== 0){
+      req.type=selected.value
+    }
+    this.tasksService.getLeaderBoard(req).subscribe((resp) => {
+      console.log(resp.data)
+      this.component.leaderboard = resp.data;
+    })
+  }
 }

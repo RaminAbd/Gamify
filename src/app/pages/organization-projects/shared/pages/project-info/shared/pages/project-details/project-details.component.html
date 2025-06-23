@@ -33,6 +33,29 @@
           <p>{{ request.endDate | date: "MMM dd, yyyy" }}</p>
         </div>
       </div>
+      <div class="heading" style="margin-top: 30px;">
+        <h3>Leaderboard</h3>
+      </div>
+      <div class="tabs">
+        <div class="item" *ngFor="let type of types" (click)="selectType(type)" [ngClass]="{'selected':type.selected}">
+          <p>{{ type.name }}</p>
+        </div>
+      </div>
+      <div class="tab-content" style="padding-bottom: 30px;">
+        <div class="list">
+          <div class="item" *ngFor="let item of leaderboard">
+            <div class="col">
+              <label>{{ "Nickname" }}</label>
+              <p>{{ item.nickName }}</p>
+            </div>
+            <div class="col">
+              <label>{{ "Points" }}</label>
+              <p>{{ item.points }}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

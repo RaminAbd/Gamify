@@ -4,11 +4,15 @@ import { OrganizationsResponseModel } from '../../../../admin-organizations/shar
 import { WorkerProjectDetailsService } from './worker-project-details.service';
 import {ProjectDetailedResponseModel} from '../../models/project-detailed-response.model';
 import {WorkerCalendarComponent} from '../../components/worker-calendar/worker-calendar.component';
+import {NgClass, NgForOf} from "@angular/common";
+import {LeaderBoardResponseModel} from '../../../../participant-projects/shared/models/leader-board-response.model';
 
 @Component({
   selector: 'app-worker-project-details',
   imports: [
-    WorkerCalendarComponent
+    WorkerCalendarComponent,
+    NgForOf,
+    NgClass
   ],
   templateUrl: './worker-project-details.component.html',
   styleUrl: './worker-project-details.component.scss',
@@ -27,6 +31,7 @@ export class WorkerProjectDetailsComponent {
     this.service.component = this;
     this.service.getItem();
     this.getTasks()
+    this.service.getLeaderBoard()
   }
   getTasks() {
     this.service.getTasks();
@@ -34,5 +39,18 @@ export class WorkerProjectDetailsComponent {
 
   getTask($event: any) {
     this.router.navigate(['main/worker/tasks', $event.id]);
+  }
+  types: any = [
+    { name: 'All', value: 0, selected: true },
+    { name: 'Attendance', value: 1, selected: false },
+    { name: 'Performance', value: 2 , selected: false},
+    { name: 'Quiz', value: 3, selected: false },
+    { name: 'Voting', value: 4 , selected: false},
+  ];
+  leaderboard:LeaderBoardResponseModel[]=[]
+  selectType(type: any) {
+    this.types.map((x:any)=>x.selected = false);
+    type.selected = true;
+    this.service.getLeaderBoard();
   }
 }

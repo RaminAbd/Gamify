@@ -3,6 +3,9 @@ import { ProjectsApiService } from '../../services/projects.api.service';
 import { AdminProjectDetailsComponent } from './admin-project-details.component';
 import { OrganizationsApiService } from '../../../../admin-organizations/shared/services/organizations.api.service';
 import { FormatDate } from '../../../../../core/extensions/format-date';
+import {
+  TasksApiService
+} from '../../../../organization-projects/shared/pages/project-info/shared/pages/project-calendar/shared/services/tasks.api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +14,8 @@ export class AdminProjectDetailsService {
   private service: ProjectsApiService = inject(ProjectsApiService);
   private orgService: OrganizationsApiService = inject(OrganizationsApiService);
   component: AdminProjectDetailsComponent;
+  private tasksService: TasksApiService = inject(TasksApiService);
+
   constructor() {}
 
   GetAllOrganizations() {
@@ -40,5 +45,19 @@ export class AdminProjectDetailsService {
 
   formatDate(date: any) {
     return new FormatDate(new Date(date), true).formattedDate;
+  }
+
+  getLeaderBoard(){
+    let selected = this.component.types.find((type:any) => type.selected);
+    const req:any = {
+      projectId:this.component.id,
+    }
+    if(selected.value !== 0){
+      req.type=selected.value
+    }
+    this.tasksService.getLeaderBoard(req).subscribe((resp) => {
+      console.log(resp.data)
+      this.component.leaderboard = resp.data;
+    })
   }
 }
