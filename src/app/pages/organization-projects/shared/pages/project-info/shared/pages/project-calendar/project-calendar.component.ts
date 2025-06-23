@@ -34,6 +34,9 @@ export class ProjectCalendarComponent {
   constructor() {
     this.service.component = this;
     this.meetingsRequest.educatorId = localStorage.getItem('userId') as string;
+    this.getDefault();
+  }
+  getDefault() {
     this.service.getGroups();
     this.service.getQuizzes();
 
@@ -42,7 +45,6 @@ export class ProjectCalendarComponent {
     this.monthData = this.service.updateMonthData(new Date());
     if (!this.isMobile()) this.handleSetDateInfo(this.dayItemStateSaver);
   }
-
   isMobile(): boolean {
     console.log(window.matchMedia('(max-width: 1250px)').matches);
     return window.matchMedia('(max-width: 1250px)').matches;
@@ -106,10 +108,21 @@ export class ProjectCalendarComponent {
   }
 
   getTasks(task: ScheduleTaskModel) {
-    this.service.getTasks(task)
+    this.service.getTasks(task);
   }
 
   createTask() {
     this.service.openCreateDialog();
+  }
+
+  deleteRoot(task: any) {
+    this.service.deleteRoot(task);
+    this.showActivities = false;
+  }
+
+  editRoot(task: ScheduleTaskModel) {
+    console.log(task);
+    this.service.openEdit(task);
+    this.showActivities = false;
   }
 }

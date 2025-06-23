@@ -10,6 +10,7 @@ import { ScheduleTaskModel } from './shared/models/schedule-task.model';
 import { TasksListComponent } from './shared/components/tasks-list/tasks-list.component';
 import { TasksApiService } from './shared/services/tasks.api.service';
 import { FormatDate } from '../../../../../../../../core/extensions/format-date';
+import { TaskRootUpdateComponent } from './shared/components/task-root-update/task-root-update.component';
 
 @Injectable({
   providedIn: 'root',
@@ -37,10 +38,10 @@ export class ProjectCalendarService {
   }
 
   getMeetings() {
-    let req:any = {
+    let req: any = {
       projectId: this.component.id,
     };
-    if(this.component.userId) req.workerId = this.component.userId;
+    if (this.component.userId) req.workerId = this.component.userId;
     this.service.getAllByProject(req).subscribe((resp) => {
       resp.data = resp.data.map((item: any) => ({
         ...item,
@@ -219,8 +220,8 @@ export class ProjectCalendarService {
   getTasks(task: ScheduleTaskModel) {
     this.component.showActivities = false;
     const req = {
-      rootId:task.id
-    }
+      rootId: task.id,
+    };
     this.tasksService.getAllByRoot(req).subscribe((resp) => {
       console.log(resp);
       let tasks = resp.data.map((item: any) => ({
@@ -264,5 +265,27 @@ export class ProjectCalendarService {
       default:
         return 'Unknown';
     }
+  }
+
+  deleteRoot(task: any) {
+    this.service.Delete(this.service.serviceUrl, task.id).subscribe((resp) => {
+      this.getMeetings();
+    });
+  }
+
+  openEdit(task: any) {
+    const ref = this.dialogService.open(TaskRootUpdateComponent, {
+      header: 'Edit Task',
+      width: '950px',
+      data: task,
+      style: {
+        maxWidth: '95%',
+      },
+    });
+    ref.onClose.subscribe((e: any) => {
+      if (e) {
+        this.getMeetings();
+      }
+    });
   }
 }

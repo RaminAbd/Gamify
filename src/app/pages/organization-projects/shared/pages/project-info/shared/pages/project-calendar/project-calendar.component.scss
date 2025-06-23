@@ -420,7 +420,7 @@
     align-items: center;
     gap: 12px;
     flex: 1 0 0;
-    border-radius: 12px;
+    border-radius: 6px;
     background: #009245;
     color: #fff;
     font-size: 14px;
@@ -510,4 +510,39 @@
   @media (max-width: 769px) {
     display: none !important;
   }
+}
+button.edit{
+  display: flex
+;
+  /* padding: 8px 16px; */
+  align-items: center;
+  border-radius: 6px;
+  background: #C6E7FF;
+  color: var(--blue-text) !important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  height: 37px;
+  width: 37px;
+  justify-content: center;
+}
+button.delete{
+  display: flex
+;
+  /* padding: 8px 16px; */
+  align-items: center;
+  border-radius: 6px;
+  background: #ffc6c6;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  height: 37px;
+  width: 37px;
+  justify-content: center;
+ i{
+   color: red !important;
+ }
 }

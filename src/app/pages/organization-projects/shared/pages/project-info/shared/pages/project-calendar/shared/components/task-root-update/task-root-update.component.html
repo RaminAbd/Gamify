@@ -1,0 +1,54 @@
+<div class="wrapper">
+  <div class="inputs">
+    <div class="row1">
+      <div class="input-item">
+        <label>Start date</label>
+        <p-datepicker
+          [(ngModel)]="startDate"
+          [showTime]="true"
+          [ngClass]="{
+            invalid: !startDate && isSubmitted,
+          }"
+        />
+      </div>
+      <div class="input-item">
+        <label>End date</label>
+        <p-datepicker
+          [(ngModel)]="endDate"
+          [showTime]="true"
+          [ngClass]="{
+            invalid: !endDate && isSubmitted,
+          }"
+        />
+      </div>
+    </div>
+    <div class="row1">
+      <div class="input-item">
+        <label for="name">{{ "Name" }}</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="request.name"
+          [ngClass]="{
+            invalid: !request.name && isSubmitted,
+          }"
+        />
+      </div>
+    </div>
+    <div class="row1">
+      <div class="input-item">
+        <label>Description</label>
+        <textarea
+          [(ngModel)]="request.description"
+          [ngClass]="{
+            invalid: !request.description && isSubmitted,
+          }"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="ref.close()">{{ "Cancel" }}</button>
+    <button class="save" (click)="save()" [disabled]="isSubmitted">{{ "Save" }}</button>
+  </div>
+</div>

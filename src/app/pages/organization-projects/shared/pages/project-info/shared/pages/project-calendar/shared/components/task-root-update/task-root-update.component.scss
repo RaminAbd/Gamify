@@ -1,0 +1,141 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  form {
+    button {
+      width: 70px;
+      height: 48px;
+      border-radius: 12px;
+      background: #f6f6f6;
+      font-size: 14px;
+      font-weight: 600;
+      background: var(--primary-color);
+      color: #fff;
+    }
+  }
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+    width: 100%;
+    .row1 {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+    }
+    .input-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      width: 100%;
+      label {
+        color: #90928d;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      ::ng-deep .p-datepicker {
+        width: 100%;
+      }
+      ::ng-deep .p-inputtext {
+        border-radius: 12px !important;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 12px;
+        color: var(--text-color) !important;
+        font-weight: 600;
+        font-size: 14px;
+        height: 48px !important;
+      }
+
+      textarea {
+        border-radius: 12px !important;
+      }
+    }
+  }
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    button {
+      width: 147px;
+      height: 41px;
+      border-radius: 12px;
+      background: #f6f6f6;
+      color: #656668 !important;
+      font-size: 14px;
+      font-weight: 600;
+      @media (max-width: 400px) {
+        width: auto;
+        flex: 1;
+      }
+      &.save {
+        background: var(--primary-color);
+        color: #fff !important;
+      }
+    }
+  }
+}
+::ng-deep .p-select,
+::ng-deep .p-multiselect {
+  border-radius: 12px !important;
+  height: 48px !important;
+}
+.items {
+  margin-top: 24px;
+  width: 100%;
+  border: 1px solid #e3e3e2;
+  border-radius: 15px;
+  max-height: 330px;
+  overflow: auto;
+  padding-right: 10px;
+  .item {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e3e3e2;
+    align-items: center;
+    &:last-child {
+      border-bottom: none;
+    }
+    .delete {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+
+      label {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16.94px;
+        color: #90928d;
+      }
+      .value {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        p {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 16.94px;
+        }
+      }
+    }
+  }
+}
+.invalid{
+  border-radius: 12px !important;
+}
