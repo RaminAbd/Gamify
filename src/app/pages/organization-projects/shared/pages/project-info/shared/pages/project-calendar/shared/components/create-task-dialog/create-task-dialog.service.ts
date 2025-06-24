@@ -15,10 +15,12 @@ export class CreateTaskDialogService {
   constructor() {}
 
   save() {
-    this.buildRequest();
+
     if (this.isValid()) {
+      this.buildRequest();
       this.create();
     } else {
+      this.component.isSubmitted = false;
       this.message.showWarningMessage('Fields are not valid');
     }
   }
@@ -28,8 +30,8 @@ export class CreateTaskDialogService {
     if (
       !this.component.request.name ||
       !this.component.request.type ||
-      !this.component.request.startTime ||
-      !this.component.request.deadline ||
+      !this.component.startDate ||
+      !this.component.endDate ||
       !this.component.request.description
     ) {
       result = false;

@@ -36,7 +36,7 @@ export class GroupUpsertComponent {
 
   save() {
     this.isSubmitted = true;
-    if(!this.name || !this.image.fileUrl){
+    if(!this.name ){
       this.message.showWarningMessage('Fields are required!');
     }
     else{

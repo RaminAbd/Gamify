@@ -9,7 +9,6 @@
       <label
         class="file-label"
         for="file"
-        [class.invalid]="!image.fileUrl && isSubmitted"
       >
         <p *ngIf="!image.fileUrl && !image.fileLoading">
           <svg

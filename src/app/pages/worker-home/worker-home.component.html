@@ -46,6 +46,7 @@
               attendance: task.type === 1,
               performance: task.type === 2,
               quiz: task.type === 3,
+              voting:task.type === 4
             }"
           >
             <div class="block">
@@ -64,6 +65,11 @@
                 <img
                   *ngIf="task.type === 3"
                   src="https://blobstudentportal.blob.core.windows.net/test/85fc5795-fb5b-4763-91d8-bd9465108739image%20%285%29.png"
+                  alt=""
+                />
+                <img
+                  *ngIf="task.type === 4"
+                  src="https://blobstudentportal.blob.core.windows.net/test/4bd832e2-764b-4fc2-a53e-8cb1c9485470image%2025.png"
                   alt=""
                 />
               </div>
