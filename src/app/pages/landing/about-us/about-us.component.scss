@@ -104,3 +104,15 @@ h2 {
     display: none !important;
   }
 }
+.img{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  img{
+    height: 200px;
+    @media (max-width: 500px) {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
